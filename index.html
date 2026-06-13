@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wikgrow — Professional Web Development & Digital Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #060912;
+    --bg2: #0d1120;
+    --bg3: #111827;
+    --accent: #4F8EF7;
+    --accent2: #7C3AED;
+    --green: #10B981;
+    --text: #F0F4FF;
+    --muted: #8B96B0;
+    --border: rgba(255,255,255,0.08);
+    --card: rgba(255,255,255,0.04);
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 18px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(6,9,18,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+
+  .logo span { color: var(--accent); }
+
+  .nav-cta {
+    background: var(--accent);
+    color: #fff;
+    padding: 9px 22px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    font-family: var(--font-display);
+    transition: opacity 0.2s;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 5% 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(79,142,247,0.12) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 70%);
+    top: 30%; right: 10%;
+    pointer-events: none;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(79,142,247,0.1);
+    border: 1px solid rgba(79,142,247,0.25);
+    color: var(--accent);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 28px;
+    font-family: var(--font-display);
+  }
+
+  .badge-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    margin-bottom: 22px;
+    max-width: 800px;
+  }
+
+  .hero h1 .gradient {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero p {
+    font-size: clamp(16px, 2vw, 19px);
+    color: var(--muted);
+    max-width: 560px;
+    margin-bottom: 40px;
+    line-height: 1.7;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 60px;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    font-family: var(--font-display);
+    transition: transform 0.2s, opacity 0.2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); opacity: 0.9; }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--card);
+    color: var(--text);
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    font-family: var(--font-display);
+    border: 1px solid var(--border);
+    transition: background 0.2s;
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.08); }
+
+  .hero-stats {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .stat-label { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+  /* SERVICES */
+  section { padding: 90px 5%; }
+
+  .section-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+    font-family: var(--font-display);
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .section-sub {
+    color: var(--muted);
+    font-size: 17px;
+    max-width: 520px;
+    margin-bottom: 56px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .service-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card:hover { border-color: rgba(79,142,247,0.3); transform: translateY(-3px); }
+
+  .service-card.featured {
+    border-color: rgba(79,142,247,0.4);
+    background: rgba(79,142,247,0.06);
+  }
+
+  .featured-tag {
+    position: absolute;
+    top: 16px; right: 16px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-family: var(--font-display);
+  }
+
+  .service-icon {
+    width: 46px; height: 46px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    margin-bottom: 18px;
+  }
+
+  .service-card h3 {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .service-card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+  /* PRICING */
+  .pricing-section { background: var(--bg2); }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .price-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px 28px;
+    text-align: center;
+    transition: transform 0.2s;
+  }
+
+  .price-card:hover { transform: translateY(-4px); }
+
+  .price-card.popular {
+    border-color: var(--accent);
+    background: linear-gradient(145deg, rgba(79,142,247,0.08), rgba(124,58,237,0.06));
+    position: relative;
+  }
+
+  .popular-badge {
+    position: absolute;
+    top: -14px; left: 50%; transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 16px;
+    border-radius: 100px;
+    font-family: var(--font-display);
+    white-space: nowrap;
+  }
+
+  .price-name {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--muted);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .price-amount {
+    font-family: var(--font-display);
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .price-amount span { font-size: 22px; vertical-align: super; }
+
+  .price-note { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+
+  .price-features { list-style: none; margin-bottom: 28px; text-align: left; }
+
+  .price-features li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--muted);
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .price-features li:last-child { border-bottom: none; }
+
+  .check { color: var(--green); font-size: 16px; flex-shrink: 0; }
+
+  .price-btn {
+    display: block;
+    width: 100%;
+    padding: 13px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    font-family: var(--font-display);
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .price-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+  .price-btn.outline { border: 1px solid var(--border); color: var(--text); background: transparent; }
+  .price-btn.solid { background: var(--accent); color: #fff; }
+
+  /* WHY US */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+
+  .why-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+  }
+
+  .why-num {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--accent);
+    opacity: 0.4;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
+  .why-card h4 {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .why-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* WHATSAPP CHATBOT */
+  .chat-section {
+    background: var(--bg2);
+    text-align: center;
+  }
+
+  .chat-widget {
+    max-width: 420px;
+    margin: 0 auto;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+
+  .chat-header {
+    background: #075E54;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .chat-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 16px;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .chat-header-info h4 { font-size: 15px; font-weight: 600; color: #fff; font-family: var(--font-display); }
+  .online { font-size: 12px; color: #4ADE80; }
+
+  .chat-body { padding: 20px; min-height: 200px; background: #0d1117; }
+
+  .chat-msg {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+  }
+
+  .chat-bubble {
+    max-width: 85%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .from-bot .chat-bubble {
+    background: #1e2a3a;
+    color: var(--text);
+    border-bottom-left-radius: 4px;
+    align-self: flex-start;
+  }
+
+  .chat-time { font-size: 11px; color: var(--muted); margin-top: 4px; padding: 0 4px; }
+
+  .chat-options { display: flex; flex-direction: column; gap: 8px; margin-top: 14px; }
+
+  .chat-option {
+    background: rgba(79,142,247,0.1);
+    border: 1px solid rgba(79,142,247,0.25);
+    color: var(--accent);
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.2s;
+    font-family: var(--font-display);
+  }
+  .chat-option:hover { background: rgba(79,142,247,0.2); }
+
+  .chat-footer {
+    padding: 14px 20px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 10px;
+  }
+
+  .chat-input {
+    flex: 1;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    color: var(--text);
+    font-size: 14px;
+    font-family: var(--font-body);
+    outline: none;
+  }
+
+  .chat-send {
+    background: #25D366;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .chat-send:hover { opacity: 0.85; }
+
+  /* CONTACT */
+  .contact-section { text-align: center; }
+
+  .contact-cards {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+
+  .contact-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px 32px;
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.2s, transform 0.2s;
+    min-width: 200px;
+  }
+  .contact-card:hover { border-color: rgba(79,142,247,0.4); transform: translateY(-3px); }
+
+  .contact-icon { font-size: 28px; margin-bottom: 10px; }
+  .contact-card h4 { font-family: var(--font-display); font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .contact-card p { font-size: 13px; color: var(--muted); }
+
+  /* FOOTER */
+  footer {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    padding: 30px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .footer-logo { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--text); }
+  .footer-logo span { color: var(--accent); }
+  footer p { font-size: 13px; color: var(--muted); }
+
+  /* FLOATING WHATSAPP */
+  .wa-float {
+    position: fixed;
+    bottom: 28px; right: 28px;
+    z-index: 999;
+    background: #25D366;
+    width: 58px; height: 58px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    transition: transform 0.2s;
+    animation: float 3s ease-in-out infinite;
+  }
+  .wa-float:hover { transform: scale(1.1); }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+
+  .wa-float svg { width: 30px; height: 30px; fill: #fff; }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .hero-stats { gap: 24px; }
+    .hero-btns { flex-direction: column; align-items: center; }
+    footer { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">Wik<span>grow</span></a>
+  <a href="https://wa.me/971547513482?text=Hi+Wikgrow!+I+need+a+website+for+my+business." class="nav-cta" target="_blank">Get Started</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge"><span class="badge-dot"></span> Digital Growth Partner</div>
+  <h1>Grow Your Business<br>with <span class="gradient">Wikgrow</span></h1>
+  <p>Professional web development, SEO, graphic design, and AI automation — everything your business needs to dominate online.</p>
+  <div class="hero-btns">
+    <a href="https://wa.me/971547513482?text=Hi+Wikgrow!+I+need+a+website+for+my+business." class="btn-primary" target="_blank">
+      💬 WhatsApp Us Now
+    </a>
+    <a href="#pricing" class="btn-secondary">View Packages ↓</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">50+</div>
+      <div class="stat-label">Projects Delivered</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">5★</div>
+      <div class="stat-label">Client Rating</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">5–7</div>
+      <div class="stat-label">Days Delivery</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">$50</div>
+      <div class="stat-label">Starting Price</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label">What We Do</div>
+  <h2 class="section-title">Digital Services Built<br>to Get Results</h2>
+  <p class="section-sub">We focus on what actually grows your business — not just pretty designs.</p>
+  <div class="services-grid">
+    <div class="service-card featured">
+      <span class="featured-tag">Most Popular</span>
+      <div class="service-icon" style="background:rgba(79,142,247,0.15)">🌐</div>
+      <h3>Web Development</h3>
+      <p>Professional WordPress websites built for speed, mobile, and conversions. Free .com domain + hosting included in every package.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon" style="background:rgba(16,185,129,0.15)">📈</div>
+      <h3>SEO Optimization</h3>
+      <p>Rank higher on Google and get organic traffic to your website. Long-term growth without paying for ads.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon" style="background:rgba(124,58,237,0.15)">🎨</div>
+      <h3>Graphic & Logo Design</h3>
+      <p>Professional logos and brand identity that make your business look credible and trustworthy from day one.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon" style="background:rgba(245,158,11,0.15)">📣</div>
+      <h3>Digital Marketing</h3>
+      <p>Google Ads, social media, and targeted campaigns to bring real customers to your business every day.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon" style="background:rgba(239,68,68,0.15)">🤖</div>
+      <h3>AI Automation</h3>
+      <p>Automate repetitive tasks, customer replies, and workflows using AI — save time and scale faster.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="pricing-section">
+  <div style="text-align:center">
+    <div class="section-label">Pricing</div>
+    <h2 class="section-title">Simple, Transparent Packages</h2>
+    <p class="section-sub" style="margin:0 auto 56px">Free .com domain + hosting included in every plan. No hidden fees.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="price-name">Starter</div>
+      <div class="price-amount"><span>$</span>50</div>
+      <div class="price-note">Free .com domain + hosting included</div>
+      <ul class="price-features">
+        <li><span class="check">✓</span> 3 Page Website</li>
+        <li><span class="check">✓</span> Mobile Friendly</li>
+        <li><span class="check">✓</span> Contact Form</li>
+        <li><span class="check">✓</span> Free .com Domain</li>
+        <li><span class="check">✓</span> 1 Year Free Hosting</li>
+        <li><span class="check">✓</span> Delivered in 5–7 Days</li>
+      </ul>
+      <a href="https://wa.me/971547513482?text=Hi!+I'm+interested+in+the+Starter+$50+website+package." class="price-btn outline" target="_blank">Order on WhatsApp</a>
+    </div>
+    <div class="price-card popular">
+      <span class="popular-badge">⭐ Best Value</span>
+      <div class="price-name">Business</div>
+      <div class="price-amount"><span>$</span>80</div>
+      <div class="price-note">Free .com domain + hosting included</div>
+      <ul class="price-features">
+        <li><span class="check">✓</span> 5 Page Website</li>
+        <li><span class="check">✓</span> Mobile Friendly</li>
+        <li><span class="check">✓</span> Contact Form + WhatsApp</li>
+        <li><span class="check">✓</span> Free .com Domain</li>
+        <li><span class="check">✓</span> 1 Year Free Hosting</li>
+        <li><span class="check">✓</span> Basic SEO Setup</li>
+        <li><span class="check">✓</span> Delivered in 5–7 Days</li>
+      </ul>
+      <a href="https://wa.me/971547513482?text=Hi!+I'm+interested+in+the+Business+$80+website+package." class="price-btn solid" target="_blank">Order on WhatsApp</a>
+    </div>
+    <div class="price-card">
+      <div class="price-name">Premium</div>
+      <div class="price-amount"><span>$</span>120</div>
+      <div class="price-note">Free .com domain + hosting included</div>
+      <ul class="price-features">
+        <li><span class="check">✓</span> 8 Page Website</li>
+        <li><span class="check">✓</span> Mobile Friendly</li>
+        <li><span class="check">✓</span> Full SEO Optimization</li>
+        <li><span class="check">✓</span> Free .com Domain</li>
+        <li><span class="check">✓</span> 1 Year Free Hosting</li>
+        <li><span class="check">✓</span> Speed Optimization</li>
+        <li><span class="check">✓</span> Logo Design Included</li>
+      </ul>
+      <a href="https://wa.me/971547513482?text=Hi!+I'm+interested+in+the+Premium+$120+website+package." class="price-btn outline" target="_blank">Order on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section>
+  <div class="section-label">Why Wikgrow</div>
+  <h2 class="section-title">Why Clients Choose Us</h2>
+  <p class="section-sub">We deliver fast, we communicate clearly, and we never disappear after payment.</p>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-num">01</div>
+      <h4>Fast Delivery</h4>
+      <p>Your website is ready in 5–7 days. No waiting months for a simple business site.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">02</div>
+      <h4>All Inclusive Price</h4>
+      <p>Domain, hosting, design, and development all in one price. No surprises later.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">03</div>
+      <h4>Mobile First</h4>
+      <p>Every website we build looks perfect on phones — where 80% of your customers browse.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">04</div>
+      <h4>Always Available</h4>
+      <p>WhatsApp us anytime. We reply fast and keep you updated throughout the project.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHATSAPP CHATBOT -->
+<section class="chat-section" id="contact">
+  <div class="section-label">Talk to Us</div>
+  <h2 class="section-title">Get a Free Quote Instantly</h2>
+  <p class="section-sub" style="margin: 0 auto 40px">Chat with us on WhatsApp — we reply within minutes.</p>
+  <div class="chat-widget">
+    <div class="chat-header">
+      <div class="chat-avatar">W</div>
+      <div class="chat-header-info">
+        <h4>Wikgrow Support</h4>
+        <div class="online">● Online now</div>
+      </div>
+    </div>
+    <div class="chat-body">
+      <div class="chat-msg from-bot">
+        <div class="chat-bubble">👋 Hi! Welcome to Wikgrow. How can we help you today?</div>
+        <div class="chat-time">Just now</div>
+      </div>
+      <div class="chat-options">
+        <a href="https://wa.me/971547513482?text=Hi+Wikgrow!+I+need+a+website+for+my+business." class="chat-option" target="_blank">🌐 I need a website for my business</a>
+        <a href="https://wa.me/971547513482?text=Hi+Wikgrow!+I+want+to+know+about+your+pricing+packages." class="chat-option" target="_blank">💰 What are your pricing packages?</a>
+        <a href="https://wa.me/971547513482?text=Hi+Wikgrow!+I+need+SEO+for+my+website." class="chat-option" target="_blank">📈 I need SEO for my website</a>
+        <a href="https://wa.me/971547513482?text=Hi+Wikgrow!+I+need+a+logo+design." class="chat-option" target="_blank">🎨 I need a logo design</a>
+      </div>
+    </div>
+    <div class="chat-footer">
+      <input class="chat-input" type="text" placeholder="Type your message..." readonly onclick="window.open('https://wa.me/971547513482','_blank')">
+      <button class="chat-send" onclick="window.open('https://wa.me/971547513482','_blank')">➤</button>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section">
+  <div class="section-label">Contact</div>
+  <h2 class="section-title">Ready to Get Started?</h2>
+  <p class="section-sub" style="margin: 0 auto">Reach out via WhatsApp or email — we respond fast.</p>
+  <div class="contact-cards">
+    <a href="https://wa.me/971547513482?text=Hi+Wikgrow!+I+need+a+website." class="contact-card" target="_blank">
+      <div class="contact-icon">💬</div>
+      <h4>WhatsApp</h4>
+      <p>+971 54 751 3482</p>
+    </a>
+    <a href="mailto:waqaraigrowth@gmail.com" class="contact-card">
+      <div class="contact-icon">📧</div>
+      <h4>Email</h4>
+      <p>waqaraigrowth@gmail.com</p>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Wik<span>grow</span></div>
+  <p>© 2026 Wikgrow. All rights reserved.</p>
+  <p style="font-size:13px;color:var(--muted)">Professional Digital Services</p>
+</footer>
+
+<!-- FLOATING WHATSAPP BUTTON -->
+<a href="https://wa.me/971547513482?text=Hi+Wikgrow!+I+need+a+website+for+my+business." class="wa-float" target="_blank" title="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+</body>
+</html>
