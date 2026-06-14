@@ -1,8 +1,0 @@
-body { font-family: 'Arial', sans-serif; margin: 0; color: #333; background: #ffffff; }
-nav { display: flex; justify-content: space-between; padding: 20px 5%; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-header { background: #eef2f5; padding: 100px 5%; text-align: center; }
-.cta-button { background: #007bff; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; }
-.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; padding: 50px 5%; }
-.portfolio-container { display: flex; gap: 20px; padding: 50px 5%; overflow-x: auto; }
-.project-card img { width: 300px; height: 200px; border: 2px solid #ddd; border-radius: 8px; }
-footer { background: #333; color: white; text-align: center; padding: 40px; }
