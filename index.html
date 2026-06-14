@@ -149,21 +149,38 @@ nav.scrolled { box-shadow: 0 4px 20px rgba(10,15,46,.08); }
 .hero-card-bar { background: var(--off); padding: 14px 18px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--border); }
 .hcb-dots { display: flex; gap: 6px; }
 .hcb-dots span { width: 11px; height: 11px; border-radius: 50%; }
-.hcb-url { flex: 1; background: #fff; border-radius: 6px; padding: 5px 12px; font-size: 12px; color: var(--text-soft); border: 1px solid var(--border); }
-.hero-site-preview { background: linear-gradient(135deg, var(--navy) 0%, var(--ink) 100%); padding: 32px 28px; min-height: 320px; position: relative; display: flex; flex-direction: column; gap: 20px; }
-.preview-nav-bar { display: flex; align-items: center; justify-content: space-between; }
-.preview-logo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 18px; color: #fff; }
-.preview-links { display: flex; gap: 16px; }
-.preview-links span { font-size: 11px; color: rgba(255,255,255,.5); }
-.preview-hero-area { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 12px; }
-.preview-h { font-family: 'Bricolage Grotesque', sans-serif; font-size: 26px; font-weight: 800; color: #fff; line-height: 1.2; }
+.hcb-bar-track { flex: 1; background: #fff; border-radius: 6px; padding: 5px 12px; border: 1px solid var(--border); display: flex; align-items: center; }
+.hcb-bar-fill { display: block; width: 38%; height: 4px; border-radius: 4px; background: linear-gradient(90deg, var(--blue), var(--electric)); }
+.hero-site-preview { background: linear-gradient(160deg, #0B1230 0%, #131B45 55%, #1A2052 100%); padding: 0; min-height: 380px; position: relative; display: flex; flex-direction: column; overflow: hidden; }
+.preview-nav-bar { display: flex; align-items: center; justify-content: space-between; padding: 16px 22px; border-bottom: 1px solid rgba(255,255,255,.08); gap: 12px; }
+.preview-logo-row { display: flex; align-items: center; gap: 8px; }
+.preview-logo-mark { width: 22px; height: 22px; border-radius: 6px; background: linear-gradient(135deg, var(--blue), var(--electric)); display: inline-block; flex-shrink: 0; }
+.preview-nav-btn { background: linear-gradient(135deg, var(--blue), var(--electric)); color: #fff; font-size: 10px; font-weight: 700; padding: 7px 14px; border-radius: 6px; white-space: nowrap; }
+.preview-logo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 14px; color: #fff; }
+.preview-logo em { color: var(--electric); font-style: normal; }
+.preview-links { display: flex; gap: 14px; }
+.preview-links span { font-size: 10px; color: rgba(255,255,255,.55); font-weight: 600; }
+.preview-hero-area { display: flex; flex-direction: column; gap: 10px; padding: 22px 22px 18px; }
+.preview-h { font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px; font-weight: 800; color: #fff; line-height: 1.2; }
 .preview-h em { color: var(--gold); font-style: normal; }
-.preview-p { font-size: 12px; color: rgba(255,255,255,.6); line-height: 1.6; max-width: 240px; }
-.preview-btns { display: flex; gap: 10px; }
-.preview-btn { padding: 8px 16px; border-radius: 6px; font-size: 11px; font-weight: 700; }
-.preview-btn.pb1 { background: var(--blue); color: #fff; }
-.preview-btn.pb2 { background: rgba(255,255,255,.1); color: #fff; border: 1px solid rgba(255,255,255,.2); }
-.preview-stats { display: flex; gap: 16px; }
+.preview-eyebrow { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 700; color: var(--gold-light); letter-spacing: .04em; }
+.preview-p { font-size: 12px; color: rgba(255,255,255,.6); line-height: 1.6; max-width: 280px; }
+.preview-btns { display: flex; gap: 10px; margin-top: 4px; }
+.preview-btn { padding: 9px 16px; border-radius: 7px; font-size: 11px; font-weight: 700; }
+.preview-btn.pb1 { background: linear-gradient(135deg, var(--blue), var(--electric)); color: #fff; box-shadow: 0 6px 18px rgba(37,99,235,.4); }
+.preview-btn.pb2 { background: rgba(255,255,255,.08); color: #fff; border: 1px solid rgba(255,255,255,.15); }
+.preview-dashboard { display: grid; grid-template-columns: 1.6fr 1fr; grid-template-rows: auto auto; gap: 10px; padding: 0 22px 18px; flex: 1; }
+.preview-dash-card { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 14px; backdrop-filter: blur(6px); }
+.preview-dash-main { grid-row: span 2; display: flex; flex-direction: column; gap: 14px; }
+.pdc-head { display: flex; align-items: center; justify-content: space-between; font-size: 11px; font-weight: 700; color: rgba(255,255,255,.8); }
+.pdc-pill { background: rgba(16,185,129,.18); color: var(--green); border-radius: 50px; padding: 3px 9px; font-size: 10px; font-weight: 800; }
+.pdc-chart { display: flex; align-items: flex-end; gap: 8px; flex: 1; min-height: 90px; }
+.pdc-bar { flex: 1; border-radius: 5px 5px 0 0; background: linear-gradient(180deg, rgba(59,130,246,.55), rgba(59,130,246,.15)); }
+.pdc-bar-active { background: linear-gradient(180deg, var(--gold-light), var(--gold)); }
+.pdc-icon { font-size: 18px; margin-bottom: 8px; }
+.pdc-num { font-family: 'Bricolage Grotesque', sans-serif; font-size: 20px; font-weight: 800; color: #fff; line-height: 1; margin-bottom: 4px; }
+.pdc-lbl { font-size: 10px; color: rgba(255,255,255,.5); font-weight: 500; }
+.preview-stats { display: flex; gap: 16px; padding: 16px 22px; border-top: 1px solid rgba(255,255,255,.08); }
 .preview-stat { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); border-radius: 8px; padding: 10px 14px; }
 .ps-num { font-family: 'Bricolage Grotesque', sans-serif; font-size: 18px; font-weight: 800; color: #fff; }
 .ps-lbl { font-size: 10px; color: rgba(255,255,255,.5); }
@@ -212,14 +229,17 @@ nav.scrolled { box-shadow: 0 4px 20px rgba(10,15,46,.08); }
 .tab { padding: 8px 20px; border-radius: 50px; font-size: 13px; font-weight: 600; border: 1px solid var(--border); color: var(--text-soft); cursor: pointer; transition: all .2s; }
 .tab.active, .tab:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
 .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.port-card { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); transition: all .25s; background: #fff; }
-.port-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
+.port-card { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); transition: all .3s cubic-bezier(.2,.8,.2,1); background: #fff; }
+.port-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-6px); border-color: rgba(37,99,235,.15); }
+.port-screen { transition: transform .4s ease; }
+.port-card:hover .port-screen { transform: scale(1.015); }
 .port-screen { aspect-ratio: 16/10; overflow: hidden; position: relative; }
 .port-screen-inner { width: 100%; height: 100%; display: flex; flex-direction: column; }
 .port-bar { background: #1e293b; padding: 8px 12px; display: flex; align-items: center; gap: 6px; }
 .port-dots { display: flex; gap: 4px; }
 .port-dots span { width: 8px; height: 8px; border-radius: 50%; }
-.port-url { flex: 1; background: rgba(255,255,255,.1); border-radius: 4px; padding: 3px 8px; font-size: 10px; color: rgba(255,255,255,.5); }
+.port-url { flex: 1; background: rgba(255,255,255,.1); border-radius: 4px; height: 6px; overflow: hidden; }
+.port-url span { display: block; height: 100%; width: 35%; border-radius: 4px; background: linear-gradient(90deg, var(--electric), var(--gold-light)); }
 .port-site { flex: 1; display: flex; flex-direction: column; padding: 16px; }
 .port-info { padding: 20px; }
 .port-industry { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--blue); margin-bottom: 6px; }
@@ -405,7 +425,7 @@ footer { background: var(--navy); padding: 64px 0 0; }
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-actions">
-      <a href="https://wa.me/923001234567" class="btn btn-wa" target="_blank" rel="noopener">
+      <a href="https://wa.me/971547513482" class="btn btn-wa" target="_blank" rel="noopener">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5.006L2.007 22l5.137-1.349C8.52 21.511 10.238 22 12 22c5.523 0 10-4.477 10-10S17.522 2 12 2h-.001z"/></svg>
         WhatsApp
       </a>
@@ -422,8 +442,8 @@ footer { background: var(--navy); padding: 64px 0 0; }
   <a href="#reviews" onclick="closeMobile()">Reviews</a>
   <a href="#contact" onclick="closeMobile()">Contact</a>
   <div class="mobile-actions">
-    <a href="#contact" class="btn btn-primary btn-lg" onclick="closeMobile()">Get Website For $50</a>
-    <a href="https://wa.me/923001234567" class="btn btn-wa btn-lg" target="_blank" rel="noopener">WhatsApp Us</a>
+    <a href="#contact" class="btn btn-primary btn-lg" onclick="closeMobile()">Get Website for $50</a>
+    <a href="https://wa.me/971547513482" class="btn btn-wa btn-lg" target="_blank" rel="noopener">Chat on WhatsApp</a>
   </div>
 </div>
 
@@ -447,11 +467,11 @@ footer { background: var(--navy); padding: 64px 0 0; }
         <div class="hero-actions">
           <a href="#contact" class="btn btn-primary btn-lg">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-            Get Website For $50
+            Get Website for $50
           </a>
-          <a href="https://wa.me/923001234567" class="btn btn-wa btn-lg" target="_blank" rel="noopener">
+          <a href="https://wa.me/971547513482" class="btn btn-wa btn-lg" target="_blank" rel="noopener">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5.006L2 22l5.137-1.349A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
-            Contact On WhatsApp
+            Chat on WhatsApp
           </a>
         </div>
         <div class="hero-trust">
@@ -481,21 +501,53 @@ footer { background: var(--navy); padding: 64px 0 0; }
               <span style="background:#F59E0B;"></span>
               <span style="background:#10B981;"></span>
             </div>
-            <div class="hcb-url">wikgrow.com/portfolio</div>
+            <div class="hcb-bar-track"><span class="hcb-bar-fill"></span></div>
           </div>
           <div class="hero-site-preview">
             <div class="preview-nav-bar">
-              <span class="preview-logo">NovaPeak</span>
-              <div class="preview-links">
-                <span>Home</span><span>About</span><span>Services</span><span>Contact</span>
+              <div class="preview-logo-row">
+                <span class="preview-logo-mark"></span>
+                <span class="preview-logo">Nova<em>Peak</em></span>
               </div>
+              <div class="preview-links">
+                <span>Home</span><span>Services</span><span>About</span><span>Contact</span>
+              </div>
+              <div class="preview-nav-btn">Get Started</div>
             </div>
             <div class="preview-hero-area">
+              <div class="preview-eyebrow">✦ Trusted by 500+ Businesses</div>
               <div class="preview-h">Grow Your Business<br><em>With Confidence</em></div>
-              <p class="preview-p">Professional solutions trusted by 500+ clients across 30 countries worldwide.</p>
+              <p class="preview-p">Strategy, design, and technology working together to help your company scale faster and smarter.</p>
               <div class="preview-btns">
-                <div class="preview-btn pb1">Get Started</div>
-                <div class="preview-btn pb2">Learn More</div>
+                <div class="preview-btn pb1">Get Started Free</div>
+                <div class="preview-btn pb2">▶ Watch Demo</div>
+              </div>
+            </div>
+            <div class="preview-dashboard">
+              <div class="preview-dash-card preview-dash-main">
+                <div class="pdc-head">
+                  <span>Revenue Overview</span>
+                  <span class="pdc-pill">+24.6%</span>
+                </div>
+                <div class="pdc-chart">
+                  <div class="pdc-bar" style="height:38%"></div>
+                  <div class="pdc-bar" style="height:55%"></div>
+                  <div class="pdc-bar" style="height:42%"></div>
+                  <div class="pdc-bar" style="height:70%"></div>
+                  <div class="pdc-bar" style="height:60%"></div>
+                  <div class="pdc-bar pdc-bar-active" style="height:88%"></div>
+                  <div class="pdc-bar" style="height:64%"></div>
+                </div>
+              </div>
+              <div class="preview-dash-card">
+                <div class="pdc-icon">👥</div>
+                <div class="pdc-num">12.4k</div>
+                <div class="pdc-lbl">Active Clients</div>
+              </div>
+              <div class="preview-dash-card">
+                <div class="pdc-icon">⭐</div>
+                <div class="pdc-num">4.9/5</div>
+                <div class="pdc-lbl">Avg. Rating</div>
               </div>
             </div>
             <div class="preview-stats">
@@ -567,8 +619,8 @@ footer { background: var(--navy); padding: 64px 0 0; }
           <div class="featured-price">$50</div>
           <div class="featured-price-note">One-time price · No hidden fees</div>
           <div class="featured-actions">
-            <a href="#contact" class="btn btn-white btn-lg">Get Website For $50</a>
-            <a href="https://wa.me/923001234567" class="btn btn-wa btn-lg" target="_blank" rel="noopener">WhatsApp Us</a>
+            <a href="#contact" class="btn btn-white btn-lg">Get Website for $50</a>
+            <a href="https://wa.me/971547513482" class="btn btn-wa btn-lg" target="_blank" rel="noopener">Chat on WhatsApp</a>
           </div>
         </div>
         <div class="feat-includes">
@@ -593,7 +645,7 @@ footer { background: var(--navy); padding: 64px 0 0; }
         <div class="srv-title">Graphic Designing</div>
         <p class="srv-desc">Logos, brand kits, banners, and visual assets that make your brand instantly recognizable and memorable.</p>
         <div class="srv-actions">
-          <a href="https://wa.me/923001234567" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://wa.me/971547513482" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
           <a href="#contact" class="btn btn-outline srv-btn">Contact</a>
         </div>
       </div>
@@ -602,7 +654,7 @@ footer { background: var(--navy); padding: 64px 0 0; }
         <div class="srv-title">Digital Marketing</div>
         <p class="srv-desc">Data-driven campaigns across paid ads, social media, and email that deliver measurable ROI for your business.</p>
         <div class="srv-actions">
-          <a href="https://wa.me/923001234567" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://wa.me/971547513482" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
           <a href="#contact" class="btn btn-outline srv-btn">Contact</a>
         </div>
       </div>
@@ -611,7 +663,7 @@ footer { background: var(--navy); padding: 64px 0 0; }
         <div class="srv-title">SEO Optimization</div>
         <p class="srv-desc">Rank higher on Google with on-page SEO, technical audits, keyword strategy, and link building that lasts.</p>
         <div class="srv-actions">
-          <a href="https://wa.me/923001234567" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://wa.me/971547513482" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
           <a href="#contact" class="btn btn-outline srv-btn">Contact</a>
         </div>
       </div>
@@ -620,7 +672,7 @@ footer { background: var(--navy); padding: 64px 0 0; }
         <div class="srv-title">AI Agents</div>
         <p class="srv-desc">Custom AI agents that handle customer support, lead qualification, and business tasks — 24/7 without breaks.</p>
         <div class="srv-actions">
-          <a href="https://wa.me/923001234567" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://wa.me/971547513482" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
           <a href="#contact" class="btn btn-outline srv-btn">Contact</a>
         </div>
       </div>
@@ -629,7 +681,7 @@ footer { background: var(--navy); padding: 64px 0 0; }
         <div class="srv-title">AI Automation</div>
         <p class="srv-desc">Automate repetitive workflows, reporting, and operations with intelligent AI systems tailored to your business.</p>
         <div class="srv-actions">
-          <a href="https://wa.me/923001234567" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://wa.me/971547513482" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
           <a href="#contact" class="btn btn-outline srv-btn">Contact</a>
         </div>
       </div>
@@ -638,7 +690,7 @@ footer { background: var(--navy); padding: 64px 0 0; }
         <div class="srv-title">AI Workflow Development</div>
         <p class="srv-desc">End-to-end AI pipeline design that connects your tools, automates decisions, and scales your operations intelligently.</p>
         <div class="srv-actions">
-          <a href="https://wa.me/923001234567" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://wa.me/971547513482" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
           <a href="#contact" class="btn btn-outline srv-btn">Contact</a>
         </div>
       </div>
@@ -647,7 +699,7 @@ footer { background: var(--navy); padding: 64px 0 0; }
         <div class="srv-title">Themes & Plugins</div>
         <p class="srv-desc">Premium WordPress themes, custom plugins, and WooCommerce setups built to your exact business requirements.</p>
         <div class="srv-actions">
-          <a href="https://wa.me/923001234567" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://wa.me/971547513482" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
           <a href="#contact" class="btn btn-outline srv-btn">Contact</a>
         </div>
       </div>
@@ -656,7 +708,7 @@ footer { background: var(--navy); padding: 64px 0 0; }
         <div class="srv-title">Website Maintenance</div>
         <p class="srv-desc">Keep your site fast, secure, and up-to-date with ongoing maintenance, updates, backups, and technical support.</p>
         <div class="srv-actions">
-          <a href="https://wa.me/923001234567" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://wa.me/971547513482" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
           <a href="#contact" class="btn btn-outline srv-btn">Contact</a>
         </div>
       </div>
@@ -665,7 +717,7 @@ footer { background: var(--navy); padding: 64px 0 0; }
         <div class="srv-title">Landing Pages</div>
         <p class="srv-desc">High-converting landing pages crafted to maximize leads and sales for your campaigns, products, and promotions.</p>
         <div class="srv-actions">
-          <a href="https://wa.me/923001234567" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://wa.me/971547513482" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
           <a href="#contact" class="btn btn-outline srv-btn">Contact</a>
         </div>
       </div>
@@ -674,7 +726,7 @@ footer { background: var(--navy); padding: 64px 0 0; }
         <div class="srv-title">Website Redesign</div>
         <p class="srv-desc">Transform outdated websites into modern, fast, and conversion-optimized digital experiences your customers love.</p>
         <div class="srv-actions">
-          <a href="https://wa.me/923001234567" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://wa.me/971547513482" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
           <a href="#contact" class="btn btn-outline srv-btn">Contact</a>
         </div>
       </div>
@@ -683,7 +735,7 @@ footer { background: var(--navy); padding: 64px 0 0; }
         <div class="srv-title">Business Branding</div>
         <p class="srv-desc">Complete brand identity packages including logo, color system, typography, and brand guidelines for consistent presence.</p>
         <div class="srv-actions">
-          <a href="https://wa.me/923001234567" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://wa.me/971547513482" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
           <a href="#contact" class="btn btn-outline srv-btn">Contact</a>
         </div>
       </div>
@@ -692,7 +744,7 @@ footer { background: var(--navy); padding: 64px 0 0; }
         <div class="srv-title">Social Media Design</div>
         <p class="srv-desc">Scroll-stopping posts, reels thumbnails, story templates, and ad creatives designed to grow your social presence.</p>
         <div class="srv-actions">
-          <a href="https://wa.me/923001234567" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://wa.me/971547513482" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
           <a href="#contact" class="btn btn-outline srv-btn">Contact</a>
         </div>
       </div>
@@ -715,18 +767,22 @@ footer { background: var(--navy); padding: 64px 0 0; }
           <div class="port-screen-inner">
             <div class="port-bar">
               <div class="port-dots"><span style="background:#EF4444"></span><span style="background:#F59E0B"></span><span style="background:#10B981"></span></div>
-              <div class="port-url">novapeaksolutions.com</div>
+              <div class="port-url"><span></span></div>
             </div>
             <div class="port-site" style="background:linear-gradient(160deg,#0A0F2E,#1A2052);color:#fff;">
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
-                <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:14px;">NovaPeak</span>
-                <div style="display:flex;gap:10px;"><span style="font-size:9px;color:rgba(255,255,255,.5)">Services</span><span style="font-size:9px;color:rgba(255,255,255,.5)">About</span><span style="font-size:9px;color:rgba(255,255,255,.5)">Contact</span></div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+                <div style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;border-radius:4px;background:linear-gradient(135deg,#2563EB,#4F8EF7);display:inline-block;"></span><span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:13px;">NovaPeak</span></div>
+                <div style="display:flex;gap:9px;"><span style="font-size:9px;color:rgba(255,255,255,.5)">Services</span><span style="font-size:9px;color:rgba(255,255,255,.5)">About</span><span style="font-size:9px;color:rgba(255,255,255,.5)">Contact</span></div>
               </div>
-              <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:800;line-height:1.2;margin-bottom:10px;">Building the Future<br><span style="color:#F59E0B;">One Solution at a Time</span></div>
-              <p style="font-size:10px;color:rgba(255,255,255,.6);line-height:1.5;margin-bottom:14px;">Management consulting for tomorrow's challenges.</p>
-              <div style="display:flex;gap:8px;">
+              <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:19px;font-weight:800;line-height:1.2;margin-bottom:8px;">Building the Future<br><span style="color:#F59E0B;">One Solution at a Time</span></div>
+              <p style="font-size:10px;color:rgba(255,255,255,.6);line-height:1.5;margin-bottom:12px;">Management consulting for tomorrow's challenges.</p>
+              <div style="display:flex;gap:8px;margin-bottom:14px;">
                 <div style="padding:6px 12px;background:#2563EB;border-radius:5px;font-size:10px;font-weight:700;">Get Started</div>
                 <div style="padding:6px 12px;border:1px solid rgba(255,255,255,.2);border-radius:5px;font-size:10px;">Learn More</div>
+              </div>
+              <div style="display:flex;gap:8px;margin-top:auto;">
+                <div style="flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:8px;"><div style="font-size:13px;font-weight:800;color:#fff;">250+</div><div style="font-size:8px;color:rgba(255,255,255,.5);">Clients Served</div></div>
+                <div style="flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:8px;"><div style="font-size:13px;font-weight:800;color:#fff;">98%</div><div style="font-size:8px;color:rgba(255,255,255,.5);">Success Rate</div></div>
               </div>
             </div>
           </div>
@@ -749,17 +805,23 @@ footer { background: var(--navy); padding: 64px 0 0; }
           <div class="port-screen-inner">
             <div class="port-bar">
               <div class="port-dots"><span style="background:#EF4444"></span><span style="background:#F59E0B"></span><span style="background:#10B981"></span></div>
-              <div class="port-url">brightnestinteriors.com</div>
+              <div class="port-url"><span></span></div>
             </div>
             <div class="port-site" style="background:linear-gradient(160deg,#FAF5F0,#F0E8E0);color:#2A1F1A;">
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
-                <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:14px;color:#7C5C48;">BrightNest</span>
-                <div style="display:flex;gap:10px;"><span style="font-size:9px;color:#9E8070">Portfolio</span><span style="font-size:9px;color:#9E8070">Services</span><span style="font-size:9px;color:#9E8070">Contact</span></div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+                <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:13px;color:#7C5C48;letter-spacing:.04em;">BRIGHTNEST</span>
+                <div style="display:flex;gap:9px;"><span style="font-size:9px;color:#9E8070">Portfolio</span><span style="font-size:9px;color:#9E8070">Services</span><span style="font-size:9px;color:#9E8070">Contact</span></div>
               </div>
-              <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:800;line-height:1.2;margin-bottom:10px;color:#2A1F1A;">Where Spaces Tell<br><span style="color:#C17F5D;">Your Story</span></div>
-              <p style="font-size:10px;color:#9E8070;line-height:1.5;margin-bottom:14px;">Premium interior design that transforms everyday spaces into exceptional environments.</p>
-              <div style="display:flex;gap:8px;">
+              <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:800;line-height:1.2;margin-bottom:8px;color:#2A1F1A;">Where Spaces Tell<br><span style="color:#C17F5D;">Your Story</span></div>
+              <p style="font-size:10px;color:#9E8070;line-height:1.5;margin-bottom:12px;">Premium interior design that transforms everyday spaces into exceptional environments.</p>
+              <div style="display:flex;gap:8px;margin-bottom:12px;">
                 <div style="padding:6px 12px;background:#C17F5D;border-radius:5px;font-size:10px;font-weight:700;color:#fff;">View Portfolio</div>
+                <div style="padding:6px 12px;border:1px solid #C17F5D;border-radius:5px;font-size:10px;color:#7C5C48;">Book a Visit</div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:auto;">
+                <div style="aspect-ratio:1;border-radius:6px;background:linear-gradient(160deg,#E0C8B0,#C8A888);"></div>
+                <div style="aspect-ratio:1;border-radius:6px;background:linear-gradient(160deg,#D8C0A8,#B89878);"></div>
+                <div style="aspect-ratio:1;border-radius:6px;background:linear-gradient(160deg,#EDE0D0,#D0B898);"></div>
               </div>
             </div>
           </div>
@@ -782,17 +844,25 @@ footer { background: var(--navy); padding: 64px 0 0; }
           <div class="port-screen-inner">
             <div class="port-bar">
               <div class="port-dots"><span style="background:#EF4444"></span><span style="background:#F59E0B"></span><span style="background:#10B981"></span></div>
-              <div class="port-url">urbanhivestudio.io</div>
+              <div class="port-url"><span></span></div>
             </div>
             <div class="port-site" style="background:linear-gradient(160deg,#0F2027,#203A43,#2C5364);color:#fff;">
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
-                <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:14px;color:#7ECFD4;">UrbanHive</span>
-                <div style="display:flex;gap:10px;"><span style="font-size:9px;color:rgba(255,255,255,.5)">Work</span><span style="font-size:9px;color:rgba(255,255,255,.5)">Studio</span><span style="font-size:9px;color:rgba(255,255,255,.5)">Contact</span></div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+                <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:13px;color:#7ECFD4;">UrbanHive</span>
+                <div style="display:flex;gap:9px;"><span style="font-size:9px;color:rgba(255,255,255,.5)">Work</span><span style="font-size:9px;color:rgba(255,255,255,.5)">Studio</span><span style="font-size:9px;color:rgba(255,255,255,.5)">Contact</span></div>
               </div>
-              <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:800;line-height:1.2;margin-bottom:10px;">Design That<br><span style="color:#7ECFD4;">Makes an Impact</span></div>
-              <p style="font-size:10px;color:rgba(255,255,255,.6);line-height:1.5;margin-bottom:14px;">Creative studio specializing in brand identity and digital experiences.</p>
-              <div style="display:flex;gap:8px;">
+              <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:800;line-height:1.2;margin-bottom:8px;">Design That<br><span style="color:#7ECFD4;">Makes an Impact</span></div>
+              <p style="font-size:10px;color:rgba(255,255,255,.6);line-height:1.5;margin-bottom:12px;">Creative studio specializing in brand identity and digital experiences.</p>
+              <div style="display:flex;gap:8px;margin-bottom:12px;">
                 <div style="padding:6px 12px;background:#7ECFD4;border-radius:5px;font-size:10px;font-weight:700;color:#0F2027;">View Work</div>
+                <div style="padding:6px 12px;border:1px solid rgba(255,255,255,.25);border-radius:5px;font-size:10px;">Our Process</div>
+              </div>
+              <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:6px;margin-top:auto;">
+                <div style="border-radius:6px;background:linear-gradient(135deg,#3A5A6E,#5E8BA0);min-height:46px;"></div>
+                <div style="display:flex;flex-direction:column;gap:6px;">
+                  <div style="flex:1;border-radius:6px;background:linear-gradient(135deg,#7ECFD4,#3A5A6E);"></div>
+                  <div style="flex:1;border-radius:6px;background:linear-gradient(135deg,#5E8BA0,#2C5364);"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -815,17 +885,23 @@ footer { background: var(--navy); padding: 64px 0 0; }
           <div class="port-screen-inner">
             <div class="port-bar">
               <div class="port-dots"><span style="background:#EF4444"></span><span style="background:#F59E0B"></span><span style="background:#10B981"></span></div>
-              <div class="port-url">blueorbitservices.com</div>
+              <div class="port-url"><span></span></div>
             </div>
             <div class="port-site" style="background:linear-gradient(160deg,#EBF5FF,#DBEAFE);color:#0A0F2E;">
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
-                <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:14px;color:#1D4ED8;">BlueOrbit</span>
-                <div style="display:flex;gap:10px;"><span style="font-size:9px;color:#64748B">Solutions</span><span style="font-size:9px;color:#64748B">Team</span><span style="font-size:9px;color:#64748B">Contact</span></div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+                <div style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;border-radius:4px;background:linear-gradient(135deg,#1D4ED8,#60A5FA);display:inline-block;"></span><span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:13px;color:#1D4ED8;">BlueOrbit</span></div>
+                <div style="display:flex;gap:9px;"><span style="font-size:9px;color:#64748B">Solutions</span><span style="font-size:9px;color:#64748B">Team</span><span style="font-size:9px;color:#64748B">Contact</span></div>
               </div>
-              <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:800;line-height:1.2;margin-bottom:10px;color:#0A0F2E;">IT Solutions for a<br><span style="color:#2563EB;">Connected World</span></div>
-              <p style="font-size:10px;color:#64748B;line-height:1.5;margin-bottom:14px;">Managed IT services and cloud infrastructure for modern businesses.</p>
-              <div style="display:flex;gap:8px;">
+              <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:800;line-height:1.2;margin-bottom:8px;color:#0A0F2E;">IT Solutions for a<br><span style="color:#2563EB;">Connected World</span></div>
+              <p style="font-size:10px;color:#64748B;line-height:1.5;margin-bottom:12px;">Managed IT services and cloud infrastructure for modern businesses.</p>
+              <div style="display:flex;gap:8px;margin-bottom:12px;">
                 <div style="padding:6px 12px;background:#2563EB;border-radius:5px;font-size:10px;font-weight:700;color:#fff;">Get a Quote</div>
+                <div style="padding:6px 12px;border:1px solid #BFDBFE;border-radius:5px;font-size:10px;color:#2563EB;">Our Services</div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:auto;">
+                <div style="background:#fff;border:1px solid #DBEAFE;border-radius:6px;padding:8px;text-align:center;font-size:14px;">☁️<div style="font-size:8px;color:#64748B;margin-top:3px;">Cloud</div></div>
+                <div style="background:#fff;border:1px solid #DBEAFE;border-radius:6px;padding:8px;text-align:center;font-size:14px;">🔒<div style="font-size:8px;color:#64748B;margin-top:3px;">Security</div></div>
+                <div style="background:#fff;border:1px solid #DBEAFE;border-radius:6px;padding:8px;text-align:center;font-size:14px;">🛠️<div style="font-size:8px;color:#64748B;margin-top:3px;">Support</div></div>
               </div>
             </div>
           </div>
@@ -848,17 +924,22 @@ footer { background: var(--navy); padding: 64px 0 0; }
           <div class="port-screen-inner">
             <div class="port-bar">
               <div class="port-dots"><span style="background:#EF4444"></span><span style="background:#F59E0B"></span><span style="background:#10B981"></span></div>
-              <div class="port-url">skybridgeventures.co</div>
+              <div class="port-url"><span></span></div>
             </div>
             <div class="port-site" style="background:linear-gradient(160deg,#0C0C0C,#1C1C2E);color:#fff;">
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
-                <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:14px;color:#A78BFA;">SkyBridge</span>
-                <div style="display:flex;gap:10px;"><span style="font-size:9px;color:rgba(255,255,255,.4)">Portfolio</span><span style="font-size:9px;color:rgba(255,255,255,.4)">Invest</span><span style="font-size:9px;color:rgba(255,255,255,.4)">Contact</span></div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+                <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:13px;color:#A78BFA;">SkyBridge</span>
+                <div style="display:flex;gap:9px;"><span style="font-size:9px;color:rgba(255,255,255,.4)">Portfolio</span><span style="font-size:9px;color:rgba(255,255,255,.4)">Invest</span><span style="font-size:9px;color:rgba(255,255,255,.4)">Contact</span></div>
               </div>
-              <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:800;line-height:1.2;margin-bottom:10px;">Ventures That<br><span style="color:#A78BFA;">Shape Tomorrow</span></div>
-              <p style="font-size:10px;color:rgba(255,255,255,.55);line-height:1.5;margin-bottom:14px;">Early-stage investment fund backing bold founders with transformative ideas.</p>
-              <div style="display:flex;gap:8px;">
+              <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:800;line-height:1.2;margin-bottom:8px;">Ventures That<br><span style="color:#A78BFA;">Shape Tomorrow</span></div>
+              <p style="font-size:10px;color:rgba(255,255,255,.55);line-height:1.5;margin-bottom:12px;">Early-stage investment fund backing bold founders with transformative ideas.</p>
+              <div style="display:flex;gap:8px;margin-bottom:12px;">
                 <div style="padding:6px 12px;background:#A78BFA;border-radius:5px;font-size:10px;font-weight:700;color:#fff;">Apply Now</div>
+                <div style="padding:6px 12px;border:1px solid rgba(255,255,255,.2);border-radius:5px;font-size:10px;">Our Portfolio</div>
+              </div>
+              <div style="display:flex;gap:8px;margin-top:auto;">
+                <div style="flex:1;background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.25);border-radius:6px;padding:8px;text-align:center;"><div style="font-size:13px;font-weight:800;">$120M</div><div style="font-size:8px;color:rgba(255,255,255,.5);">AUM</div></div>
+                <div style="flex:1;background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.25);border-radius:6px;padding:8px;text-align:center;"><div style="font-size:13px;font-weight:800;">42</div><div style="font-size:8px;color:rgba(255,255,255,.5);">Portfolio Cos</div></div>
               </div>
             </div>
           </div>
@@ -881,17 +962,22 @@ footer { background: var(--navy); padding: 64px 0 0; }
           <div class="port-screen-inner">
             <div class="port-bar">
               <div class="port-dots"><span style="background:#EF4444"></span><span style="background:#F59E0B"></span><span style="background:#10B981"></span></div>
-              <div class="port-url">elitecoreconsulting.com</div>
+              <div class="port-url"><span></span></div>
             </div>
             <div class="port-site" style="background:linear-gradient(160deg,#F5F5F0,#EFEFEA);color:#0A0F2E;">
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
-                <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:14px;color:#92400E;">EliteCore</span>
-                <div style="display:flex;gap:10px;"><span style="font-size:9px;color:#92400E">Services</span><span style="font-size:9px;color:#92400E">Team</span><span style="font-size:9px;color:#92400E">Contact</span></div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+                <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:13px;color:#92400E;letter-spacing:.04em;">ELITECORE</span>
+                <div style="display:flex;gap:9px;"><span style="font-size:9px;color:#92400E">Services</span><span style="font-size:9px;color:#92400E">Team</span><span style="font-size:9px;color:#92400E">Contact</span></div>
               </div>
-              <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:800;line-height:1.2;margin-bottom:10px;color:#0A0F2E;">Strategy That<br><span style="color:#D97706;">Delivers Results</span></div>
-              <p style="font-size:10px;color:#64748B;line-height:1.5;margin-bottom:14px;">Executive coaching and business strategy consulting for growth-stage companies.</p>
-              <div style="display:flex;gap:8px;">
+              <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:800;line-height:1.2;margin-bottom:8px;color:#0A0F2E;">Strategy That<br><span style="color:#D97706;">Delivers Results</span></div>
+              <p style="font-size:10px;color:#64748B;line-height:1.5;margin-bottom:12px;">Executive coaching and business strategy consulting for growth-stage companies.</p>
+              <div style="display:flex;gap:8px;margin-bottom:12px;">
                 <div style="padding:6px 12px;background:#D97706;border-radius:5px;font-size:10px;font-weight:700;color:#fff;">Book Consultation</div>
+                <div style="padding:6px 12px;border:1px solid #E7D9C0;border-radius:5px;font-size:10px;color:#92400E;">Case Studies</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;margin-top:auto;background:#fff;border:1px solid #E7D9C0;border-radius:6px;padding:8px 10px;">
+                <div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#D97706,#92400E);flex-shrink:0;"></div>
+                <div><div style="font-size:9px;font-weight:700;">"Results within weeks."</div><div style="font-size:8px;color:#92400E;">— Client, Fortune 500</div></div>
               </div>
             </div>
           </div>
@@ -968,14 +1054,14 @@ footer { background: var(--navy); padding: 64px 0 0; }
       <!-- Waqar Ali - using real photo -->
       <div class="team-card fade-up">
         <div class="team-img-wrap">
-          <img src="waqar-ali.jpeg" alt="Waqar Ali - Founder & Web Developer at Wikgrow" loading="lazy">
+          <img src="images/waqar-ali.jpg" alt="Waqar Ali - Founder & Web Developer at Wikgrow" loading="lazy">
         </div>
         <div class="team-info">
           <div class="team-name">Waqar Ali</div>
           <div class="team-role">Founder & Web Developer</div>
           <p class="team-bio">3+ years building high-performance websites for businesses worldwide. Passionate about clean code and converting designs.</p>
           <div class="team-socials">
-            <a href="https://wa.me/923001234567" class="social-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <a href="https://wa.me/971547513482" class="social-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5.006L2 22l5.137-1.349A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
             </a>
             <a href="#contact" class="social-btn" aria-label="Email">
@@ -988,60 +1074,14 @@ footer { background: var(--navy); padding: 64px 0 0; }
       <!-- Team Member 2 - UI/UX Designer SVG Avatar -->
       <div class="team-card fade-up fade-up-d1">
         <div class="team-img-wrap">
-          <svg viewBox="0 0 280 260" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-            <defs>
-              <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#E8EEF8"/>
-                <stop offset="100%" style="stop-color:#C8D8F0"/>
-              </linearGradient>
-              <linearGradient id="suit2" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#1A2052"/>
-                <stop offset="100%" style="stop-color:#0A0F2E"/>
-              </linearGradient>
-              <clipPath id="clip2"><rect width="280" height="260"/></clipPath>
-            </defs>
-            <rect width="280" height="260" fill="url(#bg2)"/>
-            <!-- Subtle office shelf bg -->
-            <rect x="0" y="140" width="280" height="120" fill="#D0DCF0" opacity=".4"/>
-            <!-- Body/suit -->
-            <ellipse cx="140" cy="300" rx="90" ry="70" fill="url(#suit2)"/>
-            <!-- Shirt collar -->
-            <polygon points="120,200 140,220 160,200 155,195 140,215 125,195" fill="#fff" opacity=".9"/>
-            <!-- Neck -->
-            <rect x="128" y="180" width="24" height="28" rx="6" fill="#D4956A"/>
-            <!-- Head -->
-            <ellipse cx="140" cy="158" rx="42" ry="46" fill="#D4956A"/>
-            <!-- Hair - professional female style -->
-            <ellipse cx="140" cy="122" rx="42" ry="22" fill="#2D1B0E"/>
-            <ellipse cx="140" cy="120" rx="40" ry="18" fill="#3D2B1A"/>
-            <!-- Side hair -->
-            <ellipse cx="102" cy="148" rx="12" ry="22" fill="#2D1B0E"/>
-            <ellipse cx="178" cy="148" rx="12" ry="22" fill="#2D1B0E"/>
-            <!-- Face features -->
-            <ellipse cx="126" cy="155" rx="5" ry="6" fill="#fff" opacity=".95"/>
-            <ellipse cx="154" cy="155" rx="5" ry="6" fill="#fff" opacity=".95"/>
-            <circle cx="126" cy="156" r="3" fill="#3D2B1A"/>
-            <circle cx="154" cy="156" r="3" fill="#3D2B1A"/>
-            <circle cx="127" cy="155" r="1" fill="#fff"/>
-            <circle cx="155" cy="155" r="1" fill="#fff"/>
-            <!-- Eyebrows -->
-            <path d="M118 146 Q126 143 134 146" stroke="#2D1B0E" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <path d="M146 146 Q154 143 162 146" stroke="#2D1B0E" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <!-- Nose -->
-            <path d="M138 162 Q140 168 142 162" stroke="#B07850" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-            <!-- Smile -->
-            <path d="M130 174 Q140 182 150 174" stroke="#B07850" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <!-- Earrings -->
-            <circle cx="98" cy="162" r="3" fill="#F59E0B"/>
-            <circle cx="182" cy="162" r="3" fill="#F59E0B"/>
-          </svg>
+          <img src="images/team-member-1.jpg" alt="Aisha Rehman - UI/UX Designer at Wikgrow" loading="lazy">
         </div>
         <div class="team-info">
           <div class="team-name">Aisha Rehman</div>
           <div class="team-role">UI/UX Designer</div>
           <p class="team-bio">Creates intuitive, beautiful interfaces that balance aesthetics with usability. Specializes in conversion-optimized design systems.</p>
           <div class="team-socials">
-            <a href="https://wa.me/923001234567" class="social-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <a href="https://wa.me/971547513482" class="social-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5.006L2 22l5.137-1.349A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
             </a>
             <a href="#contact" class="social-btn" aria-label="Email">
@@ -1054,61 +1094,14 @@ footer { background: var(--navy); padding: 64px 0 0; }
       <!-- Team Member 3 - SEO Specialist -->
       <div class="team-card fade-up fade-up-d2">
         <div class="team-img-wrap">
-          <svg viewBox="0 0 280 260" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-            <defs>
-              <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#F0EEF8"/>
-                <stop offset="100%" style="stop-color:#D8D0F0"/>
-              </linearGradient>
-              <linearGradient id="suit3" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#1E3A5F"/>
-                <stop offset="100%" style="stop-color:#0D2140"/>
-              </linearGradient>
-            </defs>
-            <rect width="280" height="260" fill="url(#bg3)"/>
-            <rect x="0" y="150" width="280" height="110" fill="#C8C0E8" opacity=".3"/>
-            <!-- Suit -->
-            <ellipse cx="140" cy="300" rx="90" ry="70" fill="url(#suit3)"/>
-            <!-- White shirt + tie -->
-            <polygon points="122,200 140,218 158,200 154,196 140,214 126,196" fill="#fff" opacity=".95"/>
-            <path d="M137 196 L140 218 L143 196" fill="#2563EB" opacity=".7"/>
-            <!-- Neck -->
-            <rect x="129" y="182" width="22" height="26" rx="5" fill="#C8906A"/>
-            <!-- Head -->
-            <ellipse cx="140" cy="158" rx="40" ry="44" fill="#C8906A"/>
-            <!-- Hair - short professional -->
-            <ellipse cx="140" cy="120" rx="40" ry="18" fill="#1A1008"/>
-            <rect x="100" y="120" width="80" height="22" rx="2" fill="#1A1008"/>
-            <!-- Face -->
-            <ellipse cx="126" cy="154" rx="5" ry="6" fill="#fff" opacity=".95"/>
-            <ellipse cx="154" cy="154" rx="5" ry="6" fill="#fff" opacity=".95"/>
-            <circle cx="126" cy="155" r="3.2" fill="#1A1008"/>
-            <circle cx="154" cy="155" r="3.2" fill="#1A1008"/>
-            <circle cx="127" cy="154" r="1.1" fill="#fff"/>
-            <circle cx="155" cy="154" r="1.1" fill="#fff"/>
-            <!-- Glasses -->
-            <rect x="116" y="148" width="22" height="14" rx="5" fill="none" stroke="#4B3020" stroke-width="2"/>
-            <rect x="142" y="148" width="22" height="14" rx="5" fill="none" stroke="#4B3020" stroke-width="2"/>
-            <line x1="138" y1="155" x2="142" y2="155" stroke="#4B3020" stroke-width="1.5"/>
-            <line x1="100" y1="155" x2="116" y2="155" stroke="#4B3020" stroke-width="1.5"/>
-            <line x1="164" y1="155" x2="178" y2="155" stroke="#4B3020" stroke-width="1.5"/>
-            <!-- Eyebrows -->
-            <path d="M117 146 Q126 143 135 146" stroke="#1A1008" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <path d="M145 146 Q154 143 163 146" stroke="#1A1008" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <!-- Nose -->
-            <path d="M138 162 Q140 168 142 162" stroke="#A07050" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-            <!-- Smile -->
-            <path d="M130 173 Q140 181 150 173" stroke="#A07050" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <!-- Beard/stubble -->
-            <ellipse cx="140" cy="182" rx="22" ry="8" fill="#1A1008" opacity=".25"/>
-          </svg>
+          <img src="images/team-member-2.jpg" alt="Omar Farooq - SEO Specialist at Wikgrow" loading="lazy">
         </div>
         <div class="team-info">
           <div class="team-name">Omar Farooq</div>
           <div class="team-role">SEO Specialist</div>
           <p class="team-bio">Technical SEO expert with deep expertise in Google ranking strategies, core web vitals, and organic traffic growth for businesses.</p>
           <div class="team-socials">
-            <a href="https://wa.me/923001234567" class="social-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <a href="https://wa.me/971547513482" class="social-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5.006L2 22l5.137-1.349A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
             </a>
             <a href="#contact" class="social-btn" aria-label="Email">
@@ -1121,55 +1114,14 @@ footer { background: var(--navy); padding: 64px 0 0; }
       <!-- Team Member 4 - Digital Marketing Expert -->
       <div class="team-card fade-up fade-up-d3">
         <div class="team-img-wrap">
-          <svg viewBox="0 0 280 260" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-            <defs>
-              <linearGradient id="bg4" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#F0F8EE"/>
-                <stop offset="100%" style="stop-color:#D0E8D0"/>
-              </linearGradient>
-              <linearGradient id="suit4" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#1B3A2B"/>
-                <stop offset="100%" style="stop-color:#0D2018"/>
-              </linearGradient>
-            </defs>
-            <rect width="280" height="260" fill="url(#bg4)"/>
-            <rect x="0" y="150" width="280" height="110" fill="#B8D8B8" opacity=".3"/>
-            <!-- Suit -->
-            <ellipse cx="140" cy="305" rx="92" ry="72" fill="url(#suit4)"/>
-            <!-- Shirt -->
-            <polygon points="121,200 140,220 159,200 154,195 140,216 126,195" fill="#fff" opacity=".95"/>
-            <!-- Neck -->
-            <rect x="129" y="182" width="22" height="26" rx="5" fill="#8B6448"/>
-            <!-- Head -->
-            <ellipse cx="140" cy="158" rx="40" ry="44" fill="#8B6448"/>
-            <!-- Hair - low fade professional -->
-            <ellipse cx="140" cy="118" rx="40" ry="20" fill="#0A0A0A"/>
-            <rect x="100" y="118" width="80" height="24" rx="2" fill="#0A0A0A"/>
-            <!-- Face -->
-            <ellipse cx="125" cy="153" rx="5" ry="6" fill="#fff" opacity=".95"/>
-            <ellipse cx="155" cy="153" rx="5" ry="6" fill="#fff" opacity=".95"/>
-            <circle cx="125" cy="154" r="3.2" fill="#0A0A0A"/>
-            <circle cx="155" cy="154" r="3.2" fill="#0A0A0A"/>
-            <circle cx="126" cy="153" r="1.1" fill="#fff"/>
-            <circle cx="156" cy="153" r="1.1" fill="#fff"/>
-            <!-- Eyebrows -->
-            <path d="M116 143 Q125 140 134 143" stroke="#0A0A0A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <path d="M146 143 Q155 140 164 143" stroke="#0A0A0A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <!-- Nose -->
-            <path d="M137 162 Q140 168 143 162" stroke="#6A4830" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-            <!-- Smile -->
-            <path d="M129 173 Q140 182 151 173" stroke="#6A4830" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <!-- Beard -->
-            <path d="M100 170 Q105 195 140 200 Q175 195 180 170" fill="#0A0A0A" opacity=".35"/>
-            <ellipse cx="140" cy="185" rx="28" ry="10" fill="#0A0A0A" opacity=".3"/>
-          </svg>
+          <img src="images/team-member-3.jpg" alt="Bilal Siddiqui - Digital Marketing Expert at Wikgrow" loading="lazy">
         </div>
         <div class="team-info">
           <div class="team-name">Bilal Siddiqui</div>
           <div class="team-role">Digital Marketing Expert</div>
           <p class="team-bio">Growth strategist specializing in paid ads, social media, and content marketing that delivers measurable ROI for clients.</p>
           <div class="team-socials">
-            <a href="https://wa.me/923001234567" class="social-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <a href="https://wa.me/971547513482" class="social-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5.006L2 22l5.137-1.349A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
             </a>
             <a href="#contact" class="social-btn" aria-label="Email">
@@ -1358,11 +1310,11 @@ footer { background: var(--navy); padding: 64px 0 0; }
       <div class="cta-actions">
         <a href="#contact" class="btn btn-white btn-lg">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-          Get Website For $50
+          Get Website for $50
         </a>
-        <a href="https://wa.me/923001234567" class="btn btn-wa btn-lg" target="_blank" rel="noopener">
+        <a href="https://wa.me/971547513482" class="btn btn-wa btn-lg" target="_blank" rel="noopener">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5.006L2 22l5.137-1.349A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
-          Contact On WhatsApp
+          Chat on WhatsApp
         </a>
       </div>
     </div>
@@ -1381,14 +1333,15 @@ footer { background: var(--navy); padding: 64px 0 0; }
           <div class="contact-icon-wrap">💬</div>
           <div>
             <div class="contact-label">WhatsApp</div>
-            <div class="contact-value">+92 300 123 4567</div>
+            <div class="contact-value">+971 54 751 3482</div>
           </div>
         </div>
         <div class="contact-info-item">
           <div class="contact-icon-wrap">📧</div>
           <div>
             <div class="contact-label">Email</div>
-            <div class="contact-value">hello@wikgrow.com</div>
+            <div class="contact-value">waqar@wikgrow.com</div>
+            <div class="contact-value" style="margin-top:4px;">waqaraigrowth@gmail.com</div>
           </div>
         </div>
         <div class="contact-info-item">
@@ -1399,11 +1352,11 @@ footer { background: var(--navy); padding: 64px 0 0; }
           </div>
         </div>
         <div class="contact-quick">
-          <a href="https://wa.me/923001234567" class="btn btn-wa btn-lg" target="_blank" rel="noopener" style="justify-content:center;">
+          <a href="https://wa.me/971547513482" class="btn btn-wa btn-lg" target="_blank" rel="noopener" style="justify-content:center;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5.006L2 22l5.137-1.349A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
-            Message Us On WhatsApp
+            Chat on WhatsApp
           </a>
-          <a href="mailto:hello@wikgrow.com" class="btn btn-outline btn-lg" style="justify-content:center;">
+          <a href="mailto:waqar@wikgrow.com" class="btn btn-outline btn-lg" style="justify-content:center;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             Send Us An Email
           </a>
@@ -1423,6 +1376,10 @@ footer { background: var(--navy); padding: 64px 0 0; }
               <label for="lname">Last Name</label>
               <input type="text" id="lname" name="lname" placeholder="Smith" required>
             </div>
+          </div>
+          <div class="form-group">
+            <label for="business">Business / Company Name</label>
+            <input type="text" id="business" name="business" placeholder="ABC Company">
           </div>
           <div class="form-group">
             <label for="email">Email Address</label>
@@ -1456,12 +1413,12 @@ footer { background: var(--navy); padding: 64px 0 0; }
             <label for="message">Tell Us About Your Project</label>
             <textarea id="message" name="message" placeholder="Describe your business, what you need, and any specific requirements..." required></textarea>
           </div>
-          <button type="submit" class="btn btn-primary btn-lg form-submit">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-            Send Message
+          <button type="submit" class="btn btn-wa btn-lg form-submit">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5.006L2 22l5.137-1.349A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+            Send via WhatsApp
           </button>
           <div id="formSuccess" style="display:none;margin-top:16px;padding:16px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.3);border-radius:var(--radius-sm);color:#059669;font-weight:600;font-size:14px;text-align:center;">
-            ✅ Message sent! We'll reply within 2 hours.
+            ✅ Opening WhatsApp with your message...
           </div>
         </form>
       </div>
@@ -1503,13 +1460,13 @@ footer { background: var(--navy); padding: 64px 0 0; }
           <li><a href="#portfolio">Our Portfolio</a></li>
           <li><a href="#reviews">Client Reviews</a></li>
           <li><a href="#contact">Contact Us</a></li>
-          <li><a href="https://wa.me/923001234567" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="https://wa.me/971547513482" target="_blank" rel="noopener">WhatsApp</a></li>
         </ul>
       </div>
       <div>
         <div class="footer-col-title">Get Started</div>
         <ul class="footer-links">
-          <li><a href="#contact">Get Website For $50</a></li>
+          <li><a href="#contact">Get Website for $50</a></li>
           <li><a href="#services">Landing Pages</a></li>
           <li><a href="#services">Website Redesign</a></li>
           <li><a href="#services">AI Agents</a></li>
@@ -1520,8 +1477,8 @@ footer { background: var(--navy); padding: 64px 0 0; }
     <div class="footer-bottom">
       <div class="footer-copy">© 2026 <a href="#home">Wikgrow</a>. All rights reserved. Built with ❤️ for businesses worldwide.</div>
       <div style="display:flex;gap:16px;">
-        <a href="https://wa.me/923001234567" target="_blank" rel="noopener" style="font-size:13px;color:rgba(255,255,255,.5);transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.5)'">WhatsApp</a>
-        <a href="mailto:hello@wikgrow.com" style="font-size:13px;color:rgba(255,255,255,.5);transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.5)'">Email</a>
+        <a href="https://wa.me/971547513482" target="_blank" rel="noopener" style="font-size:13px;color:rgba(255,255,255,.5);transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.5)'">WhatsApp</a>
+        <a href="mailto:waqar@wikgrow.com" style="font-size:13px;color:rgba(255,255,255,.5);transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.5)'">Email</a>
       </div>
     </div>
   </div>
@@ -1565,18 +1522,62 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.12 });
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-// Form submit
+// Form submit - builds a WhatsApp message from form data
+const WHATSAPP_NUMBER = '971547513482';
+const SERVICE_LABELS = {
+  website: 'Website Development ($50)',
+  redesign: 'Website Redesign',
+  landing: 'Landing Page',
+  seo: 'SEO Optimization',
+  marketing: 'Digital Marketing',
+  branding: 'Business Branding',
+  social: 'Social Media Design',
+  'ai-agent': 'AI Agents',
+  'ai-automation': 'AI Automation',
+  'ai-workflow': 'AI Workflow Development',
+  maintenance: 'Website Maintenance',
+  graphic: 'Graphic Designing',
+  themes: 'Themes & Plugins',
+  other: 'Other'
+};
 function handleSubmit(e) {
   e.preventDefault();
-  const btn = e.target.querySelector('button[type="submit"]');
-  btn.textContent = 'Sending...';
+  const form = e.target;
+  const btn = form.querySelector('button[type="submit"]');
+
+  const fname = form.fname.value.trim();
+  const lname = form.lname.value.trim();
+  const business = form.business.value.trim();
+  const email = form.email.value.trim();
+  const phone = form.phone.value.trim();
+  const serviceVal = form.service.value;
+  const serviceLabel = SERVICE_LABELS[serviceVal] || serviceVal;
+  const message = form.message.value.trim();
+
+  let lines = [];
+  lines.push('Hello Wikgrow! I would like to get in touch.');
+  lines.push('');
+  lines.push('Name: ' + fname + ' ' + lname);
+  if (business) lines.push('Business: ' + business);
+  if (email) lines.push('Email: ' + email);
+  if (phone) lines.push('Phone: ' + phone);
+  if (serviceLabel) lines.push('Service: ' + serviceLabel);
+  if (message) lines.push('Message: ' + message);
+
+  const text = encodeURIComponent(lines.join('\n'));
+  const waUrl = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + text;
+
+  btn.textContent = 'Opening WhatsApp...';
   btn.disabled = true;
+
+  document.getElementById('formSuccess').style.display = 'block';
+
   setTimeout(() => {
-    document.getElementById('formSuccess').style.display = 'block';
-    e.target.reset();
-    btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send Message';
+    window.open(waUrl, '_blank', 'noopener');
+    form.reset();
+    btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5.006L2 22l5.137-1.349A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg> Send via WhatsApp';
     btn.disabled = false;
-  }, 1200);
+  }, 600);
 }
 
 // Smooth anchor close on desktop nav click
