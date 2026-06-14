@@ -3,119 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Services – Website Design Starting $50 | Wikgrow</title>
-  <meta name="description" content="Professional website design for restaurants, salons, clinics, gyms, manufacturing businesses and more. Starting at just $50. Fast 24-48hr delivery. Wikgrow digital agency.">
-  <meta name="keywords" content="restaurant website design $50, salon website, clinic website, gym website, cheap professional website, digital agency UAE">
-  
-  <!-- FIXED PATH: CSS file is now in the root -->
+  <title>Our Services | Wikgrow</title>
   <link rel="stylesheet" href="style.css">
-  
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    .service-full-card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 40px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: center;
-      margin-bottom: 24px;
-      transition: all 0.3s;
-    }
-    .service-full-card:hover {
-      box-shadow: var(--shadow-lg);
-      border-color: var(--primary);
-      transform: translateY(-3px);
-    }
-    .service-full-card.reverse { direction: rtl; }
-    .service-full-card.reverse > * { direction: ltr; }
-    .service-full-img {
-      border-radius: var(--radius);
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-    }
-    .service-full-content h2 {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 26px;
-      font-weight: 800;
-      color: var(--dark);
-      margin-bottom: 12px;
-      letter-spacing: -0.5px;
-    }
-    .service-full-content p {
-      font-size: 15px;
-      color: var(--gray);
-      line-height: 1.75;
-      margin-bottom: 20px;
-    }
-    .feature-list {
-      list-style: none;
-      margin-bottom: 24px;
-    }
-    .feature-list li {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 14px;
-      color: var(--dark-3);
-      margin-bottom: 8px;
-      font-weight: 500;
-    }
-    .feature-list li::before {
-      content: '✓';
-      width: 22px;
-      height: 22px;
-      background: var(--accent-light);
-      color: var(--accent);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      font-weight: 800;
-      flex-shrink: 0;
-    }
-    .other-services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .other-card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px;
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-      transition: all 0.3s;
-    }
-    .other-card:hover {
-      box-shadow: var(--shadow);
-      border-color: var(--primary);
-    }
-    @media (max-width: 768px) {
-      .service-full-card {
-        grid-template-columns: 1fr;
-        padding: 28px;
-      }
-      .service-full-card.reverse { direction: ltr; }
-    }
-  </style>
 </head>
 <body>
 
-<!-- NAVBAR (Keep your existing navbar code here) -->
+  <nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+  </nav>
 
-<!-- MAIN CONTENT -->
-<!-- (Ensure your image URLs and link paths remain as they were) -->
+  <h1>Our Services</h1>
+  <p>We provide professional website design for all businesses.</p>
 
-<!-- FIXED PATH: JS file is now in the root -->
-<script src="main.js"></script>
+  <section>
+    <div class="service-card">
+      <h2>Restaurant Website</h2>
+      <p>Professional design for cafes and restaurants.</p>
+    </div>
+  </section>
+
+  <script src="main.js"></script>
 </body>
 </html>
