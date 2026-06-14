@@ -1,60 +1,504 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wikgrow | Grow Your Business - $50 Professional Websites</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wikgrow – Professional Website Design Starting $50 | Grow Your Business Online</title>
+<meta name="description" content="Get a stunning professional website for just $50. Wikgrow builds restaurant, salon, clinic, gym & business websites that convert visitors into customers. WhatsApp: +971547513482">
+<meta name="keywords" content="professional website design, cheap website design, $50 website, restaurant website, salon website, gym website, clinic website, small business website, UAE website design, Pakistan website design">
+<meta property="og:title" content="Wikgrow – Professional Website Design Starting $50">
+<meta property="og:description" content="Grow your business with a stunning professional website starting at just $50. Restaurants, salons, clinics, gyms & more.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+.animate { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
+.animate.visible { opacity: 1; transform: translateY(0); }
+.process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+.process-step {
+  text-align: center; padding: 32px 24px;
+  background: white; border: 1px solid var(--border); border-radius: var(--radius-lg);
+  position: relative;
+}
+.step-num {
+  width: 48px; height: 48px; background: var(--primary); color: white;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 18px; margin: 0 auto 16px;
+}
+.process-step h3 { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+.process-step p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+.whatsapp-float {
+  position: fixed; bottom: 28px; right: 28px; z-index: 999;
+  width: 60px; height: 60px; background: #25D366; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 25px rgba(37,211,102,0.4); cursor: pointer;
+  text-decoration: none; animation: float 3s ease-in-out infinite;
+}
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+.whatsapp-float svg { width: 32px; height: 32px; fill: white; }
+.marquee-wrap { background: var(--dark); padding: 16px 0; overflow: hidden; }
+.marquee { display: flex; gap: 60px; animation: marquee 20s linear infinite; white-space: nowrap; }
+.marquee span { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.5); }
+.marquee .dot { color: var(--primary); font-size: 20px; vertical-align: middle; }
+@keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+.trust-logos { display: flex; gap: 32px; align-items: center; justify-content: center; flex-wrap: wrap; margin-top: 48px; }
+.trust-item {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 14px; color: var(--text-muted); font-weight: 500;
+}
+.trust-icon { font-size: 20px; }
+</style>
 </head>
 <body>
-    <nav>
-        <div class="logo">Wikgrow</div>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#contact">Contact</a></li>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/971547513482?text=Hi%20Wikgrow!%20I%20need%20a%20website%20for%20my%20business." class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-icon">W</div>
+      <span class="logo-text">Wiki<span>grow</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="nav-cta">🚀 Get Website – $50</a>
+    </div>
+  </div>
+</nav>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap" style="margin-top:70px;">
+  <div class="marquee">
+    <span>✦ Restaurant Websites</span><span class="dot">·</span>
+    <span>✦ Salon & Spa Websites</span><span class="dot">·</span>
+    <span>✦ Clinic & Medical Websites</span><span class="dot">·</span>
+    <span>✦ Gym & Fitness Websites</span><span class="dot">·</span>
+    <span>✦ E-Commerce Stores</span><span class="dot">·</span>
+    <span>✦ Manufacturing Websites</span><span class="dot">·</span>
+    <span>✦ All Starting at $50</span><span class="dot">·</span>
+    <span>✦ Restaurant Websites</span><span class="dot">·</span>
+    <span>✦ Salon & Spa Websites</span><span class="dot">·</span>
+    <span>✦ Clinic & Medical Websites</span><span class="dot">·</span>
+    <span>✦ Gym & Fitness Websites</span><span class="dot">·</span>
+    <span>✦ E-Commerce Stores</span><span class="dot">·</span>
+    <span>✦ Manufacturing Websites</span><span class="dot">·</span>
+    <span>✦ All Starting at $50</span><span class="dot">·</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <span class="badge-dot"></span>
+    #1 Affordable Web Design Agency 2026
+  </div>
+  <h1>Grow Your Business<br>With <span class="highlight">Wikgrow</span> – Just <span class="highlight">$50</span></h1>
+  <p>We build stunning, professional websites that turn visitors into paying customers. Restaurants, salons, clinics, gyms & more — fast delivery, zero hassle.</p>
+  <div class="hero-buttons">
+    <a href="https://wa.me/971547513482?text=Hi%20Wikgrow!%20I%20need%20a%20professional%20website%20for%20my%20business." class="btn-primary" target="_blank">
+      💬 WhatsApp Us Now
+    </a>
+    <a href="portfolio.html" class="btn-secondary">
+      👁 View Our Work →
+    </a>
+  </div>
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-num"><span class="count-up" data-target="150" data-suffix="+">0+</span></div>
+      <div class="stat-label">Websites Delivered</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num"><span class="count-up" data-target="98" data-suffix="%">0%</span></div>
+      <div class="stat-label">Client Satisfaction</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num"><span class="count-up" data-target="5" data-suffix=" days">0</span></div>
+      <div class="stat-label">Avg. Delivery Time</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num"><span class="count-up" data-target="50" data-suffix="$">0$</span></div>
+      <div class="stat-label">Starting Price</div>
+    </div>
+  </div>
+  <div class="trust-logos">
+    <div class="trust-item"><span class="trust-icon">🔒</span> SSL Secured</div>
+    <div class="trust-item"><span class="trust-icon">📱</span> Mobile Optimized</div>
+    <div class="trust-item"><span class="trust-icon">⚡</span> Fast Loading</div>
+    <div class="trust-item"><span class="trust-icon">🎯</span> SEO Friendly</div>
+    <div class="trust-item"><span class="trust-icon">🌍</span> Global Clients</div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section style="background: var(--bg);">
+  <div class="section-inner">
+    <div class="section-header animate">
+      <span class="section-tag">Our Services</span>
+      <h2 class="section-title">Everything Your Business Needs Online</h2>
+      <p class="section-sub">From a simple landing page to a full e-commerce store — we've got your digital presence covered.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card animate">
+        <div class="service-icon">🍽️</div>
+        <h3>Restaurant Website</h3>
+        <p>Beautiful menus, online reservations, food gallery & delivery integration. Make hungry customers choose you.</p>
+        <div class="service-price">
+          <div><div class="price-tag">$50</div><div class="price-sub">one-time</div></div>
+          <a href="contact.html" class="service-link">Get Started →</a>
+        </div>
+      </div>
+      <div class="service-card animate">
+        <div class="service-icon">💅</div>
+        <h3>Salon & Spa Website</h3>
+        <p>Booking system, service menu, team profiles & before/after galleries. Fill your appointment book faster.</p>
+        <div class="service-price">
+          <div><div class="price-tag">$50</div><div class="price-sub">one-time</div></div>
+          <a href="contact.html" class="service-link">Get Started →</a>
+        </div>
+      </div>
+      <div class="service-card animate">
+        <div class="service-icon">🏥</div>
+        <h3>Clinic & Medical Website</h3>
+        <p>Patient-friendly design, doctor profiles, appointment booking & service list. Build patient trust instantly.</p>
+        <div class="service-price">
+          <div><div class="price-tag">$50</div><div class="price-sub">one-time</div></div>
+          <a href="contact.html" class="service-link">Get Started →</a>
+        </div>
+      </div>
+      <div class="service-card animate">
+        <div class="service-icon">💪</div>
+        <h3>Gym & Fitness Website</h3>
+        <p>Class schedules, membership plans, trainer profiles & transformation gallery. Get more members signed up.</p>
+        <div class="service-price">
+          <div><div class="price-tag">$50</div><div class="price-sub">one-time</div></div>
+          <a href="contact.html" class="service-link">Get Started →</a>
+        </div>
+      </div>
+      <div class="service-card animate">
+        <div class="service-icon">🏭</div>
+        <h3>Manufacturing Website</h3>
+        <p>Product catalog, company profile, certifications & inquiry forms. Look enterprise-level without enterprise prices.</p>
+        <div class="service-price">
+          <div><div class="price-tag">$50</div><div class="price-sub">one-time</div></div>
+          <a href="contact.html" class="service-link">Get Started →</a>
+        </div>
+      </div>
+      <div class="service-card animate">
+        <div class="service-icon">🛒</div>
+        <h3>E-Commerce Store</h3>
+        <p>Full online store with product pages, cart, checkout & payment. Start selling online today.</p>
+        <div class="service-price">
+          <div><div class="price-tag">$50</div><div class="price-sub">one-time</div></div>
+          <a href="contact.html" class="service-link">Get Started →</a>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:40px;">
+      <a href="services.html" class="btn-primary">View All Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section>
+  <div class="section-inner">
+    <div class="section-header animate">
+      <span class="section-tag">How It Works</span>
+      <h2 class="section-title">Your Website in 4 Simple Steps</h2>
+      <p class="section-sub">From order to live website — we make it fast, smooth and stress-free.</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-step animate">
+        <div class="step-num">1</div>
+        <h3>Contact Us</h3>
+        <p>WhatsApp or email us with your business type. We'll get back within 1 hour.</p>
+      </div>
+      <div class="process-step animate">
+        <div class="step-num">2</div>
+        <h3>Share Details</h3>
+        <p>Send us your logo, photos, text & color preferences. We'll guide you through everything.</p>
+      </div>
+      <div class="process-step animate">
+        <div class="step-num">3</div>
+        <h3>We Build It</h3>
+        <p>Our team designs and develops your professional website in just 3–5 days.</p>
+      </div>
+      <div class="process-step animate">
+        <div class="step-num">4</div>
+        <h3>Go Live!</h3>
+        <p>Review, approve, and your website goes live. Start getting customers immediately.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO PREVIEW -->
+<section style="background: var(--bg);">
+  <div class="section-inner">
+    <div class="section-header animate">
+      <span class="section-tag">Portfolio</span>
+      <h2 class="section-title">Websites That Actually Convert</h2>
+      <p class="section-sub">Real websites we've built for real businesses. Clean, fast, and designed to grow.</p>
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-card animate">
+        <div class="portfolio-preview">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=700&q=80&fit=crop" alt="Restaurant Website" class="portfolio-img">
+          <div class="portfolio-overlay">
+            <a href="portfolio.html" class="overlay-btn">View Details</a>
+          </div>
+        </div>
+        <div class="portfolio-info">
+          <div class="portfolio-tag">Restaurant</div>
+          <h3>Bella Roma Italian Kitchen</h3>
+          <p>Full restaurant website with menu, reservations & gallery</p>
+        </div>
+      </div>
+      <div class="portfolio-card animate">
+        <div class="portfolio-preview">
+          <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=700&q=80&fit=crop" alt="Salon Website" class="portfolio-img">
+          <div class="portfolio-overlay">
+            <a href="portfolio.html" class="overlay-btn">View Details</a>
+          </div>
+        </div>
+        <div class="portfolio-info">
+          <div class="portfolio-tag">Salon & Spa</div>
+          <h3>Luxe Beauty Studio</h3>
+          <p>Booking system, services & team showcase</p>
+        </div>
+      </div>
+      <div class="portfolio-card animate">
+        <div class="portfolio-preview">
+          <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=700&q=80&fit=crop" alt="Gym Website" class="portfolio-img">
+          <div class="portfolio-overlay">
+            <a href="portfolio.html" class="overlay-btn">View Details</a>
+          </div>
+        </div>
+        <div class="portfolio-info">
+          <div class="portfolio-tag">Gym & Fitness</div>
+          <h3>Iron Peak Fitness Center</h3>
+          <p>Membership plans, class schedule & trainer profiles</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:40px;">
+      <a href="portfolio.html" class="btn-secondary" style="display:inline-flex; align-items:center; gap:8px; padding:14px 28px; border-radius:10px; font-weight:600; border:2px solid var(--border); color:var(--dark); background:white;">
+        View Full Portfolio →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section>
+  <div class="section-inner">
+    <div class="section-header animate">
+      <span class="section-tag">Client Reviews</span>
+      <h2 class="section-title">What Our Clients Are Saying</h2>
+      <p class="section-sub">100+ happy business owners across the US, UK, UAE and beyond.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card animate">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Wikgrow built my restaurant website in just 4 days and it looks absolutely incredible. My online orders have gone up 60% since launch. Best $50 I've ever spent!"</p>
+        <div class="testimonial-author">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="James Anderson" class="author-avatar">
+          <div>
+            <div class="author-name">James Anderson</div>
+            <div class="author-title">Owner, The Rustic Fork — Texas, USA</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card animate">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"I was skeptical about the $50 price but the quality completely blew me away. My salon now has online bookings running 24/7. Waqar and the team are brilliant!"</p>
+        <div class="testimonial-author">
+          <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sophie Williams" class="author-avatar">
+          <div>
+            <div class="author-name">Sophie Williams</div>
+            <div class="author-title">Director, Glow Beauty Studio — London, UK</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card animate">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Our clinic website needed to look professional and trustworthy. Wikgrow nailed it. Patients now find us on Google and we have a steady flow of new appointments every week."</p>
+        <div class="testimonial-author">
+          <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Dr. Robert Mills" class="author-avatar">
+          <div>
+            <div class="author-name">Dr. Robert Mills</div>
+            <div class="author-title">Founder, Vitality Medical Clinic — New York, USA</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card animate">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Fast, professional and incredibly affordable. They delivered our gym website with a working class schedule and membership signup form. Exactly what we asked for!"</p>
+        <div class="testimonial-author">
+          <img src="https://randomuser.me/api/portraits/women/22.jpg" alt="Emily Carter" class="author-avatar">
+          <div>
+            <div class="author-name">Emily Carter</div>
+            <div class="author-title">Co-Founder, FitLife Gym — Manchester, UK</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card animate">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"We needed a manufacturing company website urgently for an international tender. Wikgrow delivered in 3 days. We got the contract. 100% recommended to every business owner!"</p>
+        <div class="testimonial-author">
+          <img src="https://randomuser.me/api/portraits/men/58.jpg" alt="David Thompson" class="author-avatar">
+          <div>
+            <div class="author-name">David Thompson</div>
+            <div class="author-title">CEO, ProTech Manufacturing — Chicago, USA</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card animate">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"I run a small spa in Dubai and my old website was embarrassing. Wikgrow rebuilt it beautifully. Now I get clients from Abu Dhabi just because they saw my website online!"</p>
+        <div class="testimonial-author">
+          <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="Sarah Mitchell" class="author-avatar">
+          <div>
+            <div class="author-name">Sarah Mitchell</div>
+            <div class="author-title">Owner, Serenity Spa — Dubai, UAE</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section style="background: var(--bg);">
+  <div class="section-inner">
+    <div class="section-header animate">
+      <span class="section-tag">Pricing</span>
+      <h2 class="section-title">Simple, Transparent Pricing</h2>
+      <p class="section-sub">No hidden fees. No monthly charges. Pay once, own forever.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card animate">
+        <div class="plan-name">Starter</div>
+        <div class="price-amount"><span class="price-currency">$</span>50</div>
+        <div class="price-period">one-time payment</div>
+        <ul class="pricing-features">
+          <li><span class="check">✓</span> Professional design</li>
+          <li><span class="check">✓</span> Mobile responsive</li>
+          <li><span class="check">✓</span> Up to 5 pages</li>
+          <li><span class="check">✓</span> Contact form</li>
+          <li><span class="check">✓</span> Basic SEO setup</li>
+          <li><span class="check">✓</span> 3-5 day delivery</li>
         </ul>
-    </nav>
+        <a href="contact.html" class="btn-primary" style="display:block; text-align:center; padding:14px;">Get Started</a>
+      </div>
+      <div class="pricing-card featured animate">
+        <div class="featured-badge">⭐ Most Popular</div>
+        <div class="plan-name" style="color:rgba(255,255,255,0.7)">Professional</div>
+        <div class="price-amount" style="color:white;">$<span>50</span></div>
+        <div class="price-period" style="color:rgba(255,255,255,0.7)">all-inclusive</div>
+        <ul class="pricing-features">
+          <li><span class="check" style="color:#86EFAC">✓</span> Premium custom design</li>
+          <li><span class="check" style="color:#86EFAC">✓</span> Mobile + tablet ready</li>
+          <li><span class="check" style="color:#86EFAC">✓</span> Unlimited pages</li>
+          <li><span class="check" style="color:#86EFAC">✓</span> WhatsApp integration</li>
+          <li><span class="check" style="color:#86EFAC">✓</span> Full SEO optimization</li>
+          <li><span class="check" style="color:#86EFAC">✓</span> Google Maps + Social</li>
+          <li><span class="check" style="color:#86EFAC">✓</span> 30-day free support</li>
+        </ul>
+        <a href="contact.html" class="btn-white" style="display:block; text-align:center; padding:14px; color:var(--primary) !important; font-weight:700;">
+          Get Started Today
+        </a>
+      </div>
+      <div class="pricing-card animate">
+        <div class="plan-name">E-Commerce</div>
+        <div class="price-amount"><span class="price-currency">$</span>50</div>
+        <div class="price-period">one-time payment</div>
+        <ul class="pricing-features">
+          <li><span class="check">✓</span> Online store setup</li>
+          <li><span class="check">✓</span> Product catalog</li>
+          <li><span class="check">✓</span> Shopping cart</li>
+          <li><span class="check">✓</span> Payment integration</li>
+          <li><span class="check">✓</span> Order management</li>
+          <li><span class="check">✓</span> Inventory system</li>
+        </ul>
+        <a href="contact.html" class="btn-primary" style="display:block; text-align:center; padding:14px;">Get Started</a>
+      </div>
+    </div>
+    <p style="text-align:center; margin-top:24px; font-size:14px; color:var(--text-muted);">✅ All plans include hosting setup assistance · Free revision round · Direct WhatsApp support</p>
+  </div>
+</section>
 
-    <header id="home">
-        <h1>Grow your business with Wikgrow</h1>
-        <p>High-converting, professional websites. Get yours today for only $50.</p>
-        <a href="#contact" class="cta-button">Get Your Website Now</a>
-    </header>
+<!-- CTA BAND -->
+<div class="cta-band">
+  <h2>Ready to Grow Your Business? 🚀</h2>
+  <p>Join 150+ businesses already growing with Wikgrow. Get your professional website today.</p>
+  <a href="https://wa.me/971547513482?text=Hi%20Wikgrow!%20I%20want%20to%20order%20a%20website%20for%20my%20business." class="btn-wa" target="_blank">
+    💬 WhatsApp Now – Get Started
+  </a>
+  <a href="mailto:waqar@wikgrow.com" class="btn-white" style="margin-left:16px;">
+    ✉️ Email Us
+  </a>
+</div>
 
-    <section id="services">
-        <h2>Our Services</h2>
-        <div class="services-grid">
-            <div><h3>Restaurant Sites</h3></div>
-            <div><h3>Saloon Websites</h3></div>
-            <div><h3>Clinic Portals</h3></div>
-            <div><h3>Gym & Fitness</h3></div>
-            <div><h3>Manufacturing</h3></div>
-        </div>
-    </section>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="logo" style="margin-bottom:16px; display:inline-flex;">
+        <div class="logo-icon">W</div>
+        <span class="logo-text">Wiki<span style="color:var(--primary)">grow</span></span>
+      </a>
+      <p>Grow your business with Wikgrow. Professional websites starting at just $50. Fast delivery, stunning design, real results.</p>
+      <div class="footer-contact-item">📧 <a href="mailto:waqar@wikgrow.com">waqar@wikgrow.com</a></div>
+      <div class="footer-contact-item">📧 <a href="mailto:waqaralibugti@gmail.com">waqaralibugti@gmail.com</a></div>
+      <div class="footer-contact-item">💬 <a href="https://wa.me/971547513482">+971 547 513 482</a></div>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li><a href="services.html">Restaurant Website</a></li>
+        <li><a href="services.html">Salon Website</a></li>
+        <li><a href="services.html">Clinic Website</a></li>
+        <li><a href="services.html">Gym Website</a></li>
+        <li><a href="services.html">Manufacturing Website</a></li>
+        <li><a href="services.html">E-Commerce Store</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About Wikgrow</a></li>
+        <li><a href="portfolio.html">Our Portfolio</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="contact.html">Get a Quote</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Get Started</h4>
+      <p style="font-size:14px; color:rgba(255,255,255,0.5); line-height:1.8; margin-bottom:16px;">Professional website for your business starting at just $50. WhatsApp us right now!</p>
+      <a href="https://wa.me/971547513482?text=Hi!%20I%20need%20a%20website." class="btn-primary" style="font-size:14px; padding:12px 20px;" target="_blank">
+        💬 Chat Now
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Wikgrow. All rights reserved. Professional Web Design Agency.</p>
+    <div class="footer-socials">
+      <a href="https://wa.me/971547513482" target="_blank">💬</a>
+      <a href="mailto:waqar@wikgrow.com">✉️</a>
+    </div>
+  </div>
+</footer>
 
-    <section id="portfolio">
-        <h2>Our Work</h2>
-        <div class="portfolio-container">
-            <div class="project-card"><img src="restaurant.jpg" alt="Restaurant Site"></div>
-            <div class="project-card"><img src="clinic.jpg" alt="Clinic Site"></div>
-            <div class="project-card"><img src="gym.jpg" alt="Gym Site"></div>
-        </div>
-    </section>
-
-    <section id="testimonials">
-        <h2>Client Reviews</h2>
-        <p>"Wikgrow built my salon site in 2 days. Incredible value!" – <b>Sarah J., London</b></p>
-        <p>"The best $50 I ever spent for my clinic's online presence." – <b>Dr. Mike, New York</b></p>
-    </section>
-
-    <footer id="contact">
-        <h2>Contact Us</h2>
-        <p>Email: waqar@wikgrow.com | waqaralibugti@gmail.com</p>
-        <p>WhatsApp: +971547513482</p>
-    </footer>
-
-    <script src="script.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
