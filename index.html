@@ -1,375 +1,904 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wikgrow – Professional Website Design Starting $50 | Grow Your Business Online</title>
-<meta name="description" content="Get a stunning professional website for just $50. Wikgrow builds restaurant, salon, clinic, gym & business websites that convert visitors into customers. WhatsApp: +971547513482">
-<meta name="keywords" content="professional website design, cheap website design, $50 website, restaurant website, salon website, gym website, clinic website, small business website, UAE website design, Pakistan website design">
-<meta property="og:title" content="Wikgrow – Professional Website Design Starting $50">
-<meta property="og:description" content="Grow your business with a stunning professional website starting at just $50. Restaurants, salons, clinics, gyms & more.">
+<title>Wikgrow – Professional Website Design Starting $50 | Digital Agency 2026</title>
+<meta name="description" content="Get a stunning professional website for just $50. Wikgrow builds websites for restaurants, salons, clinics, gyms, and more. WhatsApp us today and grow your business online.">
+<meta name="keywords" content="website design $50, cheap website design, professional website, restaurant website, salon website, clinic website, gym website, digital agency, Wikgrow">
+<meta property="og:title" content="Wikgrow – Professional Websites Starting at $50">
+<meta property="og:description" content="Grow your business online with a stunning website. Starting at just $50. Fast delivery, mobile-friendly, SEO-ready.">
 <meta property="og:type" content="website">
-<link rel="stylesheet" href="css/style.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-.animate { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
-.animate.visible { opacity: 1; transform: translateY(0); }
-.process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
-.process-step {
-  text-align: center; padding: 32px 24px;
-  background: white; border: 1px solid var(--border); border-radius: var(--radius-lg);
-  position: relative;
+:root {
+  --primary: #2563EB;
+  --primary-light: #3B82F6;
+  --primary-dark: #1D4ED8;
+  --accent: #F59E0B;
+  --accent-light: #FCD34D;
+  --green: #10B981;
+  --white: #FFFFFF;
+  --off-white: #F8FAFF;
+  --light-bg: #EEF2FF;
+  --text-dark: #0F172A;
+  --text-mid: #334155;
+  --text-light: #64748B;
+  --border: #E2E8F0;
+  --card-shadow: 0 4px 24px rgba(37,99,235,0.08);
+  --card-shadow-hover: 0 12px 40px rgba(37,99,235,0.18);
 }
-.step-num {
-  width: 48px; height: 48px; background: var(--primary); color: white;
-  border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  font-weight: 800; font-size: 18px; margin: 0 auto 16px;
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Plus Jakarta Sans',sans-serif;color:var(--text-dark);background:#fff;overflow-x:hidden;}
+
+/* ====== NAV ====== */
+nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);transition:all .3s;}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:70px;}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.logo-icon{width:38px;height:38px;background:linear-gradient(135deg,var(--primary),var(--primary-light));border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:18px;font-family:'Sora',sans-serif;}
+.logo-text{font-family:'Sora',sans-serif;font-weight:700;font-size:22px;color:var(--text-dark);}
+.logo-text span{color:var(--primary);}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{text-decoration:none;color:var(--text-mid);font-weight:500;font-size:15px;transition:color .2s;}
+.nav-links a:hover{color:var(--primary);}
+.nav-cta{background:var(--primary);color:#fff!important;padding:10px 22px;border-radius:8px;font-weight:600!important;transition:background .2s!important;}
+.nav-cta:hover{background:var(--primary-dark)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--text-dark);border-radius:2px;transition:all .3s;}
+.mobile-menu{display:none;position:fixed;top:70px;left:0;right:0;background:#fff;border-bottom:1px solid var(--border);padding:20px 24px;z-index:999;}
+.mobile-menu.open{display:block;}
+.mobile-menu a{display:block;padding:12px 0;color:var(--text-mid);text-decoration:none;font-weight:500;border-bottom:1px solid var(--border);}
+
+/* ====== HERO ====== */
+#home{padding:130px 24px 80px;background:linear-gradient(135deg,#EEF2FF 0%,#F0F9FF 40%,#ECFDF5 100%);position:relative;overflow:hidden;}
+#home::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(37,99,235,.1),transparent 70%);border-radius:50%;}
+#home::after{content:'';position:absolute;bottom:-80px;left:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(16,185,129,.08),transparent 70%);border-radius:50%;}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--border);padding:8px 16px;border-radius:50px;font-size:13px;font-weight:600;color:var(--primary);margin-bottom:24px;box-shadow:0 2px 8px rgba(37,99,235,.1);}
+.hero-badge span{width:8px;height:8px;background:var(--green);border-radius:50%;display:inline-block;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+.hero-title{font-family:'Sora',sans-serif;font-size:52px;font-weight:700;line-height:1.15;color:var(--text-dark);margin-bottom:20px;}
+.hero-title .highlight{color:var(--primary);}
+.hero-title .highlight2{color:var(--accent);}
+.hero-subtitle{font-size:18px;color:var(--text-mid);line-height:1.7;margin-bottom:36px;max-width:480px;}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:48px;}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:#fff;padding:16px 32px;border-radius:10px;font-weight:700;font-size:16px;text-decoration:none;transition:all .2s;box-shadow:0 4px 16px rgba(37,99,235,.3);}
+.btn-primary:hover{background:var(--primary-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,99,235,.4);}
+.btn-whatsapp{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;padding:16px 28px;border-radius:10px;font-weight:700;font-size:16px;text-decoration:none;transition:all .2s;box-shadow:0 4px 16px rgba(37,211,102,.3);}
+.btn-whatsapp:hover{background:#1da851;transform:translateY(-2px);}
+.hero-stats{display:flex;gap:36px;flex-wrap:wrap;}
+.stat{text-align:center;}
+.stat-num{font-family:'Sora',sans-serif;font-size:32px;font-weight:700;color:var(--primary);}
+.stat-label{font-size:13px;color:var(--text-light);margin-top:2px;}
+.hero-visual{position:relative;}
+.browser-mockup{background:#fff;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.15);overflow:hidden;border:1px solid var(--border);}
+.browser-bar{background:#F1F5F9;padding:12px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border);}
+.browser-dots{display:flex;gap:6px;}
+.browser-dots span{width:12px;height:12px;border-radius:50%;}
+.browser-dots span:nth-child(1){background:#FF5F57;}
+.browser-dots span:nth-child(2){background:#FEBC2E;}
+.browser-dots span:nth-child(3){background:#28C840;}
+.browser-url{flex:1;background:#fff;border-radius:6px;padding:6px 12px;font-size:12px;color:var(--text-light);border:1px solid var(--border);margin-left:8px;}
+.browser-content{aspect-ratio:16/10;background:linear-gradient(135deg,#1e293b,#0f172a);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.browser-content img{width:100%;height:100%;object-fit:cover;}
+.website-preview-inner{width:100%;height:100%;background:linear-gradient(135deg,#1e40af 0%,#7c3aed 50%,#db2777 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;gap:12px;}
+.preview-nav{width:90%;background:rgba(255,255,255,.1);border-radius:6px;height:36px;display:flex;align-items:center;padding:0 16px;gap:12px;backdrop-filter:blur(8px);}
+.preview-logo-dot{width:24px;height:24px;background:rgba(255,255,255,.3);border-radius:6px;}
+.preview-links{display:flex;gap:8px;margin-left:auto;}
+.preview-links span{width:40px;height:8px;background:rgba(255,255,255,.3);border-radius:4px;}
+.preview-hero{width:90%;padding:20px;text-align:center;}
+.preview-h1{width:70%;height:14px;background:rgba(255,255,255,.9);border-radius:4px;margin:0 auto 8px;}
+.preview-sub{width:50%;height:8px;background:rgba(255,255,255,.5);border-radius:4px;margin:0 auto 16px;}
+.preview-btn{width:120px;height:32px;background:rgba(255,255,255,.9);border-radius:8px;margin:0 auto;}
+.floating-card{position:absolute;background:#fff;border-radius:12px;padding:12px 16px;box-shadow:0 8px 30px rgba(0,0,0,.15);display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;white-space:nowrap;}
+.floating-card1{bottom:-20px;left:-30px;color:var(--green);}
+.floating-card2{top:-16px;right:-20px;color:var(--primary);}
+.fc-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;}
+.fc-icon.green{background:#ECFDF5;}
+.fc-icon.blue{background:#EEF2FF;}
+
+/* ====== SECTIONS ====== */
+section{padding:80px 24px;}
+.section-inner{max-width:1200px;margin:0 auto;}
+.section-tag{display:inline-block;background:var(--light-bg);color:var(--primary);font-size:12px;font-weight:700;padding:6px 14px;border-radius:50px;letter-spacing:.5px;text-transform:uppercase;margin-bottom:16px;}
+.section-title{font-family:'Sora',sans-serif;font-size:38px;font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:16px;}
+.section-title span{color:var(--primary);}
+.section-sub{font-size:17px;color:var(--text-mid);line-height:1.7;max-width:560px;}
+.center{text-align:center;margin:0 auto;}
+
+/* ====== SERVICES ====== */
+#services{background:var(--off-white);}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px;}
+.service-card{background:#fff;border-radius:16px;padding:32px;border:1px solid var(--border);transition:all .3s;position:relative;overflow:hidden;}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--primary),var(--accent));transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.service-card:hover::before{transform:scaleX(1);}
+.service-card:hover{box-shadow:var(--card-shadow-hover);transform:translateY(-4px);}
+.service-icon{width:56px;height:56px;background:var(--light-bg);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:20px;}
+.service-card h3{font-family:'Sora',sans-serif;font-size:19px;font-weight:700;color:var(--text-dark);margin-bottom:10px;}
+.service-card p{font-size:14px;color:var(--text-light);line-height:1.7;}
+.service-price{display:inline-block;background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;padding:6px 14px;border-radius:50px;font-size:13px;font-weight:700;margin-top:16px;}
+
+/* ====== PORTFOLIO ====== */
+#portfolio{background:#fff;}
+.portfolio-tabs{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:40px 0 48px;}
+.tab-btn{padding:10px 24px;border-radius:50px;border:2px solid var(--border);background:#fff;color:var(--text-mid);font-weight:600;font-size:14px;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif;}
+.tab-btn.active,.tab-btn:hover{background:var(--primary);color:#fff;border-color:var(--primary);}
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+.portfolio-item{border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);transition:all .3s;background:#fff;}
+.portfolio-item:hover{box-shadow:var(--card-shadow-hover);transform:translateY(-6px);}
+.device-showcase{background:#F8FAFF;padding:20px;display:flex;align-items:flex-end;justify-content:center;gap:12px;min-height:200px;position:relative;}
+/* Laptop frame */
+.laptop-frame{width:200px;position:relative;}
+.laptop-screen{background:#1e293b;border-radius:6px 6px 0 0;padding:6px;border:3px solid #334155;}
+.laptop-screen-inner{aspect-ratio:16/9;border-radius:3px;overflow:hidden;}
+.laptop-base{width:220px;height:12px;background:linear-gradient(180deg,#475569,#334155);border-radius:0 0 6px 6px;margin-left:-10px;margin-top:0;}
+.laptop-stand{width:60px;height:6px;background:#475569;margin:0 auto;}
+/* Mobile frame */
+.mobile-frame{width:70px;border:3px solid #334155;border-radius:14px;background:#1e293b;padding:4px;margin-bottom:10px;}
+.mobile-notch{width:24px;height:6px;background:#334155;border-radius:3px;margin:0 auto 4px;}
+.mobile-screen{aspect-ratio:9/16;border-radius:8px;overflow:hidden;}
+.mobile-home-btn{width:20px;height:20px;border-radius:50%;border:2px solid #475569;margin:4px auto 0;}
+/* Site preview gradients per category */
+.site-rest{background:linear-gradient(135deg,#7f1d1d,#dc2626);}
+.site-salon{background:linear-gradient(135deg,#4a044e,#a21caf);}
+.site-clinic{background:linear-gradient(135deg,#0c4a6e,#0284c7);}
+.site-gym{background:linear-gradient(135deg,#1a1a1a,#f97316);}
+.site-mfg{background:linear-gradient(135deg,#1e3a5f,#1d4ed8);}
+.site-ecom{background:linear-gradient(135deg,#14532d,#16a34a);}
+/* Mini UI elements inside site previews */
+.mini-site{width:100%;height:100%;display:flex;flex-direction:column;padding:6px;}
+.mini-nav{height:10px;background:rgba(255,255,255,.2);border-radius:2px;margin-bottom:5px;}
+.mini-hero{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;}
+.mini-h{width:70%;height:5px;background:rgba(255,255,255,.85);border-radius:2px;}
+.mini-s{width:50%;height:3px;background:rgba(255,255,255,.5);border-radius:2px;}
+.mini-b{width:40px;height:10px;background:rgba(255,255,255,.9);border-radius:3px;margin-top:2px;}
+.portfolio-info{padding:20px 22px;}
+.portfolio-info h3{font-family:'Sora',sans-serif;font-size:17px;font-weight:700;color:var(--text-dark);margin-bottom:6px;}
+.portfolio-info p{font-size:13px;color:var(--text-light);line-height:1.6;margin-bottom:12px;}
+.portfolio-tag{display:inline-block;background:var(--light-bg);color:var(--primary);font-size:11px;font-weight:700;padding:4px 10px;border-radius:50px;}
+.hidden{display:none!important;}
+
+/* ====== WHY US ====== */
+#why{background:linear-gradient(135deg,#EEF2FF,#F0F9FF);}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:52px;}
+.why-features{display:flex;flex-direction:column;gap:24px;}
+.why-feature{display:flex;gap:18px;align-items:flex-start;}
+.why-icon{width:48px;height:48px;min-width:48px;background:#fff;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 2px 12px rgba(37,99,235,.1);}
+.why-text h4{font-family:'Sora',sans-serif;font-weight:700;font-size:17px;color:var(--text-dark);margin-bottom:6px;}
+.why-text p{font-size:14px;color:var(--text-light);line-height:1.7;}
+.why-visual{position:relative;}
+.price-card{background:#fff;border-radius:20px;padding:40px;text-align:center;box-shadow:0 20px 60px rgba(37,99,235,.15);border:1px solid var(--border);}
+.price-label{font-size:14px;color:var(--text-light);font-weight:600;margin-bottom:8px;}
+.price-amount{font-family:'Sora',sans-serif;font-size:72px;font-weight:800;color:var(--primary);line-height:1;}
+.price-period{font-size:16px;color:var(--text-mid);margin-top:8px;margin-bottom:24px;}
+.price-features{list-style:none;text-align:left;display:flex;flex-direction:column;gap:12px;margin-bottom:28px;}
+.price-features li{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--text-mid);}
+.price-features li::before{content:'✓';color:var(--green);font-weight:800;font-size:16px;}
+.price-tag-note{background:var(--light-bg);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--primary);font-weight:600;}
+
+/* ====== TEAM ====== */
+#team{background:#fff;}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:52px;}
+.team-card{text-align:center;background:var(--off-white);border-radius:16px;padding:28px 20px;border:1px solid var(--border);transition:all .3s;}
+.team-card:hover{box-shadow:var(--card-shadow-hover);transform:translateY(-4px);}
+.team-avatar{width:88px;height:88px;border-radius:50%;margin:0 auto 16px;border:3px solid var(--primary);overflow:hidden;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:800;color:#fff;font-family:'Sora',sans-serif;}
+.team-name{font-family:'Sora',sans-serif;font-size:16px;font-weight:700;color:var(--text-dark);margin-bottom:4px;}
+.team-role{font-size:13px;color:var(--primary);font-weight:600;margin-bottom:8px;}
+.team-bio{font-size:13px;color:var(--text-light);line-height:1.6;}
+
+/* ====== REVIEWS ====== */
+#reviews{background:var(--off-white);}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px;}
+.review-card{background:#fff;border-radius:16px;padding:28px;border:1px solid var(--border);box-shadow:var(--card-shadow);transition:all .3s;}
+.review-card:hover{box-shadow:var(--card-shadow-hover);transform:translateY(-3px);}
+.review-stars{color:#F59E0B;font-size:18px;margin-bottom:14px;}
+.review-text{font-size:15px;color:var(--text-mid);line-height:1.75;font-style:italic;margin-bottom:20px;}
+.reviewer{display:flex;align-items:center;gap:12px;}
+.reviewer-avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:16px;font-family:'Sora',sans-serif;}
+.reviewer-name{font-weight:700;font-size:15px;color:var(--text-dark);}
+.reviewer-loc{font-size:12px;color:var(--text-light);margin-top:2px;}
+
+/* ====== ABOUT ====== */
+#about{background:#fff;}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:52px;}
+.about-image-wrap{position:relative;}
+.about-img-placeholder{width:100%;aspect-ratio:4/3;border-radius:20px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:'Sora',sans-serif;text-align:center;padding:40px;gap:12px;}
+.about-img-placeholder .big-icon{font-size:64px;}
+.about-img-placeholder h3{font-size:24px;font-weight:700;}
+.about-img-placeholder p{font-size:15px;opacity:.8;}
+.about-badge-float{position:absolute;bottom:-16px;right:-16px;background:#fff;border-radius:14px;padding:16px 20px;box-shadow:0 8px 30px rgba(37,99,235,.2);display:flex;align-items:center;gap:12px;}
+.abf-icon{font-size:28px;}
+.abf-text{font-weight:700;font-size:15px;color:var(--text-dark);}
+.abf-sub{font-size:12px;color:var(--text-light);}
+.about-content{display:flex;flex-direction:column;gap:20px;}
+.about-content p{font-size:16px;color:var(--text-mid);line-height:1.8;}
+.about-values{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px;}
+.about-val{background:var(--light-bg);border-radius:10px;padding:14px;display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--text-dark);}
+
+/* ====== CONTACT ====== */
+#contact{background:linear-gradient(135deg,#EEF2FF 0%,#F0F9FF 100%);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:52px;}
+.contact-info{display:flex;flex-direction:column;gap:28px;}
+.contact-item{display:flex;gap:16px;align-items:flex-start;}
+.ci-icon{width:48px;height:48px;min-width:48px;background:#fff;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 2px 12px rgba(37,99,235,.1);}
+.ci-label{font-size:12px;color:var(--text-light);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;}
+.ci-value{font-size:16px;font-weight:700;color:var(--text-dark);}
+.ci-value a{color:var(--primary);text-decoration:none;}
+.ci-value a:hover{text-decoration:underline;}
+.contact-form{background:#fff;border-radius:20px;padding:36px;box-shadow:var(--card-shadow);border:1px solid var(--border);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:18px;}
+.form-group label{font-size:14px;font-weight:600;color:var(--text-dark);}
+.form-group input,.form-group select,.form-group textarea{padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;color:var(--text-dark);transition:border .2s;outline:none;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--primary);}
+.form-group textarea{resize:vertical;min-height:100px;}
+.form-submit{width:100%;background:var(--primary);color:#fff;border:none;padding:16px;border-radius:10px;font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:700;cursor:pointer;transition:all .2s;}
+.form-submit:hover{background:var(--primary-dark);transform:translateY(-1px);}
+.form-success{display:none;background:#ECFDF5;border:1px solid #6EE7B7;border-radius:10px;padding:16px;text-align:center;color:#065F46;font-weight:600;margin-top:12px;}
+
+/* ====== FOOTER ====== */
+footer{background:#0F172A;color:#fff;padding:60px 24px 32px;}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px;}
+.footer-brand p{color:#94A3B8;font-size:14px;line-height:1.8;margin:16px 0 24px;}
+.footer-logo{display:flex;align-items:center;gap:10px;}
+.footer-logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--primary),var(--primary-light));border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:16px;font-family:'Sora',sans-serif;}
+.footer-logo-text{font-family:'Sora',sans-serif;font-weight:700;font-size:20px;color:#fff;}
+.footer-logo-text span{color:var(--primary-light);}
+.social-links{display:flex;gap:10px;}
+.social-link{width:36px;height:36px;border-radius:9px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:16px;text-decoration:none;color:#fff;transition:all .2s;}
+.social-link:hover{background:var(--primary);border-color:var(--primary);}
+.footer-col h4{font-family:'Sora',sans-serif;font-size:16px;font-weight:700;color:#fff;margin-bottom:20px;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.footer-col ul li a{color:#94A3B8;text-decoration:none;font-size:14px;transition:color .2s;}
+.footer-col ul li a:hover{color:#fff;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.footer-bottom p{color:#64748B;font-size:13px;}
+.footer-bottom a{color:#94A3B8;text-decoration:none;}
+
+/* ====== FLOATING WA BUTTON ====== */
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:1000;display:flex;align-items:center;gap:10px;background:#25D366;color:#fff;padding:14px 20px;border-radius:50px;font-weight:700;font-size:15px;text-decoration:none;box-shadow:0 6px 24px rgba(37,211,102,.4);transition:all .3s;animation:bounce 3s infinite;}
+.wa-float:hover{background:#1da851;transform:translateY(-3px);box-shadow:0 10px 30px rgba(37,211,102,.5);}
+@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+.wa-float-icon{font-size:22px;}
+
+/* ====== CTA BANNER ====== */
+.cta-banner{background:linear-gradient(135deg,var(--primary),var(--primary-dark));padding:70px 24px;text-align:center;}
+.cta-banner h2{font-family:'Sora',sans-serif;font-size:38px;font-weight:700;color:#fff;margin-bottom:12px;}
+.cta-banner p{color:rgba(255,255,255,.85);font-size:18px;margin-bottom:32px;}
+.cta-banner-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+.btn-white{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--primary);padding:16px 32px;border-radius:10px;font-weight:700;font-size:16px;text-decoration:none;transition:all .2s;box-shadow:0 4px 16px rgba(0,0,0,.1);}
+.btn-white:hover{background:#F0F9FF;transform:translateY(-2px);}
+.btn-outline-white{display:inline-flex;align-items:center;gap:8px;background:transparent;color:#fff;padding:15px 28px;border-radius:10px;font-weight:700;font-size:16px;text-decoration:none;border:2px solid rgba(255,255,255,.5);transition:all .2s;}
+.btn-outline-white:hover{border-color:#fff;background:rgba(255,255,255,.1);}
+
+/* ====== RESPONSIVE ====== */
+@media(max-width:1024px){
+  .services-grid{grid-template-columns:repeat(2,1fr);}
+  .portfolio-grid{grid-template-columns:repeat(2,1fr);}
+  .team-grid{grid-template-columns:repeat(2,1fr);}
+  .reviews-grid{grid-template-columns:repeat(2,1fr);}
+  .footer-top{grid-template-columns:1fr 1fr;}
 }
-.process-step h3 { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
-.process-step p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
-.whatsapp-float {
-  position: fixed; bottom: 28px; right: 28px; z-index: 999;
-  width: 60px; height: 60px; background: #25D366; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 8px 25px rgba(37,211,102,0.4); cursor: pointer;
-  text-decoration: none; animation: float 3s ease-in-out infinite;
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .hero-inner{grid-template-columns:1fr;}
+  .hero-visual{display:none;}
+  .hero-title{font-size:36px;}
+  .why-grid,.about-grid,.contact-grid{grid-template-columns:1fr;}
+  .services-grid,.portfolio-grid{grid-template-columns:1fr;}
+  .team-grid,.reviews-grid{grid-template-columns:1fr;}
+  .section-title{font-size:28px;}
+  .form-row{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr;}
+  .footer-bottom{flex-direction:column;text-align:center;}
+  .hero-stats{justify-content:center;}
+  .cta-banner h2{font-size:26px;}
 }
-@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
-.whatsapp-float svg { width: 32px; height: 32px; fill: white; }
-.marquee-wrap { background: var(--dark); padding: 16px 0; overflow: hidden; }
-.marquee { display: flex; gap: 60px; animation: marquee 20s linear infinite; white-space: nowrap; }
-.marquee span { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.5); }
-.marquee .dot { color: var(--primary); font-size: 20px; vertical-align: middle; }
-@keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-.trust-logos { display: flex; gap: 32px; align-items: center; justify-content: center; flex-wrap: wrap; margin-top: 48px; }
-.trust-item {
-  display: flex; align-items: center; gap: 8px;
-  font-size: 14px; color: var(--text-muted); font-weight: 500;
-}
-.trust-icon { font-size: 20px; }
 </style>
 </head>
 <body>
 
-<!-- WhatsApp Float -->
-<a href="https://wa.me/971547513482?text=Hi%20Wikgrow!%20I%20need%20a%20website%20for%20my%20business." class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
-
-<!-- NAVBAR -->
-<nav>
+<!-- NAV -->
+<nav id="mainNav">
   <div class="nav-inner">
-    <a href="index.html" class="logo">
+    <a href="#home" class="logo">
       <div class="logo-icon">W</div>
       <span class="logo-text">Wiki<span>grow</span></span>
     </a>
-    <div class="nav-links">
-      <a href="index.html" class="active">Home</a>
-      <a href="services.html">Services</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="about.html">About Us</a>
-      <a href="contact.html">Contact</a>
-      <a href="contact.html" class="nav-cta">🚀 Get Website – $50</a>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact" class="nav-cta">Get Website – $50</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
     </div>
   </div>
 </nav>
-
-<!-- MARQUEE -->
-<div class="marquee-wrap" style="margin-top:70px;">
-  <div class="marquee">
-    <span>✦ Restaurant Websites</span><span class="dot">·</span>
-    <span>✦ Salon & Spa Websites</span><span class="dot">·</span>
-    <span>✦ Clinic & Medical Websites</span><span class="dot">·</span>
-    <span>✦ Gym & Fitness Websites</span><span class="dot">·</span>
-    <span>✦ E-Commerce Stores</span><span class="dot">·</span>
-    <span>✦ Manufacturing Websites</span><span class="dot">·</span>
-    <span>✦ All Starting at $50</span><span class="dot">·</span>
-    <span>✦ Restaurant Websites</span><span class="dot">·</span>
-    <span>✦ Salon & Spa Websites</span><span class="dot">·</span>
-    <span>✦ Clinic & Medical Websites</span><span class="dot">·</span>
-    <span>✦ Gym & Fitness Websites</span><span class="dot">·</span>
-    <span>✦ E-Commerce Stores</span><span class="dot">·</span>
-    <span>✦ Manufacturing Websites</span><span class="dot">·</span>
-    <span>✦ All Starting at $50</span><span class="dot">·</span>
-  </div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" onclick="toggleMenu()">Home</a>
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#portfolio" onclick="toggleMenu()">Portfolio</a>
+  <a href="#team" onclick="toggleMenu()">Team</a>
+  <a href="#reviews" onclick="toggleMenu()">Reviews</a>
+  <a href="#about" onclick="toggleMenu()">About Us</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+  <a href="#contact" onclick="toggleMenu()" style="color:var(--primary);font-weight:700;">🌐 Get Website – $50</a>
 </div>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-badge">
-    <span class="badge-dot"></span>
-    #1 Affordable Web Design Agency 2026
-  </div>
-  <h1>Grow Your Business<br>With <span class="highlight">Wikgrow</span> – Just <span class="highlight">$50</span></h1>
-  <p>We build stunning, professional websites that turn visitors into paying customers. Restaurants, salons, clinics, gyms & more — fast delivery, zero hassle.</p>
-  <div class="hero-buttons">
-    <a href="https://wa.me/971547513482?text=Hi%20Wikgrow!%20I%20need%20a%20professional%20website%20for%20my%20business." class="btn-primary" target="_blank">
-      💬 WhatsApp Us Now
-    </a>
-    <a href="portfolio.html" class="btn-secondary">
-      👁 View Our Work →
-    </a>
-  </div>
-  <div class="stats-bar">
-    <div class="stat-item">
-      <div class="stat-num"><span class="count-up" data-target="150" data-suffix="+">0+</span></div>
-      <div class="stat-label">Websites Delivered</div>
+<section id="home">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge"><span></span> #1 Affordable Web Agency 2026</div>
+      <h1 class="hero-title">Grow Your Business<br>with <span class="highlight">Wikgrow</span> —<br>Websites from <span class="highlight2">$50</span></h1>
+      <p class="hero-subtitle">Professional, mobile-ready websites for restaurants, salons, clinics, gyms & more. Fast delivery, SEO-ready, and built to convert visitors into customers.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">🚀 Get My Website – $50</a>
+        <a href="https://wa.me/971547513482?text=Hi%20Wikgrow%2C%20I%20want%20a%20website%20for%20%2450" target="_blank" class="btn-whatsapp">💬 WhatsApp Us Now</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num">50+</div><div class="stat-label">Websites Delivered</div></div>
+        <div class="stat"><div class="stat-num">$50</div><div class="stat-label">Starting Price</div></div>
+        <div class="stat"><div class="stat-num">5★</div><div class="stat-label">Client Rating</div></div>
+        <div class="stat"><div class="stat-num">48h</div><div class="stat-label">Fast Delivery</div></div>
+      </div>
     </div>
-    <div class="stat-item">
-      <div class="stat-num"><span class="count-up" data-target="98" data-suffix="%">0%</span></div>
-      <div class="stat-label">Client Satisfaction</div>
+    <div class="hero-visual">
+      <div style="position:relative;">
+        <div class="browser-mockup">
+          <div class="browser-bar">
+            <div class="browser-dots"><span></span><span></span><span></span></div>
+            <div class="browser-url">🔒 wikgrow.com/your-business</div>
+          </div>
+          <div class="browser-content">
+            <div class="website-preview-inner">
+              <div class="preview-nav">
+                <div class="preview-logo-dot"></div>
+                <div class="preview-links"><span></span><span></span><span></span></div>
+              </div>
+              <div class="preview-hero">
+                <div class="preview-h1"></div>
+                <div class="preview-sub"></div>
+                <div class="preview-btn"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="floating-card floating-card1">
+          <div class="fc-icon green">✅</div>
+          <span>Website Live in 48hrs</span>
+        </div>
+        <div class="floating-card floating-card2">
+          <div class="fc-icon blue">💰</div>
+          <span>Only $50 One-Time</span>
+        </div>
+      </div>
     </div>
-    <div class="stat-item">
-      <div class="stat-num"><span class="count-up" data-target="5" data-suffix=" days">0</span></div>
-      <div class="stat-label">Avg. Delivery Time</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num"><span class="count-up" data-target="50" data-suffix="$">0$</span></div>
-      <div class="stat-label">Starting Price</div>
-    </div>
-  </div>
-  <div class="trust-logos">
-    <div class="trust-item"><span class="trust-icon">🔒</span> SSL Secured</div>
-    <div class="trust-item"><span class="trust-icon">📱</span> Mobile Optimized</div>
-    <div class="trust-item"><span class="trust-icon">⚡</span> Fast Loading</div>
-    <div class="trust-item"><span class="trust-icon">🎯</span> SEO Friendly</div>
-    <div class="trust-item"><span class="trust-icon">🌍</span> Global Clients</div>
   </div>
 </section>
 
 <!-- SERVICES -->
-<section style="background: var(--bg);">
+<section id="services">
   <div class="section-inner">
-    <div class="section-header animate">
+    <div style="text-align:center;">
       <span class="section-tag">Our Services</span>
-      <h2 class="section-title">Everything Your Business Needs Online</h2>
-      <p class="section-sub">From a simple landing page to a full e-commerce store — we've got your digital presence covered.</p>
+      <h2 class="section-title center">Everything Your Business<br><span>Needs to Grow Online</span></h2>
+      <p class="section-sub center">From stunning websites to full digital marketing — we've got you covered at unbeatable prices.</p>
     </div>
     <div class="services-grid">
-      <div class="service-card animate">
+      <div class="service-card">
         <div class="service-icon">🍽️</div>
         <h3>Restaurant Website</h3>
-        <p>Beautiful menus, online reservations, food gallery & delivery integration. Make hungry customers choose you.</p>
-        <div class="service-price">
-          <div><div class="price-tag">$50</div><div class="price-sub">one-time</div></div>
-          <a href="contact.html" class="service-link">Get Started →</a>
-        </div>
+        <p>Beautiful food websites with menu pages, online ordering integration, Google Maps, and reservation forms to fill your tables every night.</p>
+        <span class="service-price">From $50</span>
       </div>
-      <div class="service-card animate">
-        <div class="service-icon">💅</div>
-        <h3>Salon & Spa Website</h3>
-        <p>Booking system, service menu, team profiles & before/after galleries. Fill your appointment book faster.</p>
-        <div class="service-price">
-          <div><div class="price-tag">$50</div><div class="price-sub">one-time</div></div>
-          <a href="contact.html" class="service-link">Get Started →</a>
-        </div>
+      <div class="service-card">
+        <div class="service-icon">✂️</div>
+        <h3>Salon & Beauty Website</h3>
+        <p>Elegant salon websites with service menus, photo galleries, online booking, and team pages that showcase your expertise beautifully.</p>
+        <span class="service-price">From $50</span>
       </div>
-      <div class="service-card animate">
+      <div class="service-card">
         <div class="service-icon">🏥</div>
-        <h3>Clinic & Medical Website</h3>
-        <p>Patient-friendly design, doctor profiles, appointment booking & service list. Build patient trust instantly.</p>
-        <div class="service-price">
-          <div><div class="price-tag">$50</div><div class="price-sub">one-time</div></div>
-          <a href="contact.html" class="service-link">Get Started →</a>
-        </div>
+        <h3>Clinic & Healthcare Website</h3>
+        <p>Professional clinic websites with appointment booking, doctor profiles, services, and trust-building content to attract more patients.</p>
+        <span class="service-price">From $50</span>
       </div>
-      <div class="service-card animate">
+      <div class="service-card">
         <div class="service-icon">💪</div>
         <h3>Gym & Fitness Website</h3>
-        <p>Class schedules, membership plans, trainer profiles & transformation gallery. Get more members signed up.</p>
-        <div class="service-price">
-          <div><div class="price-tag">$50</div><div class="price-sub">one-time</div></div>
-          <a href="contact.html" class="service-link">Get Started →</a>
-        </div>
+        <p>High-energy fitness websites with class schedules, membership plans, trainer profiles, and motivational design that converts visitors to members.</p>
+        <span class="service-price">From $50</span>
       </div>
-      <div class="service-card animate">
+      <div class="service-card">
         <div class="service-icon">🏭</div>
-        <h3>Manufacturing Website</h3>
-        <p>Product catalog, company profile, certifications & inquiry forms. Look enterprise-level without enterprise prices.</p>
-        <div class="service-price">
-          <div><div class="price-tag">$50</div><div class="price-sub">one-time</div></div>
-          <a href="contact.html" class="service-link">Get Started →</a>
-        </div>
+        <h3>Manufacturing & B2B Website</h3>
+        <p>Corporate-grade websites for manufacturers with product catalogs, industry certifications, RFQ forms, and content built for B2B buyers.</p>
+        <span class="service-price">From $50</span>
       </div>
-      <div class="service-card animate">
+      <div class="service-card">
         <div class="service-icon">🛒</div>
         <h3>E-Commerce Store</h3>
-        <p>Full online store with product pages, cart, checkout & payment. Start selling online today.</p>
-        <div class="service-price">
-          <div><div class="price-tag">$50</div><div class="price-sub">one-time</div></div>
-          <a href="contact.html" class="service-link">Get Started →</a>
-        </div>
+        <p>Sell your products online with a fully functional shop, payment integration, product pages, and a checkout flow optimized to maximise sales.</p>
+        <span class="service-price">From $50</span>
       </div>
-    </div>
-    <div style="text-align:center; margin-top:40px;">
-      <a href="services.html" class="btn-primary">View All Services</a>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section>
-  <div class="section-inner">
-    <div class="section-header animate">
-      <span class="section-tag">How It Works</span>
-      <h2 class="section-title">Your Website in 4 Simple Steps</h2>
-      <p class="section-sub">From order to live website — we make it fast, smooth and stress-free.</p>
-    </div>
-    <div class="process-grid">
-      <div class="process-step animate">
-        <div class="step-num">1</div>
-        <h3>Contact Us</h3>
-        <p>WhatsApp or email us with your business type. We'll get back within 1 hour.</p>
+      <div class="service-card">
+        <div class="service-icon">📱</div>
+        <h3>Mobile-First Design</h3>
+        <p>Every website we build is 100% responsive and optimized for smartphones — because most of your customers browse on mobile.</p>
+        <span class="service-price">Included Free</span>
       </div>
-      <div class="process-step animate">
-        <div class="step-num">2</div>
-        <h3>Share Details</h3>
-        <p>Send us your logo, photos, text & color preferences. We'll guide you through everything.</p>
+      <div class="service-card">
+        <div class="service-icon">🔍</div>
+        <h3>SEO & Google Optimization</h3>
+        <p>Every site is built with proper SEO foundations — fast loading, meta tags, structured data — so Google can find and rank your business.</p>
+        <span class="service-price">Included Free</span>
       </div>
-      <div class="process-step animate">
-        <div class="step-num">3</div>
-        <h3>We Build It</h3>
-        <p>Our team designs and develops your professional website in just 3–5 days.</p>
-      </div>
-      <div class="process-step animate">
-        <div class="step-num">4</div>
-        <h3>Go Live!</h3>
-        <p>Review, approve, and your website goes live. Start getting customers immediately.</p>
+      <div class="service-card">
+        <div class="service-icon">📣</div>
+        <h3>Google Ads Campaign Setup</h3>
+        <p>We set up high-converting Google Ads campaigns targeting your ideal customers so your new website starts generating leads from day one.</p>
+        <span class="service-price">Ask for Quote</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PORTFOLIO PREVIEW -->
-<section style="background: var(--bg);">
+<!-- PORTFOLIO -->
+<section id="portfolio">
   <div class="section-inner">
-    <div class="section-header animate">
+    <div style="text-align:center;">
       <span class="section-tag">Portfolio</span>
-      <h2 class="section-title">Websites That Actually Convert</h2>
-      <p class="section-sub">Real websites we've built for real businesses. Clean, fast, and designed to grow.</p>
+      <h2 class="section-title center">Real Websites We've <span>Built for Clients</span></h2>
+      <p class="section-sub center">Browse our work across industries. Every site is live, custom-built, and designed to convert.</p>
+    </div>
+    <div class="portfolio-tabs">
+      <button class="tab-btn active" onclick="filterPortfolio('all')">All Projects</button>
+      <button class="tab-btn" onclick="filterPortfolio('restaurant')">Restaurant</button>
+      <button class="tab-btn" onclick="filterPortfolio('salon')">Salon</button>
+      <button class="tab-btn" onclick="filterPortfolio('clinic')">Clinic</button>
+      <button class="tab-btn" onclick="filterPortfolio('gym')">Gym</button>
+      <button class="tab-btn" onclick="filterPortfolio('manufacturing')">Manufacturing</button>
     </div>
     <div class="portfolio-grid">
-      <div class="portfolio-card animate">
-        <div class="portfolio-preview">
-          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=700&q=80&fit=crop" alt="Restaurant Website" class="portfolio-img">
-          <div class="portfolio-overlay">
-            <a href="portfolio.html" class="overlay-btn">View Details</a>
+
+      <!-- Restaurant 1 -->
+      <div class="portfolio-item" data-cat="restaurant">
+        <div class="device-showcase">
+          <div class="laptop-frame">
+            <div class="laptop-screen">
+              <div class="laptop-screen-inner">
+                <div class="mini-site site-rest">
+                  <div class="mini-nav"></div>
+                  <div class="mini-hero">
+                    <div class="mini-h"></div>
+                    <div class="mini-s"></div>
+                    <div class="mini-b"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="laptop-base"></div>
+            <div class="laptop-stand"></div>
+          </div>
+          <div class="mobile-frame">
+            <div class="mobile-notch"></div>
+            <div class="mobile-screen">
+              <div class="mini-site site-rest" style="padding:4px;">
+                <div class="mini-nav" style="height:6px;margin-bottom:3px;"></div>
+                <div class="mini-hero">
+                  <div class="mini-h" style="height:4px;"></div>
+                  <div class="mini-s" style="height:3px;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="mobile-home-btn"></div>
           </div>
         </div>
         <div class="portfolio-info">
-          <div class="portfolio-tag">Restaurant</div>
-          <h3>Bella Roma Italian Kitchen</h3>
-          <p>Full restaurant website with menu, reservations & gallery</p>
+          <h3>Bella Roma – Italian Restaurant</h3>
+          <p>Full restaurant website with menu, gallery, reservations & Google Maps integration. Built for a family restaurant in Chicago.</p>
+          <span class="portfolio-tag">🍽️ Restaurant</span>
         </div>
       </div>
-      <div class="portfolio-card animate">
-        <div class="portfolio-preview">
-          <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=700&q=80&fit=crop" alt="Salon Website" class="portfolio-img">
-          <div class="portfolio-overlay">
-            <a href="portfolio.html" class="overlay-btn">View Details</a>
+
+      <!-- Salon 1 -->
+      <div class="portfolio-item" data-cat="salon">
+        <div class="device-showcase">
+          <div class="laptop-frame">
+            <div class="laptop-screen">
+              <div class="laptop-screen-inner">
+                <div class="mini-site site-salon">
+                  <div class="mini-nav"></div>
+                  <div class="mini-hero">
+                    <div class="mini-h"></div>
+                    <div class="mini-s"></div>
+                    <div class="mini-b"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="laptop-base"></div>
+            <div class="laptop-stand"></div>
+          </div>
+          <div class="mobile-frame">
+            <div class="mobile-notch"></div>
+            <div class="mobile-screen">
+              <div class="mini-site site-salon" style="padding:4px;">
+                <div class="mini-nav" style="height:6px;margin-bottom:3px;"></div>
+                <div class="mini-hero">
+                  <div class="mini-h" style="height:4px;"></div>
+                  <div class="mini-s" style="height:3px;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="mobile-home-btn"></div>
           </div>
         </div>
         <div class="portfolio-info">
-          <div class="portfolio-tag">Salon & Spa</div>
-          <h3>Luxe Beauty Studio</h3>
-          <p>Booking system, services & team showcase</p>
+          <h3>Luxe Hair Studio – Salon</h3>
+          <p>Premium salon website with online booking, service menu, team profiles, and a stunning photo gallery. Built for London.</p>
+          <span class="portfolio-tag">✂️ Salon & Beauty</span>
         </div>
       </div>
-      <div class="portfolio-card animate">
-        <div class="portfolio-preview">
-          <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=700&q=80&fit=crop" alt="Gym Website" class="portfolio-img">
-          <div class="portfolio-overlay">
-            <a href="portfolio.html" class="overlay-btn">View Details</a>
+
+      <!-- Clinic 1 -->
+      <div class="portfolio-item" data-cat="clinic">
+        <div class="device-showcase">
+          <div class="laptop-frame">
+            <div class="laptop-screen">
+              <div class="laptop-screen-inner">
+                <div class="mini-site site-clinic">
+                  <div class="mini-nav"></div>
+                  <div class="mini-hero">
+                    <div class="mini-h"></div>
+                    <div class="mini-s"></div>
+                    <div class="mini-b"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="laptop-base"></div>
+            <div class="laptop-stand"></div>
+          </div>
+          <div class="mobile-frame">
+            <div class="mobile-notch"></div>
+            <div class="mobile-screen">
+              <div class="mini-site site-clinic" style="padding:4px;">
+                <div class="mini-nav" style="height:6px;margin-bottom:3px;"></div>
+                <div class="mini-hero">
+                  <div class="mini-h" style="height:4px;"></div>
+                  <div class="mini-s" style="height:3px;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="mobile-home-btn"></div>
           </div>
         </div>
         <div class="portfolio-info">
-          <div class="portfolio-tag">Gym & Fitness</div>
-          <h3>Iron Peak Fitness Center</h3>
-          <p>Membership plans, class schedule & trainer profiles</p>
+          <h3>CareFirst Dental Clinic</h3>
+          <p>Professional clinic website with doctor profiles, appointment booking form, treatment pages, and patient trust badges.</p>
+          <span class="portfolio-tag">🏥 Clinic</span>
         </div>
       </div>
+
+      <!-- Gym 1 -->
+      <div class="portfolio-item" data-cat="gym">
+        <div class="device-showcase">
+          <div class="laptop-frame">
+            <div class="laptop-screen">
+              <div class="laptop-screen-inner">
+                <div class="mini-site site-gym">
+                  <div class="mini-nav"></div>
+                  <div class="mini-hero">
+                    <div class="mini-h"></div>
+                    <div class="mini-s"></div>
+                    <div class="mini-b"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="laptop-base"></div>
+            <div class="laptop-stand"></div>
+          </div>
+          <div class="mobile-frame">
+            <div class="mobile-notch"></div>
+            <div class="mobile-screen">
+              <div class="mini-site site-gym" style="padding:4px;">
+                <div class="mini-nav" style="height:6px;margin-bottom:3px;"></div>
+                <div class="mini-hero">
+                  <div class="mini-h" style="height:4px;"></div>
+                  <div class="mini-s" style="height:3px;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="mobile-home-btn"></div>
+          </div>
+        </div>
+        <div class="portfolio-info">
+          <h3>IronZone Gym & Fitness</h3>
+          <p>Bold gym website with class schedules, trainer profiles, membership plans, and a high-energy design that drives sign-ups.</p>
+          <span class="portfolio-tag">💪 Gym & Fitness</span>
+        </div>
+      </div>
+
+      <!-- Manufacturing -->
+      <div class="portfolio-item" data-cat="manufacturing">
+        <div class="device-showcase">
+          <div class="laptop-frame">
+            <div class="laptop-screen">
+              <div class="laptop-screen-inner">
+                <div class="mini-site site-mfg">
+                  <div class="mini-nav"></div>
+                  <div class="mini-hero">
+                    <div class="mini-h"></div>
+                    <div class="mini-s"></div>
+                    <div class="mini-b"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="laptop-base"></div>
+            <div class="laptop-stand"></div>
+          </div>
+          <div class="mobile-frame">
+            <div class="mobile-notch"></div>
+            <div class="mobile-screen">
+              <div class="mini-site site-mfg" style="padding:4px;">
+                <div class="mini-nav" style="height:6px;margin-bottom:3px;"></div>
+                <div class="mini-hero">
+                  <div class="mini-h" style="height:4px;"></div>
+                  <div class="mini-s" style="height:3px;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="mobile-home-btn"></div>
+          </div>
+        </div>
+        <div class="portfolio-info">
+          <h3>ProSteel Manufacturing Co.</h3>
+          <p>Corporate B2B website with product catalog, company certifications, RFQ forms, and content targeting industrial buyers.</p>
+          <span class="portfolio-tag">🏭 Manufacturing</span>
+        </div>
+      </div>
+
+      <!-- Restaurant 2 -->
+      <div class="portfolio-item" data-cat="restaurant">
+        <div class="device-showcase">
+          <div class="laptop-frame">
+            <div class="laptop-screen">
+              <div class="laptop-screen-inner">
+                <div class="mini-site" style="background:linear-gradient(135deg,#713f12,#d97706);">
+                  <div class="mini-nav"></div>
+                  <div class="mini-hero">
+                    <div class="mini-h"></div>
+                    <div class="mini-s"></div>
+                    <div class="mini-b"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="laptop-base"></div>
+            <div class="laptop-stand"></div>
+          </div>
+          <div class="mobile-frame">
+            <div class="mobile-notch"></div>
+            <div class="mobile-screen">
+              <div class="mini-site" style="background:linear-gradient(135deg,#713f12,#d97706);padding:4px;">
+                <div class="mini-nav" style="height:6px;margin-bottom:3px;"></div>
+                <div class="mini-hero">
+                  <div class="mini-h" style="height:4px;"></div>
+                  <div class="mini-s" style="height:3px;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="mobile-home-btn"></div>
+          </div>
+        </div>
+        <div class="portfolio-info">
+          <h3>Spice Garden – Indian Restaurant</h3>
+          <p>Vibrant restaurant website with digital menu, online ordering, customer reviews integration, and delivery zone map.</p>
+          <span class="portfolio-tag">🍛 Restaurant</span>
+        </div>
+      </div>
+
     </div>
-    <div style="text-align:center; margin-top:40px;">
-      <a href="portfolio.html" class="btn-secondary" style="display:inline-flex; align-items:center; gap:8px; padding:14px 28px; border-radius:10px; font-weight:600; border:2px solid var(--border); color:var(--dark); background:white;">
-        View Full Portfolio →
-      </a>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="#contact" class="btn-primary">🌐 Get a Similar Website – Just $50</a>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section>
+<!-- WHY WIKGROW -->
+<section id="why">
   <div class="section-inner">
-    <div class="section-header animate">
+    <div class="why-grid">
+      <div>
+        <span class="section-tag">Why Choose Us</span>
+        <h2 class="section-title">Why 50+ Businesses<br>Choose <span>Wikgrow</span></h2>
+        <p class="section-sub">We don't just build websites — we build tools that grow your business. Here's what makes us different.</p>
+        <div class="why-features" style="margin-top:36px;">
+          <div class="why-feature">
+            <div class="why-icon">⚡</div>
+            <div class="why-text">
+              <h4>Fast 48-Hour Delivery</h4>
+              <p>Get your professional website live within 48 hours of order. No waiting weeks for your online presence.</p>
+            </div>
+          </div>
+          <div class="why-feature">
+            <div class="why-icon">📱</div>
+            <div class="why-text">
+              <h4>100% Mobile Optimized</h4>
+              <p>Every website looks and works perfectly on phones, tablets, and desktops — where your customers actually are.</p>
+            </div>
+          </div>
+          <div class="why-feature">
+            <div class="why-icon">🔍</div>
+            <div class="why-text">
+              <h4>Google-Ready SEO</h4>
+              <p>Every site is built to rank. Proper meta tags, fast loading speeds, and structured data included as standard.</p>
+            </div>
+          </div>
+          <div class="why-feature">
+            <div class="why-icon">💰</div>
+            <div class="why-text">
+              <h4>Unbeatable $50 Price</h4>
+              <p>Agencies charge $500–$5000 for the same quality. We deliver premium results at a price every business can afford.</p>
+            </div>
+          </div>
+          <div class="why-feature">
+            <div class="why-icon">🎯</div>
+            <div class="why-text">
+              <h4>Built to Convert Visitors</h4>
+              <p>Every design element is chosen to turn website visitors into paying customers — calls to action, trust signals, and more.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="why-visual">
+        <div class="price-card">
+          <div class="price-label">⭐ Our Most Popular Package</div>
+          <div class="price-amount">$50</div>
+          <div class="price-period">One-time payment · No hidden fees</div>
+          <ul class="price-features">
+            <li>Custom professional design</li>
+            <li>Mobile-responsive layout</li>
+            <li>SEO optimization included</li>
+            <li>Contact / booking form</li>
+            <li>WhatsApp chat button</li>
+            <li>Google Maps integration</li>
+            <li>Social media links</li>
+            <li>Delivered in 48 hours</li>
+          </ul>
+          <a href="https://wa.me/971547513482?text=Hi%20Wikgrow%2C%20I%20want%20a%20%2450%20website" target="_blank" class="btn-primary" style="width:100%;justify-content:center;">💬 Order on WhatsApp</a>
+          <div class="price-tag-note" style="margin-top:16px;">✉️ Or email: waqar@wikgrow.com</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="section-inner">
+    <div style="text-align:center;">
+      <span class="section-tag">Meet the Team</span>
+      <h2 class="section-title center">The People Behind <span>Wikgrow</span></h2>
+      <p class="section-sub center">A passionate team of designers, developers, and digital marketers working to grow your business.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">W</div>
+        <div class="team-name">Waqar Ali</div>
+        <div class="team-role">Founder & Lead Developer</div>
+        <div class="team-bio">10+ years building websites and digital solutions. Passionate about helping small businesses get online affordably and grow fast.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" style="background:linear-gradient(135deg,#7c3aed,#db2777);">S</div>
+        <div class="team-name">Sara Mitchell</div>
+        <div class="team-role">UI/UX Designer</div>
+        <div class="team-bio">Creative designer with expertise in conversion-focused layouts. Every pixel she creates has a purpose — driving more business for our clients.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" style="background:linear-gradient(135deg,#0284c7,#10b981);">J</div>
+        <div class="team-name">James Carter</div>
+        <div class="team-role">SEO & Growth Specialist</div>
+        <div class="team-bio">Google-certified SEO expert who ensures every Wikgrow website is built to rank on page 1 and attract the right customers organically.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" style="background:linear-gradient(135deg,#f97316,#ef4444);">A</div>
+        <div class="team-name">Amara Nwosu</div>
+        <div class="team-role">Digital Marketing Manager</div>
+        <div class="team-bio">Google Ads specialist who builds campaigns that convert. She turns ad spend into real leads and sales for businesses across every industry.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="section-inner">
+    <div style="text-align:center;">
       <span class="section-tag">Client Reviews</span>
-      <h2 class="section-title">What Our Clients Are Saying</h2>
-      <p class="section-sub">100+ happy business owners across the US, UK, UAE and beyond.</p>
+      <h2 class="section-title center">What Our Clients <span>Say About Us</span></h2>
+      <p class="section-sub center">Real feedback from real business owners who trusted Wikgrow to build their online presence.</p>
     </div>
-    <div class="testimonials-grid">
-      <div class="testimonial-card animate">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">"Wikgrow built my restaurant website in just 4 days and it looks absolutely incredible. My online orders have gone up 60% since launch. Best $50 I've ever spent!"</p>
-        <div class="testimonial-author">
-          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="James Anderson" class="author-avatar">
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I was honestly shocked at the quality for $50. My restaurant website looks better than competitors who paid thousands. We've already had 30+ reservations through the website in the first week!"</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar" style="background:linear-gradient(135deg,#2563eb,#7c3aed);">M</div>
           <div>
-            <div class="author-name">James Anderson</div>
-            <div class="author-title">Owner, The Rustic Fork — Texas, USA</div>
+            <div class="reviewer-name">Michael Thompson</div>
+            <div class="reviewer-loc">🇺🇸 Chicago, USA · Restaurant Owner</div>
           </div>
         </div>
       </div>
-      <div class="testimonial-card animate">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">"I was skeptical about the $50 price but the quality completely blew me away. My salon now has online bookings running 24/7. Waqar and the team are brilliant!"</p>
-        <div class="testimonial-author">
-          <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sophie Williams" class="author-avatar">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Waqar and the Wikgrow team delivered my salon website in just 2 days. It's beautiful, works perfectly on mobile, and my booking form is already getting daily appointments. Absolutely worth every penny."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar" style="background:linear-gradient(135deg,#db2777,#9333ea);">S</div>
           <div>
-            <div class="author-name">Sophie Williams</div>
-            <div class="author-title">Director, Glow Beauty Studio — London, UK</div>
+            <div class="reviewer-name">Sophie Williams</div>
+            <div class="reviewer-loc">🇬🇧 London, UK · Salon Owner</div>
           </div>
         </div>
       </div>
-      <div class="testimonial-card animate">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">"Our clinic website needed to look professional and trustworthy. Wikgrow nailed it. Patients now find us on Google and we have a steady flow of new appointments every week."</p>
-        <div class="testimonial-author">
-          <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Dr. Robert Mills" class="author-avatar">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"As a clinic owner I needed something professional and trustworthy. Wikgrow delivered exactly that — with doctor profiles, appointment forms, and a clean design that patients immediately trust. Highly recommended!"</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar" style="background:linear-gradient(135deg,#0284c7,#10b981);">D</div>
           <div>
-            <div class="author-name">Dr. Robert Mills</div>
-            <div class="author-title">Founder, Vitality Medical Clinic — New York, USA</div>
+            <div class="reviewer-name">Dr. David Patel</div>
+            <div class="reviewer-loc">🇺🇸 Houston, USA · Clinic Director</div>
           </div>
         </div>
       </div>
-      <div class="testimonial-card animate">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">"Fast, professional and incredibly affordable. They delivered our gym website with a working class schedule and membership signup form. Exactly what we asked for!"</p>
-        <div class="testimonial-author">
-          <img src="https://randomuser.me/api/portraits/women/22.jpg" alt="Emily Carter" class="author-avatar">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Our gym membership sign-ups doubled after launching with Wikgrow. The website is bold, fast, and the online membership form is generating leads every single day. Best $50 I've ever invested in marketing."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar" style="background:linear-gradient(135deg,#f97316,#ef4444);">R</div>
           <div>
-            <div class="author-name">Emily Carter</div>
-            <div class="author-title">Co-Founder, FitLife Gym — Manchester, UK</div>
+            <div class="reviewer-name">Ryan O'Brien</div>
+            <div class="reviewer-loc">🇬🇧 Manchester, UK · Gym Owner</div>
           </div>
         </div>
       </div>
-      <div class="testimonial-card animate">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">"We needed a manufacturing company website urgently for an international tender. Wikgrow delivered in 3 days. We got the contract. 100% recommended to every business owner!"</p>
-        <div class="testimonial-author">
-          <img src="https://randomuser.me/api/portraits/men/58.jpg" alt="David Thompson" class="author-avatar">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I needed a website for my manufacturing company that looked corporate and credible for B2B buyers. Wikgrow nailed it. We've already had 3 serious inquiries through the RFQ form in the first month."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar" style="background:linear-gradient(135deg,#1d4ed8,#0f172a);">J</div>
           <div>
-            <div class="author-name">David Thompson</div>
-            <div class="author-title">CEO, ProTech Manufacturing — Chicago, USA</div>
+            <div class="reviewer-name">James Harrison</div>
+            <div class="reviewer-loc">🇺🇸 Dallas, USA · Manufacturing CEO</div>
           </div>
         </div>
       </div>
-      <div class="testimonial-card animate">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">"I run a small spa in Dubai and my old website was embarrassing. Wikgrow rebuilt it beautifully. Now I get clients from Abu Dhabi just because they saw my website online!"</p>
-        <div class="testimonial-author">
-          <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="Sarah Mitchell" class="author-avatar">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Fast, professional, and genuinely talented team. My e-commerce site was live in 48 hours and looks incredible. Customer support was excellent throughout. Wikgrow is the real deal — I'm recommending them to everyone."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar" style="background:linear-gradient(135deg,#10b981,#0891b2);">E</div>
           <div>
-            <div class="author-name">Sarah Mitchell</div>
-            <div class="author-title">Owner, Serenity Spa — Dubai, UAE</div>
+            <div class="reviewer-name">Emily Crawford</div>
+            <div class="reviewer-loc">🇨🇦 Toronto, Canada · E-Commerce Owner</div>
           </div>
         </div>
       </div>
@@ -377,128 +906,270 @@
   </div>
 </section>
 
-<!-- PRICING -->
-<section style="background: var(--bg);">
+<!-- ABOUT -->
+<section id="about">
   <div class="section-inner">
-    <div class="section-header animate">
-      <span class="section-tag">Pricing</span>
-      <h2 class="section-title">Simple, Transparent Pricing</h2>
-      <p class="section-sub">No hidden fees. No monthly charges. Pay once, own forever.</p>
-    </div>
-    <div class="pricing-grid">
-      <div class="pricing-card animate">
-        <div class="plan-name">Starter</div>
-        <div class="price-amount"><span class="price-currency">$</span>50</div>
-        <div class="price-period">one-time payment</div>
-        <ul class="pricing-features">
-          <li><span class="check">✓</span> Professional design</li>
-          <li><span class="check">✓</span> Mobile responsive</li>
-          <li><span class="check">✓</span> Up to 5 pages</li>
-          <li><span class="check">✓</span> Contact form</li>
-          <li><span class="check">✓</span> Basic SEO setup</li>
-          <li><span class="check">✓</span> 3-5 day delivery</li>
-        </ul>
-        <a href="contact.html" class="btn-primary" style="display:block; text-align:center; padding:14px;">Get Started</a>
+    <div class="about-grid">
+      <div class="about-image-wrap">
+        <div class="about-img-placeholder">
+          <div class="big-icon">🌐</div>
+          <h3>Wikgrow Digital Agency</h3>
+          <p>Growing Businesses Online Since 2020</p>
+          <div style="display:flex;gap:16px;margin-top:12px;">
+            <div style="text-align:center;"><div style="font-size:28px;font-weight:800;">50+</div><div style="font-size:12px;opacity:.7;">Projects</div></div>
+            <div style="text-align:center;"><div style="font-size:28px;font-weight:800;">$50</div><div style="font-size:12px;opacity:.7;">Starting</div></div>
+            <div style="text-align:center;"><div style="font-size:28px;font-weight:800;">5★</div><div style="font-size:12px;opacity:.7;">Rating</div></div>
+          </div>
+        </div>
+        <div class="about-badge-float">
+          <div class="abf-icon">🏆</div>
+          <div>
+            <div class="abf-text">Top Agency 2026</div>
+            <div class="abf-sub">Affordable & Trusted</div>
+          </div>
+        </div>
       </div>
-      <div class="pricing-card featured animate">
-        <div class="featured-badge">⭐ Most Popular</div>
-        <div class="plan-name" style="color:rgba(255,255,255,0.7)">Professional</div>
-        <div class="price-amount" style="color:white;">$<span>50</span></div>
-        <div class="price-period" style="color:rgba(255,255,255,0.7)">all-inclusive</div>
-        <ul class="pricing-features">
-          <li><span class="check" style="color:#86EFAC">✓</span> Premium custom design</li>
-          <li><span class="check" style="color:#86EFAC">✓</span> Mobile + tablet ready</li>
-          <li><span class="check" style="color:#86EFAC">✓</span> Unlimited pages</li>
-          <li><span class="check" style="color:#86EFAC">✓</span> WhatsApp integration</li>
-          <li><span class="check" style="color:#86EFAC">✓</span> Full SEO optimization</li>
-          <li><span class="check" style="color:#86EFAC">✓</span> Google Maps + Social</li>
-          <li><span class="check" style="color:#86EFAC">✓</span> 30-day free support</li>
-        </ul>
-        <a href="contact.html" class="btn-white" style="display:block; text-align:center; padding:14px; color:var(--primary) !important; font-weight:700;">
-          Get Started Today
-        </a>
-      </div>
-      <div class="pricing-card animate">
-        <div class="plan-name">E-Commerce</div>
-        <div class="price-amount"><span class="price-currency">$</span>50</div>
-        <div class="price-period">one-time payment</div>
-        <ul class="pricing-features">
-          <li><span class="check">✓</span> Online store setup</li>
-          <li><span class="check">✓</span> Product catalog</li>
-          <li><span class="check">✓</span> Shopping cart</li>
-          <li><span class="check">✓</span> Payment integration</li>
-          <li><span class="check">✓</span> Order management</li>
-          <li><span class="check">✓</span> Inventory system</li>
-        </ul>
-        <a href="contact.html" class="btn-primary" style="display:block; text-align:center; padding:14px;">Get Started</a>
+      <div class="about-content">
+        <span class="section-tag">About Wikgrow</span>
+        <h2 class="section-title">Grow Your Business<br>with <span>Wikgrow</span></h2>
+        <p>Wikgrow is a results-driven digital agency that believes every business — no matter the size or budget — deserves a stunning, professional online presence. We started with a simple mission: make great websites accessible to all.</p>
+        <p>From family-run restaurants to manufacturing companies, we've helped businesses across the US, UK, UAE, and beyond get online, get found on Google, and get more customers through beautifully designed, conversion-optimized websites.</p>
+        <p>Our team of designers, developers, and digital marketers works with you to understand your business and deliver a website that truly represents your brand — fast, affordable, and built to grow with you.</p>
+        <div class="about-values">
+          <div class="about-val">⚡ Fast Delivery</div>
+          <div class="about-val">💯 Quality Work</div>
+          <div class="about-val">💰 Affordable Price</div>
+          <div class="about-val">🎯 Results Focused</div>
+          <div class="about-val">📱 Mobile Ready</div>
+          <div class="about-val">🔍 SEO Optimized</div>
+        </div>
+        <a href="#contact" class="btn-primary" style="margin-top:24px;display:inline-flex;">Get Started Today →</a>
       </div>
     </div>
-    <p style="text-align:center; margin-top:24px; font-size:14px; color:var(--text-muted);">✅ All plans include hosting setup assistance · Free revision round · Direct WhatsApp support</p>
   </div>
 </section>
 
-<!-- CTA BAND -->
-<div class="cta-band">
-  <h2>Ready to Grow Your Business? 🚀</h2>
-  <p>Join 150+ businesses already growing with Wikgrow. Get your professional website today.</p>
-  <a href="https://wa.me/971547513482?text=Hi%20Wikgrow!%20I%20want%20to%20order%20a%20website%20for%20my%20business." class="btn-wa" target="_blank">
-    💬 WhatsApp Now – Get Started
-  </a>
-  <a href="mailto:waqar@wikgrow.com" class="btn-white" style="margin-left:16px;">
-    ✉️ Email Us
-  </a>
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2>Ready to Grow Your Business Online?</h2>
+  <p>Get a professional website in 48 hours for just $50. No contracts, no hidden fees — just results.</p>
+  <div class="cta-banner-btns">
+    <a href="https://wa.me/971547513482?text=Hi%20Wikgrow%2C%20I%20want%20to%20order%20a%20website" target="_blank" class="btn-white">💬 WhatsApp: +971 547 513 482</a>
+    <a href="#contact" class="btn-outline-white">✉️ Send Us a Message</a>
+  </div>
 </div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div style="text-align:center;">
+      <span class="section-tag">Contact Us</span>
+      <h2 class="section-title center">Let's Build Your <span>Dream Website</span></h2>
+      <p class="section-sub center">Tell us about your business and we'll get back to you within 2 hours. WhatsApp preferred for fastest response.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="ci-icon">💬</div>
+          <div>
+            <div class="ci-label">WhatsApp (Fastest)</div>
+            <div class="ci-value"><a href="https://wa.me/971547513482" target="_blank">+971 547 513 482</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📧</div>
+          <div>
+            <div class="ci-label">Business Email</div>
+            <div class="ci-value"><a href="mailto:waqar@wikgrow.com">waqar@wikgrow.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📧</div>
+          <div>
+            <div class="ci-label">Personal Email</div>
+            <div class="ci-value"><a href="mailto:waqaralibugti@gmail.com">waqaralibugti@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">⏰</div>
+          <div>
+            <div class="ci-label">Response Time</div>
+            <div class="ci-value">Within 2 Hours · 7 Days a Week</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🌍</div>
+          <div>
+            <div class="ci-label">We Serve Clients In</div>
+            <div class="ci-value">USA, UK, UAE, Canada, Australia & Worldwide</div>
+          </div>
+        </div>
+        <div style="background:var(--light-bg);border-radius:14px;padding:20px;margin-top:8px;">
+          <div style="font-weight:700;font-size:15px;color:var(--text-dark);margin-bottom:8px;">💡 Quick Order via WhatsApp</div>
+          <p style="font-size:14px;color:var(--text-mid);line-height:1.7;">Just send us a WhatsApp message saying what type of website you need and we'll send you a quote and samples within 1 hour!</p>
+          <a href="https://wa.me/971547513482?text=Hi%20Wikgrow%2C%20I%20need%20a%20website%20for%20my%20business" target="_blank" class="btn-whatsapp" style="margin-top:14px;display:inline-flex;">💬 Message Us Now</a>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3 style="font-family:'Sora',sans-serif;font-size:22px;font-weight:700;margin-bottom:24px;color:var(--text-dark);">Send Us a Message</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" id="fname" placeholder="John Smith">
+          </div>
+          <div class="form-group">
+            <label>Your Email</label>
+            <input type="email" id="femail" placeholder="john@business.com">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>WhatsApp / Phone</label>
+          <input type="text" id="fphone" placeholder="+1 234 567 8900">
+        </div>
+        <div class="form-group">
+          <label>Type of Website Needed</label>
+          <select id="ftype">
+            <option value="">Select website type...</option>
+            <option>Restaurant Website</option>
+            <option>Salon & Beauty Website</option>
+            <option>Clinic / Healthcare Website</option>
+            <option>Gym & Fitness Website</option>
+            <option>Manufacturing / B2B Website</option>
+            <option>E-Commerce Store</option>
+            <option>Other Business Website</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tell Us About Your Business</label>
+          <textarea id="fmsg" placeholder="What does your business do? Any specific pages or features you need?"></textarea>
+        </div>
+        <button class="form-submit" onclick="submitForm()">🚀 Send My Request – I Want My $50 Website</button>
+        <div class="form-success" id="formSuccess">✅ Message sent! We'll reply within 2 hours via email or WhatsApp. You can also WhatsApp us directly at +971 547 513 482</div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <a href="index.html" class="logo" style="margin-bottom:16px; display:inline-flex;">
-        <div class="logo-icon">W</div>
-        <span class="logo-text">Wiki<span style="color:var(--primary)">grow</span></span>
-      </a>
-      <p>Grow your business with Wikgrow. Professional websites starting at just $50. Fast delivery, stunning design, real results.</p>
-      <div class="footer-contact-item">📧 <a href="mailto:waqar@wikgrow.com">waqar@wikgrow.com</a></div>
-      <div class="footer-contact-item">📧 <a href="mailto:waqaralibugti@gmail.com">waqaralibugti@gmail.com</a></div>
-      <div class="footer-contact-item">💬 <a href="https://wa.me/971547513482">+971 547 513 482</a></div>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="footer-logo-icon">W</div>
+          <span class="footer-logo-text">Wiki<span>grow</span></span>
+        </div>
+        <p>Grow your business with Wikgrow. Professional websites starting at $50. Fast delivery, mobile-ready, and built to convert visitors into customers worldwide.</p>
+        <div class="social-links">
+          <a href="https://wa.me/971547513482" target="_blank" class="social-link" title="WhatsApp">💬</a>
+          <a href="mailto:waqar@wikgrow.com" class="social-link" title="Email">✉️</a>
+          <a href="#" class="social-link" title="Facebook">f</a>
+          <a href="#" class="social-link" title="Instagram">📸</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#team">Our Team</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#about">About Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Our Services</h4>
+        <ul>
+          <li><a href="#services">Restaurant Website</a></li>
+          <li><a href="#services">Salon Website</a></li>
+          <li><a href="#services">Clinic Website</a></li>
+          <li><a href="#services">Gym Website</a></li>
+          <li><a href="#services">Manufacturing Website</a></li>
+          <li><a href="#services">E-Commerce Store</a></li>
+          <li><a href="#services">Google Ads Setup</a></li>
+          <li><a href="#services">SEO Services</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="https://wa.me/971547513482" target="_blank">💬 +971 547 513 482</a></li>
+          <li><a href="mailto:waqar@wikgrow.com">📧 waqar@wikgrow.com</a></li>
+          <li><a href="mailto:waqaralibugti@gmail.com">📧 waqaralibugti@gmail.com</a></li>
+          <li><a href="#contact" style="color:var(--accent);">🚀 Get Website – $50</a></li>
+        </ul>
+      </div>
     </div>
-    <div>
-      <h4>Services</h4>
-      <ul>
-        <li><a href="services.html">Restaurant Website</a></li>
-        <li><a href="services.html">Salon Website</a></li>
-        <li><a href="services.html">Clinic Website</a></li>
-        <li><a href="services.html">Gym Website</a></li>
-        <li><a href="services.html">Manufacturing Website</a></li>
-        <li><a href="services.html">E-Commerce Store</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4>Company</h4>
-      <ul>
-        <li><a href="about.html">About Wikgrow</a></li>
-        <li><a href="portfolio.html">Our Portfolio</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-        <li><a href="contact.html">Get a Quote</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4>Get Started</h4>
-      <p style="font-size:14px; color:rgba(255,255,255,0.5); line-height:1.8; margin-bottom:16px;">Professional website for your business starting at just $50. WhatsApp us right now!</p>
-      <a href="https://wa.me/971547513482?text=Hi!%20I%20need%20a%20website." class="btn-primary" style="font-size:14px; padding:12px 20px;" target="_blank">
-        💬 Chat Now
-      </a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2026 Wikgrow. All rights reserved. Professional Web Design Agency.</p>
-    <div class="footer-socials">
-      <a href="https://wa.me/971547513482" target="_blank">💬</a>
-      <a href="mailto:waqar@wikgrow.com">✉️</a>
+    <div class="footer-bottom">
+      <p>© 2026 Wikgrow. All rights reserved. Built with ❤️ to grow your business.</p>
+      <p><a href="mailto:waqar@wikgrow.com">waqar@wikgrow.com</a> · <a href="https://wa.me/971547513482">+971 547 513 482</a></p>
     </div>
   </div>
 </footer>
 
-<script src="js/main.js"></script>
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/971547513482?text=Hi%20Wikgrow%2C%20I%20want%20a%20website%20for%20%2450" target="_blank" class="wa-float">
+  <span class="wa-float-icon">💬</span> WhatsApp Us
+</a>
+
+<script>
+// Mobile menu
+function toggleMenu(){
+  const m=document.getElementById('mobileMenu');
+  m.classList.toggle('open');
+}
+
+// Portfolio filter
+function filterPortfolio(cat){
+  const items=document.querySelectorAll('.portfolio-item');
+  const tabs=document.querySelectorAll('.tab-btn');
+  tabs.forEach(t=>{t.classList.remove('active');if(t.textContent.toLowerCase().includes(cat)||cat==='all')t.classList.add('active');});
+  // Simpler: just toggle by clicked tab
+  document.querySelectorAll('.tab-btn').forEach(t=>t.classList.remove('active'));
+  event.target.classList.add('active');
+  items.forEach(item=>{
+    if(cat==='all'||item.dataset.cat===cat){
+      item.classList.remove('hidden');
+    } else {
+      item.classList.add('hidden');
+    }
+  });
+}
+
+// Contact form
+function submitForm(){
+  const name=document.getElementById('fname').value;
+  const email=document.getElementById('femail').value;
+  const type=document.getElementById('ftype').value;
+  const msg=document.getElementById('fmsg').value;
+  if(!name||!email){alert('Please enter your name and email.');return;}
+  // Build WhatsApp message
+  const wa=`Hi Wikgrow! My name is ${name}. I need a ${type||'website'}. ${msg} Email: ${email}`;
+  const waUrl=`https://wa.me/971547513482?text=${encodeURIComponent(wa)}`;
+  window.open(waUrl,'_blank');
+  document.getElementById('formSuccess').style.display='block';
+  document.getElementById('fname').value='';
+  document.getElementById('femail').value='';
+  document.getElementById('fphone').value='';
+  document.getElementById('ftype').value='';
+  document.getElementById('fmsg').value='';
+}
+
+// Scroll nav shadow
+window.addEventListener('scroll',()=>{
+  const nav=document.getElementById('mainNav');
+  if(window.scrollY>40){nav.style.boxShadow='0 4px 20px rgba(0,0,0,.08)';}
+  else{nav.style.boxShadow='none';}
+});
+
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+</script>
 </body>
 </html>
