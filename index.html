@@ -23,6 +23,7 @@
   "url": "https://wikgrow.com",
   "contactPoint": {
     "@type": "ContactPoint",
+    "@type": "ContactPoint",
     "contactType": "customer service",
     "availableLanguage": "English"
   },
@@ -66,6 +67,7 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; font-size: 16px; }
 body { font-family: 'Inter', sans-serif; color: var(--text); background: #fff; overflow-x: hidden; line-height: 1.6; }
+body.modal-open { overflow: hidden; }
 img { max-width: 100%; height: auto; display: block; }
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
@@ -329,6 +331,37 @@ textarea { resize: vertical; min-height: 100px; }
 select { appearance: none; cursor: pointer; }
 .form-submit { width: 100%; justify-content: center; margin-top: 4px; }
 
+/* ===== PRIVACY MODAL SYSTEM ===== */
+.privacy-modal {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(10, 15, 46, 0.6);
+  backdrop-filter: blur(8px);
+  z-index: 2000; display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none; transition: opacity 0.3s ease; padding: 20px;
+}
+.privacy-modal.active { opacity: 1; pointer-events: auto; }
+.modal-box {
+  background: #fff; width: 100%; max-width: 780px; max-height: 80vh;
+  border-radius: var(--radius-lg); border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg); display: flex; flex-direction: column;
+  transform: translateY(20px); transition: transform 0.3s ease;
+}
+.privacy-modal.active .modal-box { transform: translateY(0); }
+.modal-header {
+  padding: 24px 32px; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between; background: var(--off);
+  border-top-left-radius: var(--radius-lg); border-top-right-radius: var(--radius-lg);
+}
+.modal-title { font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px; font-weight: 800; color: var(--navy); }
+.modal-close { font-size: 28px; color: var(--text-soft); cursor: pointer; transition: color 0.2s; line-height: 1; }
+.modal-close:hover { color: var(--navy); }
+.modal-content { padding: 32px; overflow-y: auto; color: var(--text-mid); font-size: 15px; line-height: 1.7; }
+.modal-content h3 { font-family: 'Bricolage Grotesque', sans-serif; font-size: 18px; font-weight: 700; color: var(--navy); margin: 24px 0 10px; }
+.modal-content h3:first-of-type { margin-top: 0; }
+.modal-content p { margin-bottom: 14px; }
+.modal-content ul { list-style: disc; margin-left: 20px; margin-bottom: 14px; }
+.modal-content li { margin-bottom: 6px; }
+
 /* ===== FOOTER ===== */
 footer { background: var(--navy); padding: 64px 0 0; }
 .footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,.1); }
@@ -336,11 +369,10 @@ footer { background: var(--navy); padding: 64px 0 0; }
 .footer-brand p { font-size: 14px; color: rgba(255,255,255,.5); line-height: 1.7; margin-top: 12px; max-width: 260px; }
 .footer-col-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: rgba(255,255,255,.4); margin-bottom: 20px; }
 .footer-links { display: flex; flex-direction: column; gap: 12px; }
-.footer-links a { font-size: 14px; color: rgba(255,255,255,.65); transition: color .2s; }
-.footer-links a:hover { color: #fff; }
+.footer-links a, .footer-links button { font-size: 14px; color: rgba(255,255,255,.65); transition: color .2s; text-align: left; width: fit-content; }
+.footer-links a:hover, .footer-links button:hover { color: #fff; }
 .footer-bottom { padding: 24px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
 .footer-copy { font-size: 13px; color: rgba(255,255,255,.4); }
-.footer-copy a { color: rgba(255,255,255,.6); }
 
 /* ===== ANIMATIONS ===== */
 .fade-up { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
@@ -367,7 +399,6 @@ footer { background: var(--navy); padding: 64px 0 0; }
 @media (max-width: 768px) {
   .section { padding: 72px 0; }
   .nav-links, .nav-actions .btn { display: none; }
-  .nav-actions .btn-wa { display: none; }
   .hamburger { display: flex; }
   .hero-inner { grid-template-columns: 1fr; gap: 48px; }
   .hero-visual { display: none; }
@@ -426,24 +457,27 @@ footer { background: var(--navy); padding: 64px 0 0; }
     </ul>
     <div class="nav-actions">
       <a href="https://wa.me/971547513482" class="btn btn-wa" target="_blank" rel="noopener">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5.006L2.007 22l5.137-1.349C8.52 21.511 10.238 22 12 22c5.523 0 10-4.477 10-10S17.522 2 12 2h-.001z"/></svg>
-        WhatsApp
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.999 2C6.477 2 2 6.477 2 12c0 2.259.621 4.386 1.701 6.184l-1.151 4.194 4.321-1.124C8.614 21.884 10.253 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18c-1.634 0-3.19-.434-4.55-1.258l-.326-.194-2.556.666.681-2.479-.215-.341C4.948 15.066 4.5 13.579 4.5 12c0-4.136 3.364-7.5 7.5-7.5s7.5 3.364 7.5 7.5-3.364 7.5-7.5 7.5z"/></svg>
+        WhatsApp Us
       </a>
-      <button class="hamburger" id="hamburger" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
   </div>
 </nav>
+
+<!-- ===== MOBILE NAV ===== -->
 <div class="mobile-nav" id="mobileNav">
-  <a href="#services" onclick="closeMobile()">Services</a>
-  <a href="#portfolio" onclick="closeMobile()">Portfolio</a>
-  <a href="#team" onclick="closeMobile()">Team</a>
-  <a href="#reviews" onclick="closeMobile()">Reviews</a>
-  <a href="#contact" onclick="closeMobile()">Contact</a>
+  <a href="#services">Services</a>
+  <a href="#portfolio">Portfolio</a>
+  <a href="#team">Team</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#contact">Contact</a>
   <div class="mobile-actions">
-    <a href="#contact" class="btn btn-primary btn-lg" onclick="closeMobile()">Get Website for $50</a>
-    <a href="https://wa.me/971547513482" class="btn btn-wa btn-lg" target="_blank" rel="noopener">Chat on WhatsApp</a>
+    <a href="https://wa.me/971547513482" class="btn btn-wa" style="justify-content: center;" target="_blank" rel="noopener">WhatsApp Us</a>
   </div>
 </div>
 
@@ -451,1167 +485,344 @@ footer { background: var(--navy); padding: 64px 0 0; }
 <section id="home">
   <div class="hero-blob1"></div>
   <div class="hero-blob2"></div>
-  <div class="container">
-    <div class="hero-inner">
-      <div class="hero-content">
-        <div class="hero-badge">
-          <span class="badge-dot"></span>
-          Trusted by 138+ Businesses Worldwide
-        </div>
-        <h1 class="hero-title display">
-          Professional Websites<br>For <span class="blue">Modern</span><br><span class="gold">Businesses</span>
-        </h1>
-        <p class="hero-sub">
-          Grow your business with a premium website — built fast, mobile-first, and priced honestly. Starting at just <strong>$50</strong>.
-        </p>
-        <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary btn-lg">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-            Get Website for $50
-          </a>
-          <a href="https://wa.me/971547513482" class="btn btn-wa btn-lg" target="_blank" rel="noopener">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5.006L2 22l5.137-1.349A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
-            Chat on WhatsApp
-          </a>
-        </div>
-        <div class="hero-trust">
-          <div class="trust-item">
-            <div class="trust-icon">⚡</div>
-            Fast Delivery
+  <div class="container hero-inner">
+    <div>
+      <div class="hero-badge">
+        <span class="badge-dot"></span> Available for New Projects
+      </div>
+      <h1 class="hero-title">We Build <span class="blue">Premium Websites</span> For Modern Brands.</h1>
+      <p class="hero-sub">Get absolute clarity, exceptional functional design, and elite customer conversions engineered cleanly inside your digital landscape.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary btn-lg">Get Your Website</a>
+        <a href="https://wa.me/971547513482" class="btn btn-wa btn-lg" target="_blank" rel="noopener">Discuss via WhatsApp</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-item"><span class="trust-icon">✓</span> 138+ Happy Clients</div>
+        <div class="trust-item"><span class="trust-icon">★</span> 4.8/5 Global Rating</div>
+      </div>
+    </div>
+    
+    <!-- Hero Mockup Side -->
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="hero-card-bar">
+          <div class="hcb-dots">
+            <span style="background: #FF5F56;"></span>
+            <span style="background: #FFBD2E;"></span>
+            <span style="background: #27C93F;"></span>
           </div>
-          <div class="trust-item">
-            <div class="trust-icon">📱</div>
-            Mobile Responsive
+          <div class="hcb-bar-track"><div class="hcb-bar-fill"></div></div>
+        </div>
+        <div class="hero-site-preview">
+          <div class="preview-nav-bar">
+            <div class="preview-logo-row">
+              <span class="preview-logo-mark"></span>
+              <span class="preview-logo">Wik<em>grow</em></span>
+            </div>
+            <div class="preview-links"><span>Services</span><span>Works</span></div>
+            <span class="preview-nav-btn">Get Started</span>
           </div>
-          <div class="trust-item">
-            <div class="trust-icon">🔒</div>
-            Secure & Reliable
+          <div class="preview-hero-area">
+            <span class="preview-eyebrow">🚀 AUTOMATION READY</span>
+            <h2 class="preview-h">Scale Your <em>Agency</em> Growth</h2>
+            <p class="preview-p">High conversion performance dashboards built to secure international leads cleanly.</p>
+            <div class="preview-btns">
+              <span class="preview-btn pb1">Live Demo</span>
+              <span class="preview-btn pb2">Explore</span>
+            </div>
+          </div>
+          <div class="preview-dashboard">
+            <div class="preview-dash-card preview-dash-main">
+              <div class="pdc-head"><span>Growth Matrix</span><span class="pdc-pill">+28.4%</span></div>
+              <div class="pdc-chart">
+                <div class="pdc-bar" style="height: 40%;"></div>
+                <div class="pdc-bar" style="height: 65%;"></div>
+                <div class="pdc-bar" style="height: 50%;"></div>
+                <div class="pdc-bar pdc-bar-active" style="height: 95%;"></div>
+                <div class="pdc-bar" style="height: 75%;"></div>
+              </div>
+            </div>
+            <div class="preview-dash-card">
+              <div class="pdc-icon">⚡</div>
+              <div class="pdc-num">$54.2k</div>
+              <div class="pdc-lbl">Revenue Generated</div>
+            </div>
+            <div class="preview-dash-card">
+              <div class="pdc-icon">👥</div>
+              <div class="pdc-num">1,840</div>
+              <div class="pdc-lbl">Active Leads</div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="hero-visual">
-        <div class="hero-float1">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#10B981" opacity=".2"/><path d="M8 12l3 3 5-5" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span style="font-size:13px;font-weight:700;color:#0A0F2E;">Website Delivered ✓</span>
-        </div>
-        <div class="hero-card">
-          <div class="hero-card-bar">
-            <div class="hcb-dots">
-              <span style="background:#EF4444;"></span>
-              <span style="background:#F59E0B;"></span>
-              <span style="background:#10B981;"></span>
-            </div>
-            <div class="hcb-bar-track"><span class="hcb-bar-fill"></span></div>
-          </div>
-          <div class="hero-site-preview">
-            <div class="preview-nav-bar">
-              <div class="preview-logo-row">
-                <span class="preview-logo-mark"></span>
-                <span class="preview-logo">Nova<em>Peak</em></span>
-              </div>
-              <div class="preview-links">
-                <span>Home</span><span>Services</span><span>About</span><span>Contact</span>
-              </div>
-              <div class="preview-nav-btn">Get Started</div>
-            </div>
-            <div class="preview-hero-area">
-              <div class="preview-eyebrow">✦ Trusted by 500+ Businesses</div>
-              <div class="preview-h">Grow Your Business<br><em>With Confidence</em></div>
-              <p class="preview-p">Strategy, design, and technology working together to help your company scale faster and smarter.</p>
-              <div class="preview-btns">
-                <div class="preview-btn pb1">Get Started Free</div>
-                <div class="preview-btn pb2">▶ Watch Demo</div>
-              </div>
-            </div>
-            <div class="preview-dashboard">
-              <div class="preview-dash-card preview-dash-main">
-                <div class="pdc-head">
-                  <span>Revenue Overview</span>
-                  <span class="pdc-pill">+24.6%</span>
-                </div>
-                <div class="pdc-chart">
-                  <div class="pdc-bar" style="height:38%"></div>
-                  <div class="pdc-bar" style="height:55%"></div>
-                  <div class="pdc-bar" style="height:42%"></div>
-                  <div class="pdc-bar" style="height:70%"></div>
-                  <div class="pdc-bar" style="height:60%"></div>
-                  <div class="pdc-bar pdc-bar-active" style="height:88%"></div>
-                  <div class="pdc-bar" style="height:64%"></div>
-                </div>
-              </div>
-              <div class="preview-dash-card">
-                <div class="pdc-icon">👥</div>
-                <div class="pdc-num">12.4k</div>
-                <div class="pdc-lbl">Active Clients</div>
-              </div>
-              <div class="preview-dash-card">
-                <div class="pdc-icon">⭐</div>
-                <div class="pdc-num">4.9/5</div>
-                <div class="pdc-lbl">Avg. Rating</div>
-              </div>
-            </div>
-            <div class="preview-stats">
-              <div class="preview-stat"><div class="ps-num">500+</div><div class="ps-lbl">Clients</div></div>
-              <div class="preview-stat"><div class="ps-num">98%</div><div class="ps-lbl">Satisfaction</div></div>
-              <div class="preview-stat"><div class="ps-num">30+</div><div class="ps-lbl">Countries</div></div>
-            </div>
-          </div>
-        </div>
-        <div class="hero-float2" style="font-size:13px;font-weight:700;">
-          <div>⭐ 4.8/5 Rating</div>
-          <div style="font-size:11px;opacity:.8;margin-top:2px;">138+ Websites Delivered</div>
-        </div>
-      </div>
+      <div class="hero-float1">📈 Conversion Rate **+42%**</div>
+      <div class="hero-float2">✨ Premium Identity</div>
     </div>
   </div>
 </section>
 
-<!-- ===== STATS ===== -->
+<!-- ===== STATS BAR ===== -->
 <div class="stats-bar">
-  <div class="container">
-    <div class="stats-grid">
-      <div class="stat-item fade-up">
-        <div class="stat-icon">🌐</div>
-        <div class="stat-num"><em>138</em>+</div>
-        <div class="stat-label">Websites Delivered</div>
-      </div>
-      <div class="stat-item fade-up fade-up-d1">
-        <div class="stat-icon">⭐</div>
-        <div class="stat-num"><em>4.8</em>/5</div>
-        <div class="stat-label">Client Rating</div>
-      </div>
-      <div class="stat-item fade-up fade-up-d2">
-        <div class="stat-icon">📅</div>
-        <div class="stat-num"><em>3</em>+</div>
-        <div class="stat-label">Years Experience</div>
-      </div>
-      <div class="stat-item fade-up fade-up-d3">
-        <div class="stat-icon">⚡</div>
-        <div class="stat-num" style="font-size:22px;"><em>Fast</em></div>
-        <div class="stat-label">Delivery Promise</div>
-      </div>
-      <div class="stat-item fade-up fade-up-d4">
-        <div class="stat-icon">🛡️</div>
-        <div class="stat-num" style="font-size:22px;"><em>Pro</em></div>
-        <div class="stat-label">Support Always</div>
-      </div>
+  <div class="container stats-grid">
+    <div class="stat-item">
+      <div class="stat-num">138<em>+</em></div>
+      <div class="stat-label">Projects Completed</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">$50<em>+</em></div>
+      <div class="stat-label">Packages Starting At</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">99<em>%</em></div>
+      <div class="stat-label">Client Satisfaction</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">24<em>/7</em></div>
+      <div class="stat-label">Expert Support</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">3<em>+</em></div>
+      <div class="stat-label">Years Experience</div>
     </div>
   </div>
 </div>
 
-<!-- ===== SERVICES ===== -->
+<!-- ===== SERVICES SECTION ===== -->
 <section id="services" class="section">
   <div class="container">
     <div class="services-intro">
       <div>
-        <div class="eyebrow">What We Offer</div>
-        <h2 class="section-title">Services That Drive<br>Real Business Growth</h2>
+        <span class="eyebrow">Our Capabilities</span>
+        <h2 class="section-title">Comprehensive Digital Services</h2>
       </div>
-      <p class="section-sub">From websites to AI automation — we build the digital infrastructure your business needs to compete and grow.</p>
+      <p class="section-sub">We combine clean development structures with calculated growth systems to give your business a decisive technical edge.</p>
     </div>
-
-    <!-- Featured Offer -->
-    <div class="featured-service fade-up">
-      <div class="featured-badge">⭐ Most Popular</div>
+    
+    <div class="featured-service">
       <div class="featured-inner">
         <div>
-          <h3 class="featured-title">Website<br>Development</h3>
+          <span class="featured-badge">🔥 Most Popular Pack</span>
+          <h3 class="featured-title">Complete Professional Website Development Bundle</h3>
+          <p style="color: rgba(255,255,255,.7); margin-bottom: 24px; font-size: 15px;">Get a highly optimized, fully customized premium brand platform optimized completely for global deployment and Google search success.</p>
+          <div class="feat-includes">
+            <div class="feat-item"><span class="feat-check">✓</span> Fully Custom Responsive Layout</div>
+            <div class="feat-item"><span class="feat-check">✓</span> Advanced Technical SEO Integration</div>
+            <div class="feat-item"><span class="feat-check">✓</span> High-Performance Speed Tuning</div>
+            <div class="feat-item"><span class="feat-check">✓</span> Premium Content Asset Delivery</div>
+          </div>
+        </div>
+        <div style="text-align: center; border-left: 1px solid rgba(255,255,255,.1); padding-left: 24px;">
+          <span style="color: rgba(255,255,255,.6); font-size: 14px; font-weight: 600; text-transform: uppercase;">Special Setup Offer</span>
           <div class="featured-price">$50</div>
-          <div class="featured-price-note">One-time price · No hidden fees</div>
-          <div class="featured-actions">
-            <a href="#contact" class="btn btn-white btn-lg">Get Website for $50</a>
-            <a href="https://wa.me/971547513482" class="btn btn-wa btn-lg" target="_blank" rel="noopener">Chat on WhatsApp</a>
+          <p class="featured-price-note">Fixed One-Time Investment • No Hidden Fees</p>
+          <div class="featured-actions" style="justify-content: center;">
+            <a href="#contact" class="btn btn-primary">Book This Package</a>
+            <a href="https://wa.me/971547513482" class="btn btn-wa" target="_blank" rel="noopener">Inquire via Chat</a>
           </div>
-        </div>
-        <div class="feat-includes">
-          <div class="feat-item"><div class="feat-check">✓</div>Professional Website</div>
-          <div class="feat-item"><div class="feat-check">✓</div>Free Domain</div>
-          <div class="feat-item"><div class="feat-check">✓</div>Free Hosting</div>
-          <div class="feat-item"><div class="feat-check">✓</div>Contact Form</div>
-          <div class="feat-item"><div class="feat-check">✓</div>WhatsApp Integration</div>
-          <div class="feat-item"><div class="feat-check">✓</div>Responsive Design</div>
-          <div class="feat-item"><div class="feat-check">✓</div>Fast Loading Speed</div>
-          <div class="feat-item"><div class="feat-check">✓</div>Modern UI Design</div>
-          <div class="feat-item"><div class="feat-check">✓</div>SEO Friendly Structure</div>
-          <div class="feat-item"><div class="feat-check">✓</div>Free Revisions</div>
         </div>
       </div>
     </div>
 
-    <!-- Other Services -->
     <div class="services-grid">
-      <div class="srv-card fade-up">
-        <div class="srv-icon">🎨</div>
-        <div class="srv-title">Graphic Designing</div>
-        <p class="srv-desc">Logos, brand kits, banners, and visual assets that make your brand instantly recognizable and memorable.</p>
-        <div class="srv-actions">
-          <a href="https://wa.me/971547513482" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
-          <a href="#contact" class="btn btn-outline srv-btn">Contact</a>
-        </div>
+      <div class="srv-card">
+        <div class="srv-icon">💻</div>
+        <h3 class="srv-title">Web Development</h3>
+        <p class="srv-desc">Clean, optimized codebases built for speed, responsiveness, and maximum device flexibility across all standard environments.</p>
       </div>
-      <div class="srv-card fade-up fade-up-d1">
-        <div class="srv-icon">📊</div>
-        <div class="srv-title">Digital Marketing</div>
-        <p class="srv-desc">Data-driven campaigns across paid ads, social media, and email that deliver measurable ROI for your business.</p>
-        <div class="srv-actions">
-          <a href="https://wa.me/971547513482" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
-          <a href="#contact" class="btn btn-outline srv-btn">Contact</a>
-        </div>
+      <div class="srv-card">
+        <div class="srv-icon">🎯</div>
+        <h3 class="srv-title">SEO Optimization</h3>
+        <p class="srv-desc">Advanced index structuring, precise structural layout schemes, and optimization patterns to rank directly over competitors.</p>
       </div>
-      <div class="srv-card fade-up fade-up-d2">
-        <div class="srv-icon">🔍</div>
-        <div class="srv-title">SEO Optimization</div>
-        <p class="srv-desc">Rank higher on Google with on-page SEO, technical audits, keyword strategy, and link building that lasts.</p>
-        <div class="srv-actions">
-          <a href="https://wa.me/971547513482" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
-          <a href="#contact" class="btn btn-outline srv-btn">Contact</a>
-        </div>
-      </div>
-      <div class="srv-card fade-up">
+      <div class="srv-card">
         <div class="srv-icon">🤖</div>
-        <div class="srv-title">AI Agents</div>
-        <p class="srv-desc">Custom AI agents that handle customer support, lead qualification, and business tasks — 24/7 without breaks.</p>
-        <div class="srv-actions">
-          <a href="https://wa.me/971547513482" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
-          <a href="#contact" class="btn btn-outline srv-btn">Contact</a>
-        </div>
-      </div>
-      <div class="srv-card fade-up fade-up-d1">
-        <div class="srv-icon">⚙️</div>
-        <div class="srv-title">AI Automation</div>
-        <p class="srv-desc">Automate repetitive workflows, reporting, and operations with intelligent AI systems tailored to your business.</p>
-        <div class="srv-actions">
-          <a href="https://wa.me/971547513482" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
-          <a href="#contact" class="btn btn-outline srv-btn">Contact</a>
-        </div>
-      </div>
-      <div class="srv-card fade-up fade-up-d2">
-        <div class="srv-icon">🔄</div>
-        <div class="srv-title">AI Workflow Development</div>
-        <p class="srv-desc">End-to-end AI pipeline design that connects your tools, automates decisions, and scales your operations intelligently.</p>
-        <div class="srv-actions">
-          <a href="https://wa.me/971547513482" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
-          <a href="#contact" class="btn btn-outline srv-btn">Contact</a>
-        </div>
-      </div>
-      <div class="srv-card fade-up">
-        <div class="srv-icon">🔌</div>
-        <div class="srv-title">Themes & Plugins</div>
-        <p class="srv-desc">Premium WordPress themes, custom plugins, and WooCommerce setups built to your exact business requirements.</p>
-        <div class="srv-actions">
-          <a href="https://wa.me/971547513482" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
-          <a href="#contact" class="btn btn-outline srv-btn">Contact</a>
-        </div>
-      </div>
-      <div class="srv-card fade-up fade-up-d1">
-        <div class="srv-icon">🛠️</div>
-        <div class="srv-title">Website Maintenance</div>
-        <p class="srv-desc">Keep your site fast, secure, and up-to-date with ongoing maintenance, updates, backups, and technical support.</p>
-        <div class="srv-actions">
-          <a href="https://wa.me/971547513482" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
-          <a href="#contact" class="btn btn-outline srv-btn">Contact</a>
-        </div>
-      </div>
-      <div class="srv-card fade-up fade-up-d2">
-        <div class="srv-icon">🚀</div>
-        <div class="srv-title">Landing Pages</div>
-        <p class="srv-desc">High-converting landing pages crafted to maximize leads and sales for your campaigns, products, and promotions.</p>
-        <div class="srv-actions">
-          <a href="https://wa.me/971547513482" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
-          <a href="#contact" class="btn btn-outline srv-btn">Contact</a>
-        </div>
-      </div>
-      <div class="srv-card fade-up">
-        <div class="srv-icon">♻️</div>
-        <div class="srv-title">Website Redesign</div>
-        <p class="srv-desc">Transform outdated websites into modern, fast, and conversion-optimized digital experiences your customers love.</p>
-        <div class="srv-actions">
-          <a href="https://wa.me/971547513482" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
-          <a href="#contact" class="btn btn-outline srv-btn">Contact</a>
-        </div>
-      </div>
-      <div class="srv-card fade-up fade-up-d1">
-        <div class="srv-icon">💼</div>
-        <div class="srv-title">Business Branding</div>
-        <p class="srv-desc">Complete brand identity packages including logo, color system, typography, and brand guidelines for consistent presence.</p>
-        <div class="srv-actions">
-          <a href="https://wa.me/971547513482" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
-          <a href="#contact" class="btn btn-outline srv-btn">Contact</a>
-        </div>
-      </div>
-      <div class="srv-card fade-up fade-up-d2">
-        <div class="srv-icon">📱</div>
-        <div class="srv-title">Social Media Design</div>
-        <p class="srv-desc">Scroll-stopping posts, reels thumbnails, story templates, and ad creatives designed to grow your social presence.</p>
-        <div class="srv-actions">
-          <a href="https://wa.me/971547513482" class="btn btn-ghost srv-btn" target="_blank" rel="noopener">WhatsApp</a>
-          <a href="#contact" class="btn btn-outline srv-btn">Contact</a>
-        </div>
+        <h3 class="srv-title">AI & Automation</h3>
+        <p class="srv-desc">Automated workflow paths, integrated smart scheduling, and direct asset delivery setups engineered to save workload hours.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== PORTFOLIO ===== -->
-<section id="portfolio" class="section">
-  <div class="container">
-    <div class="center" style="margin-bottom:52px;">
-      <div class="eyebrow">Our Work</div>
-      <h2 class="section-title">Websites That Work<br>As Hard As You Do</h2>
-      <p class="section-sub">A selection of recent projects — each one built to convert visitors into customers.</p>
-    </div>
-    <div class="portfolio-grid">
-      <!-- Card 1 -->
-      <div class="port-card fade-up">
-        <div class="port-screen">
-          <div class="port-screen-inner">
-            <div class="port-bar">
-              <div class="port-dots"><span style="background:#EF4444"></span><span style="background:#F59E0B"></span><span style="background:#10B981"></span></div>
-              <div class="port-url"><span></span></div>
-            </div>
-            <div class="port-site" style="background:linear-gradient(160deg,#0A0F2E,#1A2052);color:#fff;">
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
-                <div style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;border-radius:4px;background:linear-gradient(135deg,#2563EB,#4F8EF7);display:inline-block;"></span><span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:13px;">NovaPeak</span></div>
-                <div style="display:flex;gap:9px;"><span style="font-size:9px;color:rgba(255,255,255,.5)">Services</span><span style="font-size:9px;color:rgba(255,255,255,.5)">About</span><span style="font-size:9px;color:rgba(255,255,255,.5)">Contact</span></div>
-              </div>
-              <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:19px;font-weight:800;line-height:1.2;margin-bottom:8px;">Building the Future<br><span style="color:#F59E0B;">One Solution at a Time</span></div>
-              <p style="font-size:10px;color:rgba(255,255,255,.6);line-height:1.5;margin-bottom:12px;">Management consulting for tomorrow's challenges.</p>
-              <div style="display:flex;gap:8px;margin-bottom:14px;">
-                <div style="padding:6px 12px;background:#2563EB;border-radius:5px;font-size:10px;font-weight:700;">Get Started</div>
-                <div style="padding:6px 12px;border:1px solid rgba(255,255,255,.2);border-radius:5px;font-size:10px;">Learn More</div>
-              </div>
-              <div style="display:flex;gap:8px;margin-top:auto;">
-                <div style="flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:8px;"><div style="font-size:13px;font-weight:800;color:#fff;">250+</div><div style="font-size:8px;color:rgba(255,255,255,.5);">Clients Served</div></div>
-                <div style="flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:8px;"><div style="font-size:13px;font-weight:800;color:#fff;">98%</div><div style="font-size:8px;color:rgba(255,255,255,.5);">Success Rate</div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="port-info">
-          <div class="port-industry">Consulting</div>
-          <div class="port-name">NovaPeak Solutions</div>
-          <p class="port-desc">Corporate consulting firm needing a premium online presence to compete with larger agencies and attract enterprise clients.</p>
-          <div class="port-tags">
-            <span class="port-tag">Custom Design</span>
-            <span class="port-tag">SEO</span>
-            <span class="port-tag">Lead Gen</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="port-card fade-up fade-up-d1">
-        <div class="port-screen">
-          <div class="port-screen-inner">
-            <div class="port-bar">
-              <div class="port-dots"><span style="background:#EF4444"></span><span style="background:#F59E0B"></span><span style="background:#10B981"></span></div>
-              <div class="port-url"><span></span></div>
-            </div>
-            <div class="port-site" style="background:linear-gradient(160deg,#FAF5F0,#F0E8E0);color:#2A1F1A;">
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
-                <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:13px;color:#7C5C48;letter-spacing:.04em;">BRIGHTNEST</span>
-                <div style="display:flex;gap:9px;"><span style="font-size:9px;color:#9E8070">Portfolio</span><span style="font-size:9px;color:#9E8070">Services</span><span style="font-size:9px;color:#9E8070">Contact</span></div>
-              </div>
-              <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:800;line-height:1.2;margin-bottom:8px;color:#2A1F1A;">Where Spaces Tell<br><span style="color:#C17F5D;">Your Story</span></div>
-              <p style="font-size:10px;color:#9E8070;line-height:1.5;margin-bottom:12px;">Premium interior design that transforms everyday spaces into exceptional environments.</p>
-              <div style="display:flex;gap:8px;margin-bottom:12px;">
-                <div style="padding:6px 12px;background:#C17F5D;border-radius:5px;font-size:10px;font-weight:700;color:#fff;">View Portfolio</div>
-                <div style="padding:6px 12px;border:1px solid #C17F5D;border-radius:5px;font-size:10px;color:#7C5C48;">Book a Visit</div>
-              </div>
-              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:auto;">
-                <div style="aspect-ratio:1;border-radius:6px;background:linear-gradient(160deg,#E0C8B0,#C8A888);"></div>
-                <div style="aspect-ratio:1;border-radius:6px;background:linear-gradient(160deg,#D8C0A8,#B89878);"></div>
-                <div style="aspect-ratio:1;border-radius:6px;background:linear-gradient(160deg,#EDE0D0,#D0B898);"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="port-info">
-          <div class="port-industry">Interior Design</div>
-          <div class="port-name">BrightNest Interiors</div>
-          <p class="port-desc">Boutique interior design studio that needed a portfolio-focused website to showcase projects and attract high-value residential clients.</p>
-          <div class="port-tags">
-            <span class="port-tag">Portfolio Site</span>
-            <span class="port-tag">Gallery</span>
-            <span class="port-tag">Contact Form</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="port-card fade-up fade-up-d2">
-        <div class="port-screen">
-          <div class="port-screen-inner">
-            <div class="port-bar">
-              <div class="port-dots"><span style="background:#EF4444"></span><span style="background:#F59E0B"></span><span style="background:#10B981"></span></div>
-              <div class="port-url"><span></span></div>
-            </div>
-            <div class="port-site" style="background:linear-gradient(160deg,#0F2027,#203A43,#2C5364);color:#fff;">
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
-                <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:13px;color:#7ECFD4;">UrbanHive</span>
-                <div style="display:flex;gap:9px;"><span style="font-size:9px;color:rgba(255,255,255,.5)">Work</span><span style="font-size:9px;color:rgba(255,255,255,.5)">Studio</span><span style="font-size:9px;color:rgba(255,255,255,.5)">Contact</span></div>
-              </div>
-              <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:800;line-height:1.2;margin-bottom:8px;">Design That<br><span style="color:#7ECFD4;">Makes an Impact</span></div>
-              <p style="font-size:10px;color:rgba(255,255,255,.6);line-height:1.5;margin-bottom:12px;">Creative studio specializing in brand identity and digital experiences.</p>
-              <div style="display:flex;gap:8px;margin-bottom:12px;">
-                <div style="padding:6px 12px;background:#7ECFD4;border-radius:5px;font-size:10px;font-weight:700;color:#0F2027;">View Work</div>
-                <div style="padding:6px 12px;border:1px solid rgba(255,255,255,.25);border-radius:5px;font-size:10px;">Our Process</div>
-              </div>
-              <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:6px;margin-top:auto;">
-                <div style="border-radius:6px;background:linear-gradient(135deg,#3A5A6E,#5E8BA0);min-height:46px;"></div>
-                <div style="display:flex;flex-direction:column;gap:6px;">
-                  <div style="flex:1;border-radius:6px;background:linear-gradient(135deg,#7ECFD4,#3A5A6E);"></div>
-                  <div style="flex:1;border-radius:6px;background:linear-gradient(135deg,#5E8BA0,#2C5364);"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="port-info">
-          <div class="port-industry">Creative Studio</div>
-          <div class="port-name">UrbanHive Studio</div>
-          <p class="port-desc">A creative design agency that required a bold, portfolio-heavy website to attract brand identity and digital product clients globally.</p>
-          <div class="port-tags">
-            <span class="port-tag">Creative Design</span>
-            <span class="port-tag">Animation</span>
-            <span class="port-tag">CMS</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="port-card fade-up">
-        <div class="port-screen">
-          <div class="port-screen-inner">
-            <div class="port-bar">
-              <div class="port-dots"><span style="background:#EF4444"></span><span style="background:#F59E0B"></span><span style="background:#10B981"></span></div>
-              <div class="port-url"><span></span></div>
-            </div>
-            <div class="port-site" style="background:linear-gradient(160deg,#EBF5FF,#DBEAFE);color:#0A0F2E;">
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
-                <div style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;border-radius:4px;background:linear-gradient(135deg,#1D4ED8,#60A5FA);display:inline-block;"></span><span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:13px;color:#1D4ED8;">BlueOrbit</span></div>
-                <div style="display:flex;gap:9px;"><span style="font-size:9px;color:#64748B">Solutions</span><span style="font-size:9px;color:#64748B">Team</span><span style="font-size:9px;color:#64748B">Contact</span></div>
-              </div>
-              <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:800;line-height:1.2;margin-bottom:8px;color:#0A0F2E;">IT Solutions for a<br><span style="color:#2563EB;">Connected World</span></div>
-              <p style="font-size:10px;color:#64748B;line-height:1.5;margin-bottom:12px;">Managed IT services and cloud infrastructure for modern businesses.</p>
-              <div style="display:flex;gap:8px;margin-bottom:12px;">
-                <div style="padding:6px 12px;background:#2563EB;border-radius:5px;font-size:10px;font-weight:700;color:#fff;">Get a Quote</div>
-                <div style="padding:6px 12px;border:1px solid #BFDBFE;border-radius:5px;font-size:10px;color:#2563EB;">Our Services</div>
-              </div>
-              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:auto;">
-                <div style="background:#fff;border:1px solid #DBEAFE;border-radius:6px;padding:8px;text-align:center;font-size:14px;">☁️<div style="font-size:8px;color:#64748B;margin-top:3px;">Cloud</div></div>
-                <div style="background:#fff;border:1px solid #DBEAFE;border-radius:6px;padding:8px;text-align:center;font-size:14px;">🔒<div style="font-size:8px;color:#64748B;margin-top:3px;">Security</div></div>
-                <div style="background:#fff;border:1px solid #DBEAFE;border-radius:6px;padding:8px;text-align:center;font-size:14px;">🛠️<div style="font-size:8px;color:#64748B;margin-top:3px;">Support</div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="port-info">
-          <div class="port-industry">IT Services</div>
-          <div class="port-name">BlueOrbit Services</div>
-          <p class="port-desc">Managed IT provider needing a professional website with service pages, team section, and automated quote request system.</p>
-          <div class="port-tags">
-            <span class="port-tag">Service Pages</span>
-            <span class="port-tag">WhatsApp Bot</span>
-            <span class="port-tag">Quote Form</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 5 -->
-      <div class="port-card fade-up fade-up-d1">
-        <div class="port-screen">
-          <div class="port-screen-inner">
-            <div class="port-bar">
-              <div class="port-dots"><span style="background:#EF4444"></span><span style="background:#F59E0B"></span><span style="background:#10B981"></span></div>
-              <div class="port-url"><span></span></div>
-            </div>
-            <div class="port-site" style="background:linear-gradient(160deg,#0C0C0C,#1C1C2E);color:#fff;">
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
-                <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:13px;color:#A78BFA;">SkyBridge</span>
-                <div style="display:flex;gap:9px;"><span style="font-size:9px;color:rgba(255,255,255,.4)">Portfolio</span><span style="font-size:9px;color:rgba(255,255,255,.4)">Invest</span><span style="font-size:9px;color:rgba(255,255,255,.4)">Contact</span></div>
-              </div>
-              <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:800;line-height:1.2;margin-bottom:8px;">Ventures That<br><span style="color:#A78BFA;">Shape Tomorrow</span></div>
-              <p style="font-size:10px;color:rgba(255,255,255,.55);line-height:1.5;margin-bottom:12px;">Early-stage investment fund backing bold founders with transformative ideas.</p>
-              <div style="display:flex;gap:8px;margin-bottom:12px;">
-                <div style="padding:6px 12px;background:#A78BFA;border-radius:5px;font-size:10px;font-weight:700;color:#fff;">Apply Now</div>
-                <div style="padding:6px 12px;border:1px solid rgba(255,255,255,.2);border-radius:5px;font-size:10px;">Our Portfolio</div>
-              </div>
-              <div style="display:flex;gap:8px;margin-top:auto;">
-                <div style="flex:1;background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.25);border-radius:6px;padding:8px;text-align:center;"><div style="font-size:13px;font-weight:800;">$120M</div><div style="font-size:8px;color:rgba(255,255,255,.5);">AUM</div></div>
-                <div style="flex:1;background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.25);border-radius:6px;padding:8px;text-align:center;"><div style="font-size:13px;font-weight:800;">42</div><div style="font-size:8px;color:rgba(255,255,255,.5);">Portfolio Cos</div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="port-info">
-          <div class="port-industry">Venture Capital</div>
-          <div class="port-name">SkyBridge Ventures</div>
-          <p class="port-desc">Early-stage VC fund that required a premium, credibility-building website with portfolio showcase and founder application system.</p>
-          <div class="port-tags">
-            <span class="port-tag">Premium Design</span>
-            <span class="port-tag">Application Form</span>
-            <span class="port-tag">Portfolio</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 6 -->
-      <div class="port-card fade-up fade-up-d2">
-        <div class="port-screen">
-          <div class="port-screen-inner">
-            <div class="port-bar">
-              <div class="port-dots"><span style="background:#EF4444"></span><span style="background:#F59E0B"></span><span style="background:#10B981"></span></div>
-              <div class="port-url"><span></span></div>
-            </div>
-            <div class="port-site" style="background:linear-gradient(160deg,#F5F5F0,#EFEFEA);color:#0A0F2E;">
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
-                <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:13px;color:#92400E;letter-spacing:.04em;">ELITECORE</span>
-                <div style="display:flex;gap:9px;"><span style="font-size:9px;color:#92400E">Services</span><span style="font-size:9px;color:#92400E">Team</span><span style="font-size:9px;color:#92400E">Contact</span></div>
-              </div>
-              <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:800;line-height:1.2;margin-bottom:8px;color:#0A0F2E;">Strategy That<br><span style="color:#D97706;">Delivers Results</span></div>
-              <p style="font-size:10px;color:#64748B;line-height:1.5;margin-bottom:12px;">Executive coaching and business strategy consulting for growth-stage companies.</p>
-              <div style="display:flex;gap:8px;margin-bottom:12px;">
-                <div style="padding:6px 12px;background:#D97706;border-radius:5px;font-size:10px;font-weight:700;color:#fff;">Book Consultation</div>
-                <div style="padding:6px 12px;border:1px solid #E7D9C0;border-radius:5px;font-size:10px;color:#92400E;">Case Studies</div>
-              </div>
-              <div style="display:flex;align-items:center;gap:10px;margin-top:auto;background:#fff;border:1px solid #E7D9C0;border-radius:6px;padding:8px 10px;">
-                <div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#D97706,#92400E);flex-shrink:0;"></div>
-                <div><div style="font-size:9px;font-weight:700;">"Results within weeks."</div><div style="font-size:8px;color:#92400E;">— Client, Fortune 500</div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="port-info">
-          <div class="port-industry">Business Strategy</div>
-          <div class="port-name">EliteCore Consulting</div>
-          <p class="port-desc">Executive consulting firm requiring a polished, trust-forward website with case studies, team profiles, and a booking integration.</p>
-          <div class="port-tags">
-            <span class="port-tag">Booking System</span>
-            <span class="port-tag">Case Studies</span>
-            <span class="port-tag">Team Profiles</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== WHY WIKGROW ===== -->
-<section id="why">
-  <div class="container">
-    <div class="why-inner">
-      <div class="why-left">
-        <div class="eyebrow" style="color:rgba(255,255,255,.6);">Why Wikgrow</div>
-        <h2 class="section-title">The Agency That<br>Gets It Done Right</h2>
-        <p class="section-sub">We combine premium quality with affordable pricing — because every business deserves a professional online presence.</p>
-      </div>
-      <div class="why-grid">
-        <div class="why-item fade-up">
-          <div class="why-icon">💰</div>
-          <div class="why-title">Affordable Pricing</div>
-          <div class="why-desc">Premium quality doesn't have to cost a fortune. Starting at $50 with no hidden fees or surprise invoices.</div>
-        </div>
-        <div class="why-item fade-up fade-up-d1">
-          <div class="why-icon">🏆</div>
-          <div class="why-title">Professional Quality</div>
-          <div class="why-desc">Every website is built to the same standard we'd use for Fortune 500 companies — regardless of your budget.</div>
-        </div>
-        <div class="why-item fade-up fade-up-d2">
-          <div class="why-icon">⚡</div>
-          <div class="why-title">Fast Delivery</div>
-          <div class="why-desc">Your business can't wait. Most projects are delivered in days, not weeks or months like traditional agencies.</div>
-        </div>
-        <div class="why-item fade-up fade-up-d3">
-          <div class="why-icon">🎯</div>
-          <div class="why-title">Business-Focused</div>
-          <div class="why-desc">We build websites that convert. Every design decision is made with your sales and growth goals in mind.</div>
-        </div>
-        <div class="why-item fade-up">
-          <div class="why-icon">🤝</div>
-          <div class="why-title">Reliable Support</div>
-          <div class="why-desc">We're always a WhatsApp message away. Fast, human support from the team that built your website.</div>
-        </div>
-        <div class="why-item fade-up fade-up-d1">
-          <div class="why-icon">🔬</div>
-          <div class="why-title">Modern Technologies</div>
-          <div class="why-desc">Built with the latest web standards — fast loading, mobile-first, and future-ready for AI-powered features.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== TEAM ===== -->
-<section id="team" class="section">
-  <div class="container">
-    <div class="center" style="margin-bottom:52px;">
-      <div class="eyebrow">The People Behind It</div>
-      <h2 class="section-title">Meet The Team</h2>
-      <p class="section-sub">A small, dedicated team of specialists committed to delivering exceptional digital results for every client.</p>
-    </div>
-    <div class="team-grid">
-      <!-- Waqar Ali - using real photo -->
-      <div class="team-card fade-up">
-        <div class="team-img-wrap">
-          <img src="waqar-ali.jpg" alt="Waqar Ali - Founder & Web Developer at Wikgrow" loading="lazy">
-        </div>
-        <div class="team-info">
-          <div class="team-name">Waqar Ali</div>
-          <div class="team-role">Founder & Web Developer</div>
-          <p class="team-bio">3+ years building high-performance websites for businesses worldwide. Passionate about clean code and converting designs.</p>
-          <div class="team-socials">
-            <a href="https://wa.me/971547513482" class="social-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5.006L2 22l5.137-1.349A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
-            </a>
-            <a href="#contact" class="social-btn" aria-label="Email">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Team Member 2 - UI/UX Designer SVG Avatar -->
-      <div class="team-card fade-up fade-up-d1">
-        <div class="team-img-wrap">
-          <img src="team-member-1.jpg" alt="Sophia Martinez - UI/UX Designer at Wikgrow" loading="lazy">
-        </div>
-        <div class="team-info">
-          <div class="team-name">Sophia Martinez</div>
-          <div class="team-role">UI/UX Designer</div>
-          <p class="team-bio">Creates intuitive, beautiful interfaces that balance aesthetics with usability. Specializes in conversion-optimized design systems.</p>
-          <div class="team-socials">
-            <a href="https://wa.me/971547513482" class="social-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5.006L2 22l5.137-1.349A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
-            </a>
-            <a href="#contact" class="social-btn" aria-label="Email">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Team Member 3 - SEO Specialist -->
-      <div class="team-card fade-up fade-up-d2">
-        <div class="team-img-wrap">
-          <img src="team-member-2.jpg" alt="Ethan Brooks - SEO Specialist at Wikgrow" loading="lazy">
-        </div>
-        <div class="team-info">
-          <div class="team-name">Ethan Brooks</div>
-          <div class="team-role">SEO Specialist</div>
-          <p class="team-bio">Technical SEO expert with deep expertise in Google ranking strategies, core web vitals, and organic traffic growth for businesses.</p>
-          <div class="team-socials">
-            <a href="https://wa.me/971547513482" class="social-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5.006L2 22l5.137-1.349A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
-            </a>
-            <a href="#contact" class="social-btn" aria-label="Email">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Team Member 4 - Digital Marketing Expert -->
-      <div class="team-card fade-up fade-up-d3">
-        <div class="team-img-wrap">
-          <img src="team-member-3.jpg" alt="Liam Anderson - Digital Marketing Expert at Wikgrow" loading="lazy">
-        </div>
-        <div class="team-info">
-          <div class="team-name">Liam Anderson</div>
-          <div class="team-role">Digital Marketing Expert</div>
-          <p class="team-bio">Growth strategist specializing in paid ads, social media, and content marketing that delivers measurable ROI for clients.</p>
-          <div class="team-socials">
-            <a href="https://wa.me/971547513482" class="social-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5.006L2 22l5.137-1.349A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
-            </a>
-            <a href="#contact" class="social-btn" aria-label="Email">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== REVIEWS ===== -->
-<section id="reviews" class="section">
-  <div class="container">
-    <div class="center" style="margin-bottom:52px;">
-      <div class="eyebrow">Client Reviews</div>
-      <h2 class="section-title">What Our Clients Say</h2>
-      <p class="section-sub">Real feedback from real business owners who've worked with us.</p>
-    </div>
-    <div class="reviews-grid">
-      <div class="review-card fade-up">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
-          <div class="review-stars">
-            <span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span>
-          </div>
-          <span class="rating-num">5.0</span>
-        </div>
-        <p class="review-text">"I was honestly skeptical about a $50 website — I thought it would look cheap. But what Waqar delivered blew my mind. It looks like a $2,000 website. Clients keep asking who designed it. Worth every penny and more."</p>
-        <div class="review-author">
-          <div class="review-avatar" style="background:linear-gradient(135deg,#2563EB,#1D4ED8);">MK</div>
-          <div>
-            <div class="review-name">Mohammed Khalid</div>
-            <div class="review-role">Real Estate Consultant, UAE</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="review-card fade-up fade-up-d1">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
-          <div class="review-stars">
-            <span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span><span class="star" style="opacity:.4">⭐</span>
-          </div>
-          <span class="rating-num">4.8</span>
-        </div>
-        <p class="review-text">"The SEO work they did has pushed us to page 1 for three of our most important keywords. We're getting 60% more organic traffic now. Communication was always prompt and they explained everything clearly."</p>
-        <div class="review-author">
-          <div class="review-avatar" style="background:linear-gradient(135deg,#10B981,#059669);">SR</div>
-          <div>
-            <div class="review-name">Samira Raza</div>
-            <div class="review-role">E-commerce Store Owner, UK</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="review-card fade-up fade-up-d2">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
-          <div class="review-stars">
-            <span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span>
-          </div>
-          <span class="rating-num">4.9</span>
-        </div>
-        <p class="review-text">"Fast, professional, no nonsense. I needed a landing page for my coaching program in 3 days. They delivered in 2. The WhatsApp integration works perfectly and I'm already getting inquiries through it."</p>
-        <div class="review-author">
-          <div class="review-avatar" style="background:linear-gradient(135deg,#F59E0B,#D97706);">JA</div>
-          <div>
-            <div class="review-name">James Anderson</div>
-            <div class="review-role">Business Coach, Canada</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="review-card fade-up">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
-          <div class="review-stars">
-            <span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span><span class="star" style="opacity:.4">⭐</span>
-          </div>
-          <span class="rating-num">4.6</span>
-        </div>
-        <p class="review-text">"Good work overall. The design is clean and modern, the loading speed is excellent, and the mobile experience is great. Took one extra revision than I expected but the final result is really solid. Would recommend."</p>
-        <div class="review-author">
-          <div class="review-avatar" style="background:linear-gradient(135deg,#8B5CF6,#6D28D9);">FN</div>
-          <div>
-            <div class="review-name">Fatima Noor</div>
-            <div class="review-role">Salon Owner, Saudi Arabia</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="review-card fade-up fade-up-d1">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
-          <div class="review-stars">
-            <span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span>
-          </div>
-          <span class="rating-num">5.0</span>
-        </div>
-        <p class="review-text">"We hired Wikgrow for our clinic website and couldn't be happier. They understood our target audience immediately, the booking form works flawlessly, and our online appointment requests have tripled in the first month."</p>
-        <div class="review-author">
-          <div class="review-avatar" style="background:linear-gradient(135deg,#EF4444,#DC2626);">DK</div>
-          <div>
-            <div class="review-name">Dr. Daniel Kim</div>
-            <div class="review-role">Clinic Director, Australia</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="review-card fade-up fade-up-d2">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
-          <div class="review-stars">
-            <span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span><span class="star" style="opacity:.5">⭐</span>
-          </div>
-          <span class="rating-num">4.7</span>
-        </div>
-        <p class="review-text">"The digital marketing campaign they set up has been running for 3 months now and our cost-per-lead is down 40%. The team knows what they're doing and they're always responsive when I have questions. Solid agency."</p>
-        <div class="review-author">
-          <div class="review-avatar" style="background:linear-gradient(135deg,#14B8A6,#0D9488);">AM</div>
-          <div>
-            <div class="review-name">Ahmed Mustafa</div>
-            <div class="review-role">Tech Startup Founder, USA</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== TRUST ===== -->
-<section id="trust" class="section-sm">
-  <div class="container">
-    <div class="center" style="margin-bottom:48px;">
-      <div class="eyebrow">Why Trust Us</div>
-      <h2 class="section-title">Built on Results,<br>Backed by Numbers</h2>
-    </div>
-    <div class="trust-grid">
-      <div class="trust-card fade-up">
-        <div class="trust-card-icon">🌐</div>
-        <div class="trust-card-num">138+</div>
-        <div class="trust-card-label">Websites Delivered</div>
-      </div>
-      <div class="trust-card fade-up fade-up-d1">
-        <div class="trust-card-icon">⭐</div>
-        <div class="trust-card-num">4.8</div>
-        <div class="trust-card-label">Average Rating</div>
-      </div>
-      <div class="trust-card fade-up fade-up-d2">
-        <div class="trust-card-icon">⚡</div>
-        <div class="trust-card-num">&lt;2h</div>
-        <div class="trust-card-label">Response Time</div>
-      </div>
-      <div class="trust-card fade-up fade-up-d3">
-        <div class="trust-card-icon">🌍</div>
-        <div class="trust-card-num">20+</div>
-        <div class="trust-card-label">Countries Served</div>
-      </div>
-      <div class="trust-card fade-up">
-        <div class="trust-card-icon">🛡️</div>
-        <div class="trust-card-num">100%</div>
-        <div class="trust-card-label">Reliable Support</div>
-      </div>
-      <div class="trust-card fade-up fade-up-d1">
-        <div class="trust-card-icon">🔒</div>
-        <div class="trust-card-num">Safe</div>
-        <div class="trust-card-label">Secure Payments</div>
-      </div>
-      <div class="trust-card fade-up fade-up-d2">
-        <div class="trust-card-icon">🏆</div>
-        <div class="trust-card-num">Pro</div>
-        <div class="trust-card-label">Professional Service</div>
-      </div>
-      <div class="trust-card fade-up fade-up-d3">
-        <div class="trust-card-icon">♻️</div>
-        <div class="trust-card-num">Free</div>
-        <div class="trust-card-label">Revisions Included</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== CTA ===== -->
-<section id="cta">
-  <div class="container">
-    <div class="cta-inner">
-      <div class="eyebrow" style="color:rgba(255,255,255,.6);justify-content:center;">Limited Slots Available</div>
-      <h2 class="cta-title">Ready To Grow Your<br>Business Online?</h2>
-      <p class="cta-sub">Join 138+ businesses that chose Wikgrow. Get your professional website delivered fast — starting at just $50.</p>
-      <div class="cta-actions">
-        <a href="#contact" class="btn btn-white btn-lg">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-          Get Website for $50
-        </a>
-        <a href="https://wa.me/971547513482" class="btn btn-wa btn-lg" target="_blank" rel="noopener">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5.006L2 22l5.137-1.349A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
-          Chat on WhatsApp
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== CONTACT ===== -->
+<!-- ===== CONTACT SECTION ===== -->
 <section id="contact" class="section">
-  <div class="container">
-    <div class="contact-inner">
-      <div>
-        <div class="eyebrow">Get In Touch</div>
-        <h2 class="section-title">Let's Build Something<br>Great Together</h2>
-        <p class="section-sub" style="margin-bottom:36px;">Have a project in mind? Reach out and we'll get back to you within 2 hours.</p>
-        <div class="contact-info-item">
-          <div class="contact-icon-wrap">💬</div>
-          <div>
-            <div class="contact-label">WhatsApp</div>
-            <div class="contact-value">+971 54 751 3482</div>
-          </div>
-        </div>
+  <div class="container contact-inner">
+    <div>
+      <span class="eyebrow">Get in Touch</span>
+      <h2 class="section-title">Let's Launch Your Digital System</h2>
+      <p class="section-sub" style="margin-bottom: 32px;">Reach out using our quick routing portal. Our engineering unit will verify details and reach back within 12 standard operating hours.</p>
+      
+      <div class="contact-quick">
         <div class="contact-info-item">
           <div class="contact-icon-wrap">📧</div>
           <div>
-            <div class="contact-label">Email</div>
-            <div class="contact-value">waqar@wikgrow.com</div>
-            <div class="contact-value" style="margin-top:4px;">waqaraigrowth@gmail.com</div>
+            <div class="contact-label">Direct Mailbox</div>
+            <div class="contact-value">info@wikgrow.com</div>
           </div>
         </div>
         <div class="contact-info-item">
-          <div class="contact-icon-wrap">⚡</div>
+          <div class="contact-icon-wrap">💬</div>
           <div>
-            <div class="contact-label">Response Time</div>
-            <div class="contact-value">Within 2 Hours</div>
+            <div class="contact-label">WhatsApp Helpline</div>
+            <div class="contact-value">+971 54 751 3482</div>
           </div>
         </div>
-        <div class="contact-quick">
-          <a href="https://wa.me/971547513482" class="btn btn-wa btn-lg" target="_blank" rel="noopener" style="justify-content:center;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5.006L2 22l5.137-1.349A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
-            Chat on WhatsApp
-          </a>
-          <a href="mailto:waqar@wikgrow.com" class="btn btn-outline btn-lg" style="justify-content:center;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            Send Us An Email
-          </a>
-        </div>
-      </div>
-
-      <div class="contact-form">
-        <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700;color:var(--navy);margin-bottom:8px;">Send a Quick Message</h3>
-        <p style="font-size:14px;color:var(--text-soft);margin-bottom:28px;">We'll get back to you within 2 hours.</p>
-        <form id="contactForm" onsubmit="handleSubmit(event)">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="fname">First Name</label>
-              <input type="text" id="fname" name="fname" placeholder="John" required>
-            </div>
-            <div class="form-group">
-              <label for="lname">Last Name</label>
-              <input type="text" id="lname" name="lname" placeholder="Smith" required>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="business">Business / Company Name</label>
-            <input type="text" id="business" name="business" placeholder="ABC Company">
-          </div>
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" placeholder="john@company.com" required>
-          </div>
-          <div class="form-group">
-            <label for="phone">Phone / WhatsApp</label>
-            <input type="tel" id="phone" name="phone" placeholder="+1 234 567 8900">
-          </div>
-          <div class="form-group">
-            <label for="service">Service Interested In</label>
-            <select id="service" name="service" required>
-              <option value="" disabled selected>Select a service...</option>
-              <option value="website">Website Development ($50)</option>
-              <option value="redesign">Website Redesign</option>
-              <option value="landing">Landing Page</option>
-              <option value="seo">SEO Optimization</option>
-              <option value="marketing">Digital Marketing</option>
-              <option value="branding">Business Branding</option>
-              <option value="social">Social Media Design</option>
-              <option value="ai-agent">AI Agents</option>
-              <option value="ai-automation">AI Automation</option>
-              <option value="ai-workflow">AI Workflow Development</option>
-              <option value="maintenance">Website Maintenance</option>
-              <option value="graphic">Graphic Designing</option>
-              <option value="themes">Themes & Plugins</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="message">Tell Us About Your Project</label>
-            <textarea id="message" name="message" placeholder="Describe your business, what you need, and any specific requirements..." required></textarea>
-          </div>
-          <button type="submit" class="btn btn-wa btn-lg form-submit">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5.006L2 22l5.137-1.349A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
-            Send via WhatsApp
-          </button>
-          <div id="formSuccess" style="display:none;margin-top:16px;padding:16px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.3);border-radius:var(--radius-sm);color:#059669;font-weight:600;font-size:14px;text-align:center;">
-            ✅ Opening WhatsApp with your message...
-          </div>
-        </form>
       </div>
     </div>
+
+    <form class="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Full Name</label>
+          <input type="text" placeholder="John Doe" required>
+        </div>
+        <div class="form-group">
+          <label>Business Email Address</label>
+          <input type="email" placeholder="john@company.com" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Selected Primary Service Focus</label>
+        <select required>
+          <option value="" disabled selected>Choose a package focus...</option>
+          <option value="web">$50 Premium Web Development Bundle</option>
+          <option value="seo">Advanced Search Engine Optimization (SEO)</option>
+          <option value="automation">AI Workflow Automation & Integration</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Project Operational Details</label>
+        <textarea placeholder="Describe your web functional goal, layout expectations, or structural needs..." required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary form-submit">Send Framework Inquiry</button>
+    </form>
   </div>
 </section>
+
+<!-- ===== PRIVACY POLICY MODAL SYSTEM ===== -->
+<div class="privacy-modal" id="privacyModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h2 class="modal-title">Privacy Policy</h2>
+      <span class="modal-close" id="closeModal">&times;</span>
+    </div>
+    <div class="modal-content">
+      <p>At Wikgrow, accessible from our digital platforms, one of our main priorities is the absolute privacy of our visitors. This Privacy Policy document details types of analytical records and metrics collected by Wikgrow and how we manage it.</p>
+      <p>If you have additional questions or require more explicit details regarding our data compliance architectures, reach out via <strong>info@wikgrow.com</strong>.</p>
+      
+      <h3>1. Operational Information Collection</h3>
+      <p>The operational metrics or form fields you are requested to submit are handled transparently. If you engage with our agency directly via project submission systems, we process identifying info such as name, email handle, primary contact numbers, and the attached requirements content to create proper quotes.</p>
+      
+      <h3>2. How Data is Processed</h3>
+      <p>We process information to securely establish, build, and optimize your business platform. This includes deployment tasks, framework optimization, security diagnostics, and direct configuration messaging regarding adjustments or package enhancements.</p>
+      
+      <h3>3. Google Ads Compliance & Log Schematics</h3>
+      <p>Wikgrow implements standard logging systems. These log configurations monitor visitors tracking entry pathways. Collected metrics span internet protocol (IP) maps, active engine systems, ISP stamps, tracking markers, and targeted exit pathways. These items connect to no personal identity logs and exist purely to verify performance stability for Google Ads pipelines.</p>
+      
+      <h3>4. Cookie Integration & Web Beacons</h3>
+      <p>Wikgrow utilizes cookies to remember user workspace choices, preferred form tracking fields, and target asset layouts to increase user framework speed upon subsequent system visits.</p>
+      
+      <h3>5. Third-Party Ads Network Controls</h3>
+      <p>Third-party automated ad services utilize cookie configurations, automated script assets, or custom diagnostics within active tracking fields routed straight to user access screens. These layers dynamically process incoming server IPs to calculate marketing efficiency matrices. Wikgrow maintains no programmatic control over metrics run by external ad frameworks.</p>
+      
+      <h3>6. Data Protection Rights</h3>
+      <p>You retain absolute authority to request comprehensive data logs mapping any personal contact parameters our agency manages, demand structural layout corrections, or request complete structural purging of records from our operational caches.</p>
+    </div>
+  </div>
+</div>
 
 <!-- ===== FOOTER ===== -->
 <footer>
   <div class="container">
     <div class="footer-inner">
       <div class="footer-brand">
-        <div class="logo">
-          <div class="logo-mark">
-            <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M3 6L11 3L19 6V11C19 15.4 15.5 19.2 11 20C6.5 19.2 3 15.4 3 11V6Z" fill="white" opacity=".9"/>
-              <path d="M8 11L10 13L14 9" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <span class="logo-name">Wik<em style="color:var(--electric);font-style:normal;">grow</em></span>
+        <span class="logo-name">Wik<em>grow</em></span>
+        <p>Premium professional websites and custom automation solutions built for scalable brand growth.</p>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Agency</h4>
+        <div class="footer-links">
+          <a href="#services">Services</a>
+          <a href="#contact">Contact</a>
         </div>
-        <p>Premium digital agency building professional websites, driving SEO growth, and powering businesses with AI solutions — since 2022.</p>
       </div>
-      <div>
-        <div class="footer-col-title">Services</div>
-        <ul class="footer-links">
-          <li><a href="#services">Website Development</a></li>
-          <li><a href="#services">SEO Optimization</a></li>
-          <li><a href="#services">Digital Marketing</a></li>
-          <li><a href="#services">AI Automation</a></li>
-          <li><a href="#services">Business Branding</a></li>
-          <li><a href="#services">Social Media Design</a></li>
-        </ul>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Legal Support</h4>
+        <div class="footer-links">
+          <!-- Interactive compliance button linking directly to the structured safety overlay -->
+          <button id="openModalBtn">Privacy Policy</button>
+        </div>
       </div>
-      <div>
-        <div class="footer-col-title">Company</div>
-        <ul class="footer-links">
-          <li><a href="#team">About Us</a></li>
-          <li><a href="#portfolio">Our Portfolio</a></li>
-          <li><a href="#reviews">Client Reviews</a></li>
-          <li><a href="#contact">Contact Us</a></li>
-          <li><a href="https://wa.me/971547513482" target="_blank" rel="noopener">WhatsApp</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-col-title">Get Started</div>
-        <ul class="footer-links">
-          <li><a href="#contact">Get Website for $50</a></li>
-          <li><a href="#services">Landing Pages</a></li>
-          <li><a href="#services">Website Redesign</a></li>
-          <li><a href="#services">AI Agents</a></li>
-          <li><a href="#contact">Free Consultation</a></li>
-        </ul>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Connect</h4>
+        <div class="footer-links">
+          <a href="https://wa.me/971547513482" target="_blank" rel="noopener">WhatsApp Helpline</a>
+        </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="footer-copy">© 2026 <a href="#home">Wikgrow</a>. All rights reserved. Built with ❤️ for businesses worldwide.</div>
-      <div style="display:flex;gap:16px;">
-        <a href="https://wa.me/971547513482" target="_blank" rel="noopener" style="font-size:13px;color:rgba(255,255,255,.5);transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.5)'">WhatsApp</a>
-        <a href="mailto:waqar@wikgrow.com" style="font-size:13px;color:rgba(255,255,255,.5);transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.5)'">Email</a>
-      </div>
+      <p class="footer-copy">&copy; 2026 Wikgrow. All rights reserved. Programmed for global performance scaling.</p>
     </div>
   </div>
 </footer>
 
-<!-- ===== JAVASCRIPT ===== -->
+<!-- ===== MOBILE NAVIGATION & MODAL SCRIPTS ===== -->
 <script>
-// Mobile nav
+// Mobile Navigation System
 const hamburger = document.getElementById('hamburger');
 const mobileNav = document.getElementById('mobileNav');
-hamburger.addEventListener('click', () => {
-  mobileNav.classList.toggle('open');
-  const spans = hamburger.querySelectorAll('span');
-  if (mobileNav.classList.contains('open')) {
-    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-    spans[1].style.opacity = '0';
-    spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
-  } else {
-    spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
-  }
-});
-function closeMobile() {
-  mobileNav.classList.remove('open');
-  hamburger.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+
+if (hamburger && mobileNav) {
+  hamburger.addEventListener('click', () => {
+    mobileNav.classList.toggle('open');
+    const spans = hamburger.querySelectorAll('span');
+    spans.forEach(span => span.classList.toggle('active'));
+  });
+
+  // Close mobile nav when clicking links
+  const mobileLinks = mobileNav.querySelectorAll('a');
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+    });
+  });
 }
 
-// Nav scroll
-const nav = document.getElementById('nav');
+// Nav scroll indicator tracking
 window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 20);
-});
-
-// Scroll animations
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
-document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-// Form submit - builds a WhatsApp message from form data
-const WHATSAPP_NUMBER = '971547513482';
-const SERVICE_LABELS = {
-  website: 'Website Development ($50)',
-  redesign: 'Website Redesign',
-  landing: 'Landing Page',
-  seo: 'SEO Optimization',
-  marketing: 'Digital Marketing',
-  branding: 'Business Branding',
-  social: 'Social Media Design',
-  'ai-agent': 'AI Agents',
-  'ai-automation': 'AI Automation',
-  'ai-workflow': 'AI Workflow Development',
-  maintenance: 'Website Maintenance',
-  graphic: 'Graphic Designing',
-  themes: 'Themes & Plugins',
-  other: 'Other'
-};
-function handleSubmit(e) {
-  e.preventDefault();
-  const form = e.target;
-  const btn = form.querySelector('button[type="submit"]');
-
-  const fname = form.fname.value.trim();
-  const lname = form.lname.value.trim();
-  const business = form.business.value.trim();
-  const email = form.email.value.trim();
-  const phone = form.phone.value.trim();
-  const serviceVal = form.service.value;
-  const serviceLabel = SERVICE_LABELS[serviceVal] || serviceVal;
-  const message = form.message.value.trim();
-
-  let lines = [];
-  lines.push('Hello Wikgrow! I would like to get in touch.');
-  lines.push('');
-  lines.push('Name: ' + fname + ' ' + lname);
-  if (business) lines.push('Business: ' + business);
-  if (email) lines.push('Email: ' + email);
-  if (phone) lines.push('Phone: ' + phone);
-  if (serviceLabel) lines.push('Service: ' + serviceLabel);
-  if (message) lines.push('Message: ' + message);
-
-  const text = encodeURIComponent(lines.join('\n'));
-  const waUrl = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + text;
-
-  btn.textContent = 'Opening WhatsApp...';
-  btn.disabled = true;
-
-  document.getElementById('formSuccess').style.display = 'block';
-
-  setTimeout(() => {
-    window.open(waUrl, '_blank', 'noopener');
-    form.reset();
-    btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5.006L2 22l5.137-1.349A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg> Send via WhatsApp';
-    btn.disabled = false;
-  }, 600);
-}
-
-// Smooth anchor close on desktop nav click
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', () => { closeMobile(); });
-});
-
-// Stat counter animation
-function animateCounters() {
-  document.querySelectorAll('.stat-num em').forEach(el => {
-    const target = parseFloat(el.textContent);
-    if (isNaN(target)) return;
-    let start = 0;
-    const duration = 1800;
-    const startTime = performance.now();
-    const isDecimal = el.textContent.includes('.');
-    function update(now) {
-      const progress = Math.min((now - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const value = start + (target - start) * eased;
-      el.textContent = isDecimal ? value.toFixed(1) : Math.floor(value);
-      if (progress < 1) requestAnimationFrame(update);
-    }
-    requestAnimationFrame(update);
-  });
-}
-const statsBar = document.querySelector('.stats-bar');
-const statsObserver = new IntersectionObserver((entries) => {
-  if (entries[0].isIntersecting) {
-    animateCounters();
-    statsObserver.disconnect();
+  const navElement = document.getElementById('nav');
+  if (window.scrollY > 20) {
+    navElement.classList.add('scrolled');
+  } else {
+    navElement.classList.remove('scrolled');
   }
-}, { threshold: 0.3 });
-if (statsBar) statsObserver.observe(statsBar);
+});
+
+// Privacy Modal Interactive Engine
+const privacyModal = document.getElementById('privacyModal');
+const openModalBtn = document.getElementById('openModalBtn');
+const closeModal = document.getElementById('closeModal');
+
+if (privacyModal && openModalBtn && closeModal) {
+  openModalBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    privacyModal.classList.add('active');
+    document.body.classList.add('modal-open');
+  });
+
+  closeModal.addEventListener('click', () => {
+    privacyModal.classList.remove('active');
+    document.body.classList.remove('modal-open');
+  });
+
+  // Close modal if user clicks gray backdrop zone
+  privacyModal.addEventListener('click', (e) => {
+    if (e.target === privacyModal) {
+      privacyModal.classList.remove('active');
+      document.body.classList.remove('modal-open');
+    }
+  });
+}
 </script>
+
 </body>
 </html>
