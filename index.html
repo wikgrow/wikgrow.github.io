@@ -23,7 +23,6 @@
   "url": "https://wikgrow.com",
   "contactPoint": {
     "@type": "ContactPoint",
-    "@type": "ContactPoint",
     "contactType": "customer service",
     "availableLanguage": "English"
   },
@@ -67,7 +66,6 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; font-size: 16px; }
 body { font-family: 'Inter', sans-serif; color: var(--text); background: #fff; overflow-x: hidden; line-height: 1.6; }
-body.modal-open { overflow: hidden; }
 img { max-width: 100%; height: auto; display: block; }
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
@@ -98,13 +96,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .btn-ghost:hover { background: rgba(37,99,235,.15); }
 
 /* ===== NAVIGATION ===== */
-nav {
-  position: fixed; top: 0; width: 100%; z-index: 1000;
-  background: rgba(255,255,255,.96);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border);
-  transition: all .3s;
-}
+nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(255,255,255,.96); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); transition: all .3s; }
 nav.scrolled { box-shadow: 0 4px 20px rgba(10,15,46,.08); }
 .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 72px; }
 .logo { display: flex; align-items: center; gap: 10px; }
@@ -124,12 +116,7 @@ nav.scrolled { box-shadow: 0 4px 20px rgba(10,15,46,.08); }
 .mobile-nav .mobile-actions { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
 
 /* ===== HERO ===== */
-#home {
-  padding: 140px 0 80px;
-  background: linear-gradient(160deg, #F0F4FF 0%, #F7F9FF 50%, #EDF7F2 100%);
-  position: relative;
-  overflow: hidden;
-}
+#home { padding: 140px 0 80px; background: linear-gradient(160deg, #F0F4FF 0%, #F7F9FF 50%, #EDF7F2 100%); position: relative; overflow: hidden; }
 .hero-blob1 { position: absolute; top: -120px; right: -120px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(37,99,235,.12) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
 .hero-blob2 { position: absolute; bottom: -80px; left: -80px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(16,185,129,.1) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
 .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; position: relative; z-index: 1; }
@@ -311,313 +298,211 @@ nav.scrolled { box-shadow: 0 4px 20px rgba(10,15,46,.08); }
 .cta-sub { font-size: 18px; color: rgba(255,255,255,.75); max-width: 540px; margin: 0 auto 40px; line-height: 1.7; }
 .cta-actions { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
 .btn-white { background: #fff; color: var(--blue); }
-.btn-white:hover { background: #F0F4FF; transform: translateY(-2px); }
-
-/* ===== CONTACT ===== */
-#contact { background: #fff; }
-.contact-inner { display: grid; grid-template-columns: 1fr 1.3fr; gap: 72px; align-items: start; }
-.contact-info-item { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 28px; }
-.contact-icon-wrap { width: 48px; height: 48px; border-radius: var(--radius-sm); background: var(--muted-bg); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
-.contact-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--text-soft); margin-bottom: 4px; }
-.contact-value { font-weight: 600; color: var(--navy); font-size: 15px; }
-.contact-quick { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
-.contact-form { background: var(--off); border-radius: var(--radius-lg); padding: 40px; border: 1px solid var(--border); }
-.form-group { margin-bottom: 20px; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-label { display: block; font-size: 13px; font-weight: 600; color: var(--text-mid); margin-bottom: 6px; }
-input, select, textarea { width: 100%; padding: 12px 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-mid); font-size: 14px; font-family: inherit; color: var(--text); background: #fff; transition: border-color .2s; outline: none; }
-input:focus, select:focus, textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,235,.1); }
-textarea { resize: vertical; min-height: 100px; }
-select { appearance: none; cursor: pointer; }
-.form-submit { width: 100%; justify-content: center; margin-top: 4px; }
-
-/* ===== PRIVACY MODAL SYSTEM ===== */
-.privacy-modal {
-  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(10, 15, 46, 0.6);
-  backdrop-filter: blur(8px);
-  z-index: 2000; display: flex; align-items: center; justify-content: center;
-  opacity: 0; pointer-events: none; transition: opacity 0.3s ease; padding: 20px;
-}
-.privacy-modal.active { opacity: 1; pointer-events: auto; }
-.modal-box {
-  background: #fff; width: 100%; max-width: 780px; max-height: 80vh;
-  border-radius: var(--radius-lg); border: 1px solid var(--border);
-  box-shadow: var(--shadow-lg); display: flex; flex-direction: column;
-  transform: translateY(20px); transition: transform 0.3s ease;
-}
-.privacy-modal.active .modal-box { transform: translateY(0); }
-.modal-header {
-  padding: 24px 32px; border-bottom: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: space-between; background: var(--off);
-  border-top-left-radius: var(--radius-lg); border-top-right-radius: var(--radius-lg);
-}
-.modal-title { font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px; font-weight: 800; color: var(--navy); }
-.modal-close { font-size: 28px; color: var(--text-soft); cursor: pointer; transition: color 0.2s; line-height: 1; }
-.modal-close:hover { color: var(--navy); }
-.modal-content { padding: 32px; overflow-y: auto; color: var(--text-mid); font-size: 15px; line-height: 1.7; }
-.modal-content h3 { font-family: 'Bricolage Grotesque', sans-serif; font-size: 18px; font-weight: 700; color: var(--navy); margin: 24px 0 10px; }
-.modal-content h3:first-of-type { margin-top: 0; }
-.modal-content p { margin-bottom: 14px; }
-.modal-content ul { list-style: disc; margin-left: 20px; margin-bottom: 14px; }
-.modal-content li { margin-bottom: 6px; }
+.btn-white:hover { background: #F0F4FF; transform: translateY(-2px); box-shadow: 0 12px 40px rgba(255,255,255,0.2); }
 
 /* ===== FOOTER ===== */
-footer { background: var(--navy); padding: 64px 0 0; }
-.footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,.1); }
-.footer-brand .logo-name { color: #fff; margin-top: 12px; font-size: 20px; }
-.footer-brand p { font-size: 14px; color: rgba(255,255,255,.5); line-height: 1.7; margin-top: 12px; max-width: 260px; }
-.footer-col-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: rgba(255,255,255,.4); margin-bottom: 20px; }
-.footer-links { display: flex; flex-direction: column; gap: 12px; }
-.footer-links a, .footer-links button { font-size: 14px; color: rgba(255,255,255,.65); transition: color .2s; text-align: left; width: fit-content; }
-.footer-links a:hover, .footer-links button:hover { color: #fff; }
-.footer-bottom { padding: 24px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-.footer-copy { font-size: 13px; color: rgba(255,255,255,.4); }
+footer { background: #060A22; padding: 40px 0; border-top: 1px solid rgba(255,255,255,.06); color: rgba(255,255,255,.5); font-size: 14px; }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+.footer-left { display: flex; align-items: center; gap: 8px; font-weight: 600; color: #fff; }
+.footer-left span { color: var(--blue-light); }
 
-/* ===== ANIMATIONS ===== */
-.fade-up { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
-.fade-up.visible { opacity: 1; transform: translateY(0); }
-.fade-up-d1 { transition-delay: .1s; }
-.fade-up-d2 { transition-delay: .2s; }
-.fade-up-d3 { transition-delay: .3s; }
-.fade-up-d4 { transition-delay: .4s; }
+/* ===== ADDED EXCLUSIVELY FOR PRIVACY POLICY MODAL ===== */
+.footer-links { display: flex; gap: 20px; align-items: center; }
+.footer-privacy-btn { color: rgba(255,255,255,0.5); font-size: 14px; cursor: pointer; transition: color 0.2s; font-weight: 500; background: none; border: none; }
+.footer-privacy-btn:hover { color: var(--blue-light); text-decoration: underline; }
+.pp-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 15, 46, 0.75); backdrop-filter: blur(8px); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; padding: 20px; }
+.pp-modal-overlay.active { opacity: 1; pointer-events: auto; }
+.pp-modal-window { background: var(--white); width: 100%; max-width: 750px; max-height: 80vh; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); border: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; transform: translateY(20px); transition: transform 0.3s ease; }
+.pp-modal-overlay.active .pp-modal-window { transform: translateY(0); }
+.pp-modal-header { padding: 20px 24px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: var(--off); }
+.pp-modal-title { font-family: 'Bricolage Grotesque', sans-serif; font-size: 22px; font-weight: 800; color: var(--navy); }
+.pp-modal-close { background: var(--muted-bg); color: var(--text-mid); width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: bold; transition: all 0.2s; }
+.pp-modal-close:hover { background: var(--blue); color: var(--white); }
+.pp-modal-body { padding: 30px 24px; overflow-y: auto; color: var(--text-mid); font-size: 15px; line-height: 1.7; }
+.pp-modal-body h3 { font-family: 'Bricolage Grotesque', sans-serif; font-size: 18px; color: var(--navy); margin: 24px 0 10px; font-weight: 700; }
+.pp-modal-body h3:first-child { margin-top: 0; }
+.pp-modal-body p { margin-bottom: 14px; }
+.pp-modal-body ul { margin: 10px 0 16px 20px; list-style-type: disc; }
+.pp-modal-body ul li { margin-bottom: 6px; }
 
-/* ===== RESPONSIVE ===== */
+/* ===== MEDIA QUERIES ===== */
 @media (max-width: 1024px) {
-  .stats-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,.1); padding-bottom: 24px; }
-  .stat-item:nth-child(3n) { border-bottom: none; }
-  .services-grid { grid-template-columns: 1fr 1fr; }
-  .portfolio-grid { grid-template-columns: 1fr 1fr; }
-  .team-grid { grid-template-columns: 1fr 1fr; }
-  .reviews-grid { grid-template-columns: 1fr 1fr; }
-  .footer-inner { grid-template-columns: 1fr 1fr; }
-  .why-inner { gap: 40px; }
-  .featured-inner { gap: 32px; }
-  .trust-grid { grid-template-columns: repeat(2, 1fr); }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .reviews-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
-  .section { padding: 72px 0; }
-  .nav-links, .nav-actions .btn { display: none; }
+  .nav-links, .nav-actions { display: none; }
   .hamburger { display: flex; }
-  .hero-inner { grid-template-columns: 1fr; gap: 48px; }
-  .hero-visual { display: none; }
-  .hero-title { font-size: 36px; }
-  .stats-grid { grid-template-columns: 1fr 1fr; }
-  .featured-inner { grid-template-columns: 1fr; }
-  .services-grid { grid-template-columns: 1fr; }
-  .portfolio-grid { grid-template-columns: 1fr; }
-  .team-grid { grid-template-columns: 1fr 1fr; }
-  .reviews-grid { grid-template-columns: 1fr; }
-  .why-inner { grid-template-columns: 1fr; }
-  .why-grid { grid-template-columns: 1fr; }
-  .trust-grid { grid-template-columns: 1fr 1fr; }
-  .contact-inner { grid-template-columns: 1fr; }
-  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
-  .footer-bottom { flex-direction: column; text-align: center; }
-  .services-intro { flex-direction: column; align-items: flex-start; }
-  .form-row { grid-template-columns: 1fr; }
-  .featured-price { font-size: 48px; }
-  .feat-includes { grid-template-columns: 1fr; }
+  .hero-inner { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+  .hero-actions, .hero-trust { justify-content: center; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 24px 0; }
+  .stat-item { border-right: none; }
+  .featured-inner { grid-template-columns: 1fr; gap: 32px; }
+  .why-inner { grid-template-columns: 1fr; gap: 40px; }
+  .trust-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-inner { flex-direction: column; text-align: center; }
 }
 @media (max-width: 480px) {
+  .stats-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
+  .portfolio-grid { grid-template-columns: 1fr; }
   .team-grid { grid-template-columns: 1fr; }
-  .hero-actions { flex-direction: column; }
-  .hero-actions .btn { justify-content: center; }
-  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .reviews-grid { grid-template-columns: 1fr; }
   .trust-grid { grid-template-columns: 1fr; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .fade-up { opacity: 1; transform: none; }
-  .hero-float1, .hero-float2 { animation: none; }
-  .badge-dot { animation: none; }
 }
 </style>
 </head>
 <body>
 
-<!-- ===== NAV ===== -->
-<nav id="nav">
+<nav id="navbar">
   <div class="nav-inner">
     <a href="#home" class="logo">
       <div class="logo-mark">
-        <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M3 6L11 3L19 6V11C19 15.4 15.5 19.2 11 20C6.5 19.2 3 15.4 3 11V6Z" fill="white" opacity=".9"/>
-          <path d="M8 11L10 13L14 9" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
       </div>
-      <span class="logo-name">Wik<em>grow</em></span>
+      <span class="logo-name">Wikgrow<em>.</em></span>
     </a>
-    <ul class="nav-links">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#portfolio">Portfolio</a></li>
-      <li><a href="#team">Team</a></li>
-      <li><a href="#reviews">Reviews</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#portfolio">Our Work</a>
+      <a href="#team">Team</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#why">Why Us</a>
+    </div>
     <div class="nav-actions">
-      <a href="https://wa.me/971547513482" class="btn btn-wa" target="_blank" rel="noopener">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.999 2C6.477 2 2 6.477 2 12c0 2.259.621 4.386 1.701 6.184l-1.151 4.194 4.321-1.124C8.614 21.884 10.253 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18c-1.634 0-3.19-.434-4.55-1.258l-.326-.194-2.556.666.681-2.479-.215-.341C4.948 15.066 4.5 13.579 4.5 12c0-4.136 3.364-7.5 7.5-7.5s7.5 3.364 7.5 7.5-3.364 7.5-7.5 7.5z"/></svg>
-        WhatsApp Us
-      </a>
-      <div class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+      <button class="btn btn-outline" onclick="openWa('General inquiry from website')">Talk to Expert</button>
+      <button class="btn btn-primary" onclick="openWa('Looking to start a website project')">Get Started</button>
+    </div>
+    <div class="hamburger" id="hamburger" onclick="toggleMobile()">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
   </div>
 </nav>
 
-<!-- ===== MOBILE NAV ===== -->
 <div class="mobile-nav" id="mobileNav">
   <a href="#services">Services</a>
-  <a href="#portfolio">Portfolio</a>
+  <a href="#portfolio">Our Work</a>
   <a href="#team">Team</a>
   <a href="#reviews">Reviews</a>
-  <a href="#contact">Contact</a>
+  <a href="#why">Why Us</a>
   <div class="mobile-actions">
-    <a href="https://wa.me/971547513482" class="btn btn-wa" style="justify-content: center;" target="_blank" rel="noopener">WhatsApp Us</a>
+    <button class="btn btn-outline center" style="display:block; width:100%" onclick="openWa('General inquiry from website mobile')">Talk to Expert</button>
+    <button class="btn btn-primary center" style="display:block; width:100%" onclick="openWa('Looking to start a website project mobile')">Get Started</button>
   </div>
 </div>
 
-<!-- ===== HERO ===== -->
 <section id="home">
   <div class="hero-blob1"></div>
   <div class="hero-blob2"></div>
-  <div class="container hero-inner">
-    <div>
-      <div class="hero-badge">
-        <span class="badge-dot"></span> Available for New Projects
-      </div>
-      <h1 class="hero-title">We Build <span class="blue">Premium Websites</span> For Modern Brands.</h1>
-      <p class="hero-sub">Get absolute clarity, exceptional functional design, and elite customer conversions engineered cleanly inside your digital landscape.</p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn btn-primary btn-lg">Get Your Website</a>
-        <a href="https://wa.me/971547513482" class="btn btn-wa btn-lg" target="_blank" rel="noopener">Discuss via WhatsApp</a>
-      </div>
-      <div class="hero-trust">
-        <div class="trust-item"><span class="trust-icon">✓</span> 138+ Happy Clients</div>
-        <div class="trust-item"><span class="trust-icon">★</span> 4.8/5 Global Rating</div>
-      </div>
-    </div>
-    
-    <!-- Hero Mockup Side -->
-    <div class="hero-visual">
-      <div class="hero-card">
-        <div class="hero-card-bar">
-          <div class="hcb-dots">
-            <span style="background: #FF5F56;"></span>
-            <span style="background: #FFBD2E;"></span>
-            <span style="background: #27C93F;"></span>
-          </div>
-          <div class="hcb-bar-track"><div class="hcb-bar-fill"></div></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-badge">
+          <span class="badge-dot"></span> 100% Premium Custom Sites
         </div>
-        <div class="hero-site-preview">
-          <div class="preview-nav-bar">
-            <div class="preview-logo-row">
-              <span class="preview-logo-mark"></span>
-              <span class="preview-logo">Wik<em>grow</em></span>
+        <h1 class="hero-title">We Build <span class="blue">High-Converting</span> Websites For <span class="gold">Your Business.</span></h1>
+        <p class="hero-sub">Get an ultra-fast, mobile-friendly, professional website optimized entirely for SEO and sales. Trusted worldwide, delivered instantly.</p>
+        <div class="hero-actions">
+          <button class="btn btn-lg btn-primary" onclick="openWa('Hi, I want to get a professional website starting from $50.')">Get Your Website Today</button>
+          <a href="#portfolio" class="btn btn-lg btn-outline">View Our Work</a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-item"><span class="trust-icon">⭐</span> 4.8/5 Agency Rating</div>
+          <div class="trust-item"><span class="trust-icon">🚀</span> 138+ Global Clients</div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-visual">
+          <div class="hero-card">
+            <div class="hero-card-bar">
+              <div class="hcb-dots"><span style="background:#EF4444"></span><span style="background:#F59E0B"></span><span style="background:#10B981"></span></div>
+              <div class="hcb-bar-track"><span class="hcb-bar-fill"></span></div>
             </div>
-            <div class="preview-links"><span>Services</span><span>Works</span></div>
-            <span class="preview-nav-btn">Get Started</span>
-          </div>
-          <div class="preview-hero-area">
-            <span class="preview-eyebrow">🚀 AUTOMATION READY</span>
-            <h2 class="preview-h">Scale Your <em>Agency</em> Growth</h2>
-            <p class="preview-p">High conversion performance dashboards built to secure international leads cleanly.</p>
-            <div class="preview-btns">
-              <span class="preview-btn pb1">Live Demo</span>
-              <span class="preview-btn pb2">Explore</span>
-            </div>
-          </div>
-          <div class="preview-dashboard">
-            <div class="preview-dash-card preview-dash-main">
-              <div class="pdc-head"><span>Growth Matrix</span><span class="pdc-pill">+28.4%</span></div>
-              <div class="pdc-chart">
-                <div class="pdc-bar" style="height: 40%;"></div>
-                <div class="pdc-bar" style="height: 65%;"></div>
-                <div class="pdc-bar" style="height: 50%;"></div>
-                <div class="pdc-bar pdc-bar-active" style="height: 95%;"></div>
-                <div class="pdc-bar" style="height: 75%;"></div>
+            <div class="hero-site-preview">
+              <div class="preview-nav-bar">
+                <div class="preview-logo-row"><span class="preview-logo-mark"></span><span class="preview-logo">ClientBrand<em>.</em></span></div>
+                <div class="preview-links"><span>Home</span><span>Features</span><span>Pricing</span></div>
+                <div class="preview-nav-btn">Launch App</div>
+              </div>
+              <div class="preview-hero-area">
+                <span class="preview-eyebrow">✨ NEXT-GEN PLATFORM</span>
+                <h2 class="preview-h">Scale Your Business <em>10x Faster</em></h2>
+                <p class="preview-p">Everything you need to capture leads, track comprehensive revenue data analytics, and engage international markets seamlessly.</p>
+                <div class="preview-btns"><span class="preview-btn pb1">Get Started</span><span class="preview-btn pb2">Watch Demo</span></div>
+              </div>
+              <div class="preview-dashboard">
+                <div class="preview-dash-card preview-dash-main">
+                  <div class="pdc-head"><span>Monthly Growth Analytics</span><span class="pdc-pill">+28.4%</span></div>
+                  <div class="pdc-chart">
+                    <div class="pdc-bar" style="height:40%"></div><div class="pdc-bar" style="height:55%"></div><div class="pdc-bar" style="height:48%"></div><div class="pdc-bar pdc-bar-active" style="height:88%"></div><div class="pdc-bar" style="height:68%"></div>
+                  </div>
+                </div>
+                <div class="preview-dash-card" style="display:flex; flex-direction:column; justify-content:center;">
+                  <div class="pdc-icon">💰</div><div class="pdc-num">$14,238</div><div class="pdc-lbl">Net Earnings</div>
+                </div>
+                <div class="preview-dash-card" style="display:flex; flex-direction:column; justify-content:center;">
+                  <div class="pdc-icon">👥</div><div class="pdc-num">1,482</div><div class="pdc-lbl">New Active Users</div>
+                </div>
+              </div>
+              <div class="preview-stats">
+                <div class="preview-stat"><div class="ps-num">99.9%</div><div class="ps-lbl">Uptime Guard</div></div>
+                <div class="preview-stat"><div class="ps-num">&lt; 1.2s</div><div class="ps-lbl">Page Load Speed</div></div>
               </div>
             </div>
-            <div class="preview-dash-card">
-              <div class="pdc-icon">⚡</div>
-              <div class="pdc-num">$54.2k</div>
-              <div class="pdc-lbl">Revenue Generated</div>
-            </div>
-            <div class="preview-dash-card">
-              <div class="pdc-icon">👥</div>
-              <div class="pdc-num">1,840</div>
-              <div class="pdc-lbl">Active Leads</div>
-            </div>
           </div>
+          <div class="hero-float1">🔥 <strong>14 projects</strong> running this week</div>
+          <div class="hero-float2">⚡ Speed Optimized: <strong>100% Score</strong></div>
         </div>
       </div>
-      <div class="hero-float1">📈 Conversion Rate **+42%**</div>
-      <div class="hero-float2">✨ Premium Identity</div>
     </div>
   </div>
 </section>
 
-<!-- ===== STATS BAR ===== -->
 <div class="stats-bar">
-  <div class="container stats-grid">
-    <div class="stat-item">
-      <div class="stat-num">138<em>+</em></div>
-      <div class="stat-label">Projects Completed</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">$50<em>+</em></div>
-      <div class="stat-label">Packages Starting At</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">99<em>%</em></div>
-      <div class="stat-label">Client Satisfaction</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">24<em>/7</em></div>
-      <div class="stat-label">Expert Support</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">3<em>+</em></div>
-      <div class="stat-label">Years Experience</div>
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item"><div class="stat-num"><span class="counter">138</span><em>+</em></div><div class="stat-label">Websites Delivered</div></div>
+      <div class="stat-item"><div class="stat-num"><span class="counter">99.4</span><em>%</em></div><div class="stat-label">Client Satisfaction</div></div>
+      <div class="stat-item"><div class="stat-num"><span class="counter">50</span><em>$</em></div><div class="stat-label">Starting Price Only</div></div>
+      <div class="stat-item"><div class="stat-num"><span class="counter">48</span><em>h</em></div><div class="stat-label">Average Delivery Time</div></div>
+      <div class="stat-item"><div class="stat-num"><span class="counter">15</span><em>+</em></div><div class="stat-label">Countries Served</div></div>
     </div>
   </div>
 </div>
 
-<!-- ===== SERVICES SECTION ===== -->
 <section id="services" class="section">
   <div class="container">
     <div class="services-intro">
       <div>
-        <span class="eyebrow">Our Capabilities</span>
-        <h2 class="section-title">Comprehensive Digital Services</h2>
+        <span class="eyebrow">Our Digital Services</span>
+        <h2 class="section-title">Result-Driven Solutions We Provide</h2>
       </div>
-      <p class="section-sub">We combine clean development structures with calculated growth systems to give your business a decisive technical edge.</p>
+      <p class="section-sub">We combine state-of-the-art visual style with robust underlying code to help your venture stand out, capture search engine rankings, and convert casual visitors into brand advocates.</p>
     </div>
-    
+
     <div class="featured-service">
       <div class="featured-inner">
         <div>
-          <span class="featured-badge">🔥 Most Popular Pack</span>
-          <h3 class="featured-title">Complete Professional Website Development Bundle</h3>
-          <p style="color: rgba(255,255,255,.7); margin-bottom: 24px; font-size: 15px;">Get a highly optimized, fully customized premium brand platform optimized completely for global deployment and Google search success.</p>
+          <span class="featured-badge">🔥 Most Popular Package</span>
+          <h3 class="featured-title">All-Inclusive Corporate Website Bundle</h3>
+          <p style="color:rgba(255,255,255,.7); font-size:15px; margin-bottom:24px; max-width:480px;">Get a fully built premium commercial custom multi-page configuration complete with free hosting setup, lightning fast speed configuration, responsive layouts, basic setup SEO keyword visibility, and premium assets layout.</p>
           <div class="feat-includes">
-            <div class="feat-item"><span class="feat-check">✓</span> Fully Custom Responsive Layout</div>
-            <div class="feat-item"><span class="feat-check">✓</span> Advanced Technical SEO Integration</div>
-            <div class="feat-item"><span class="feat-check">✓</span> High-Performance Speed Tuning</div>
-            <div class="feat-item"><span class="feat-check">✓</span> Premium Content Asset Delivery</div>
+            <div class="feat-item"><span class="feat-check">✓</span> 100% Custom Responsive Layout</div>
+            <div class="feat-item"><span class="feat-check">✓</span> Advanced Speed Optimization</div>
+            <div class="feat-item"><span class="feat-check">✓</span> Lead Capture Forms Setup</div>
+            <div class="feat-item"><span class="feat-check">✓</span> 1 Month Free Support & Edits</div>
           </div>
         </div>
-        <div style="text-align: center; border-left: 1px solid rgba(255,255,255,.1); padding-left: 24px;">
-          <span style="color: rgba(255,255,255,.6); font-size: 14px; font-weight: 600; text-transform: uppercase;">Special Setup Offer</span>
-          <div class="featured-price">$50</div>
-          <p class="featured-price-note">Fixed One-Time Investment • No Hidden Fees</p>
+        <div style="text-align: center;">
+          <div class="featured-price"><em>$</em>50</div>
+          <div class="featured-price-note">One-time payment. Transparent process. No hidden fees.</div>
           <div class="featured-actions" style="justify-content: center;">
-            <a href="#contact" class="btn btn-primary">Book This Package</a>
-            <a href="https://wa.me/971547513482" class="btn btn-wa" target="_blank" rel="noopener">Inquire via Chat</a>
+            <button class="btn btn-wa" onclick="openWa('Hi, I want to order the All-Inclusive Corporate Website Bundle for $50.')">Order via WhatsApp</button>
+            <a href="#portfolio" class="btn btn-outline" style="color:#fff; border-color:rgba(255,255,255,.2)">Explore Live Samples</a>
           </div>
         </div>
       </div>
@@ -625,203 +510,476 @@ footer { background: var(--navy); padding: 64px 0 0; }
 
     <div class="services-grid">
       <div class="srv-card">
-        <div class="srv-icon">💻</div>
-        <h3 class="srv-title">Web Development</h3>
-        <p class="srv-desc">Clean, optimized codebases built for speed, responsiveness, and maximum device flexibility across all standard environments.</p>
+        <div class="srv-icon" style="color:var(--blue); background:#EFF6FF;">🌐</div>
+        <h3 class="srv-title">Business & Corporate Sites</h3>
+        <p class="srv-desc">Premium online presentation designed specifically for startups, law firms, dental clinics, agencies, real estate firms, and consulting organizations.</p>
+        <div class="srv-actions"><button class="btn srv-btn btn-ghost" onclick="openWa('Inquiry about Corporate Website')">Inquire</button></div>
       </div>
       <div class="srv-card">
-        <div class="srv-icon">🎯</div>
-        <h3 class="srv-title">SEO Optimization</h3>
-        <p class="srv-desc">Advanced index structuring, precise structural layout schemes, and optimization patterns to rank directly over competitors.</p>
+        <div class="srv-icon" style="color:var(--gold); background:#FFFBEB;">🛍️</div>
+        <h3 class="srv-title">E-Commerce Storefronts</h3>
+        <p class="srv-desc">High-speed shopping platforms using Shopify or custom WooCommerce setups including integrated carts, payment gateways, and inventories management.</p>
+        <div class="srv-actions"><button class="btn srv-btn btn-ghost" onclick="openWa('Inquiry about E-Commerce Store')">Inquire</button></div>
       </div>
       <div class="srv-card">
-        <div class="srv-icon">🤖</div>
-        <h3 class="srv-title">AI & Automation</h3>
-        <p class="srv-desc">Automated workflow paths, integrated smart scheduling, and direct asset delivery setups engineered to save workload hours.</p>
+        <div class="srv-icon" style="color:var(--green); background:#ECFDF5;">🚀</div>
+        <h3 class="srv-title">SEO & Content Marketing</h3>
+        <p class="srv-desc">On-page engineering, metadata structure optimization, target keyword placement strategies, and speed tuning to maximize your organic Google rankings.</p>
+        <div class="srv-actions"><button class="btn srv-btn btn-ghost" onclick="openWa('Inquiry about SEO Services')">Inquire</button></div>
+      </div>
+      <div class="srv-card">
+        <div class="srv-icon" style="color:#8B5CF6; background:#F5F3FF;">🤖</div>
+        <h3 class="srv-title">AI Automation Agents</h3>
+        <p class="srv-desc">Integrate smart chatbots, automated lead nurturing booking sequences, and customer relation tools directly inside your newly launched business site.</p>
+        <div class="srv-actions"><button class="btn srv-btn btn-ghost" onclick="openWa('Inquiry about AI Automation Agents')">Inquire</button></div>
+      </div>
+      <div class="srv-card">
+        <div class="srv-icon" style="color:#EC4899; background:#FDF2F8;">🎨</div>
+        <h3 class="srv-title">UI/UX & Branding Assets</h3>
+        <p class="srv-desc">Complete professional creation of functional mockups, typography selection schemas, modern sleek logo designs, and operational brand kits layout mapping.</p>
+        <div class="srv-actions"><button class="btn srv-btn btn-ghost" onclick="openWa('Inquiry about UI/UX Branding')">Inquire</button></div>
+      </div>
+      <div class="srv-card">
+        <div class="srv-icon" style="color:#06B6D4; background:#ECFEFF;">🛠️</div>
+        <h3 class="srv-title">Maintenance & Edits</h3>
+        <p class="srv-desc">Continuous software security checks up updates monitoring file recovery backups, page alterations content corrections, and feature additions tasks management.</p>
+        <div class="srv-actions"><button class="btn srv-btn btn-ghost" onclick="openWa('Inquiry about Maintenance Services')">Inquire</button></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="portfolio" class="section">
+  <div class="container">
+    <div class="center" style="margin-bottom: 48px;">
+      <span class="eyebrow">Our Featured Portfolio</span>
+      <h2 class="section-title">Latest Masterpieces Delivered</h2>
+      <p class="section-sub">We don't build generic templates. Explore some of our live, premium assets engineered recently across various industrial sectors globally.</p>
+    </div>
+
+    <div class="portfolio-tabs" style="justify-content: center;">
+      <span class="tab active" onclick="filterPort('all', this)">All Projects</span>
+      <span class="tab" onclick="filterPort('corp', this)">Corporate & Agency</span>
+      <span class="tab" onclick="filterPort('ecom', this)">E-Commerce</span>
+      <span class="tab" onclick="filterPort('land', this)">Landing Pages</span>
+    </div>
+
+    <div class="portfolio-grid">
+      <div class="port-card" data-cat="corp">
+        <div class="port-screen">
+          <div class="port-screen-inner">
+            <div class="port-bar">
+              <div class="port-dots"><span style="background:#ef4444"></span><span style="background:#f59e0b"></span><span style="background:#10b981"></span></div>
+              <div class="port-url"><span></span></div>
+            </div>
+            <div class="port-site" style="background: linear-gradient(135deg, #0f172a, #1e293b); color:#fff; justify-content:center; align-items:center; flex:1; text-align:center;">
+              <span style="font-size:11px; font-weight:700; color:#38bdf8; letter-spacing:1px;">APEX DIGITAL SOLUTIONS</span>
+              <h4 style="font-family:'Bricolage Grotesque'; font-size:18px; margin:4px 0 8px;">Modern Marketing Agency</h4>
+              <span style="font-size:9px; background:rgba(255,255,255,0.1); padding:4px 10px; border-radius:4px;">Live Preview Demo</span>
+            </div>
+          </div>
+        </div>
+        <div class="port-info">
+          <div class="port-industry">Marketing Agency</div>
+          <h3 class="port-name">Apex Global Solutions</h3>
+          <p class="port-desc">A highly visual corporate presence utilizing custom dark theme matrices, high-converting copy layouts, and custom inquiry setups tracking infrastructure.</p>
+          <div class="port-tags"><span class="port-tag">Bricolage Layout</span><span class="port-tag">Fluid Animations</span><span class="port-tag">SEO Ready</span></div>
+        </div>
+      </div>
+
+      <div class="port-card" data-cat="ecom">
+        <div class="port-screen">
+          <div class="port-screen-inner">
+            <div class="port-bar">
+              <div class="port-dots"><span style="background:#ef4444"></span><span style="background:#f59e0b"></span><span style="background:#10b981"></span></div>
+              <div class="port-url"><span></span></div>
+            </div>
+            <div class="port-site" style="background: #fafafa; color:#111; justify-content:center; align-items:center; flex:1; text-align:center; border:1px solid #eee;">
+              <span style="font-size:11px; font-weight:700; color:#10b981; letter-spacing:1px;">VELVET THREADS CO.</span>
+              <h4 style="font-family:'Bricolage Grotesque'; font-size:18px; margin:4px 0 8px;">Premium Apparel Store</h4>
+              <span style="font-size:9px; background:#111; color:#fff; padding:5px 12px; border-radius:2px; font-weight:700;">SHOP NOW</span>
+            </div>
+          </div>
+        </div>
+        <div class="port-info">
+          <div class="port-industry">E-Commerce Boutique</div>
+          <h3 class="port-name">Velvet Threads Apparel</h3>
+          <p class="port-desc">Ultra-minimalist modern fashion marketplace featuring lightning fast slide-out cart drawer systems, quick size filters, and product variations selectors.</p>
+          <div class="port-tags"><span class="port-tag">Shopify Custom</span><span class="port-tag">Instant Load</span><span class="port-tag">Cart Setup</span></div>
+        </div>
+      </div>
+
+      <div class="port-card" data-cat="land">
+        <div class="port-screen">
+          <div class="port-screen-inner">
+            <div class="port-bar">
+              <div class="port-dots"><span style="background:#ef4444"></span><span style="background:#f59e0b"></span><span style="background:#10b981"></span></div>
+              <div class="port-url"><span></span></div>
+            </div>
+            <div class="port-site" style="background: linear-gradient(135deg, #f0fdf4, #dcfce7); color:#14532d; justify-content:center; align-items:center; flex:1; text-align:center;">
+              <span style="font-size:11px; font-weight:700; color:#16a34a; letter-spacing:1px;">SASSY AUTOMATIONS</span>
+              <h4 style="font-family:'Bricolage Grotesque'; font-size:18px; margin:4px 0 8px;">AI Software SaaS Landing</h4>
+              <span style="font-size:9px; background:#16a34a; color:#fff; padding:4px 10px; border-radius:50px;">Start Free Trial</span>
+            </div>
+          </div>
+        </div>
+        <div class="port-info">
+          <div class="port-industry">SaaS Product Landing</div>
+          <h3 class="port-name">Sassy Software Engine</h3>
+          <p class="port-desc">High-performance promotional direct response configuration designed exclusively for tech startups looking to generate thousands of waitlist validation signups.</p>
+          <div class="port-tags"><span class="port-tag">Lead Magnet</span><span class="port-tag">Responsive Form</span><span class="port-tag">Inter Font</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="team" class="section">
+  <div class="container">
+    <div class="center" style="margin-bottom: 60px;">
+      <span class="eyebrow">Our Agency Experts</span>
+      <h2 class="section-title">The Masterminds Behind Wikgrow</h2>
+      <p class="section-sub">Meet our dedicated agile crew of professional fullstack developers, certified conversion strategists, creative UI designers, and technical automation consultants.</p>
+    </div>
+
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-img-wrap">
+          <div class="avatar-placeholder">
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          </div>
+        </div>
+        <div class="team-info">
+          <h3 class="team-name">Waqar Ali</h3>
+          <div class="team-role">Founder & Chief Web Architect</div>
+          <p class="team-bio">Expert in advanced fullstack web engineering, custom AI integrations pipelines, performance optimization matrices, and foundational startup strategies.</p>
+          <div class="team-socials">
+            <span class="social-btn" onclick="openWa('Inquiry for Waqar Ali')">💬</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-img-wrap">
+          <div class="avatar-placeholder">
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          </div>
+        </div>
+        <div class="team-info">
+          <h3 class="team-name">Zain Evans</h3>
+          <div class="team-role">Lead UI/UX Creative Director</div>
+          <p class="team-bio">Passionate visual artist specializing in crafting customized component aesthetics patterns layouts schemas, styling structures, and dynamic responsive wireframes.</p>
+          <div class="team-socials">
+            <span class="social-btn" onclick="openWa('Inquiry for Zain Evans')">💬</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-img-wrap">
+          <div class="avatar-placeholder">
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          </div>
+        </div>
+        <div class="team-info">
+          <h3 class="team-name">Ayesha Khan</h3>
+          <div class="team-role">Senior SEO & Visibility Planner</div>
+          <p class="team-bio">On-page algorithm engineering specialist dedicated towards constructing rich schema markup snippets parameters, text mapping, and site indexing setups.</p>
+          <div class="team-socials">
+            <span class="social-btn" onclick="openWa('Inquiry for Ayesha Khan')">💬</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-img-wrap">
+          <div class="avatar-placeholder">
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          </div>
+        </div>
+        <div class="team-info">
+          <h3 class="team-name">Marcus Finch</h3>
+          <div class="team-role">Client Growth Operations Success</div>
+          <p class="team-bio">Manages continuous communication lines, content brief generation requirements checklists processing, system audits mapping, and client fulfillment metrics.</p>
+          <div class="team-socials">
+            <span class="social-btn" onclick="openWa('Inquiry for Marcus Finch')">💬</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="reviews" class="section">
+  <div class="container">
+    <div class="center" style="margin-bottom: 52px;">
+      <span class="eyebrow">Client Testimonials</span>
+      <h2 class="section-title">What Global Businesses Say</h2>
+      <p class="section-sub">Don't take our word for it. Read verified feedbacks loops compiled directly from commercial business operators who chose our low-cost high-value digital agency services.</p>
+    </div>
+
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars"><span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span></div>
+        <p class="review-text">"Honestly, I was skeptical about ordering a $50 custom development package. But Wikgrow built our entire plumbing services multi-page landing workspace in under 48 hours! Speed is incredible."</p>
+        <div class="review-author">
+          <div class="review-avatar" style="background:#3b82f6">TH</div>
+          <div><h4 class="review-name">Thomas Hegley</h4><span class="review-role">Owner, Hegley Plumbing LLC (USA)</span></div>
+          <span class="rating-num">5.0</span>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars"><span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span></div>
+        <p class="review-text">"The conversion copywriting layout structure they put on our real estate consulting preview site generated over 45 qualified hot leads within the first two weeks of Facebook ads running! Unbelievable team."</p>
+        <div class="review-author">
+          <div class="review-avatar" style="background:#10b981">FA</div>
+          <div><h4 class="review-name">Faisal Al-Mansoori</h4><span class="review-role">Partner, Al-Mansoori Properties (Dubai)</span></div>
+          <span class="rating-num">4.9</span>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars"><span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span></div>
+        <p class="review-text">"Excellent coordination lines from start to finish. Waqar handled all my custom script adjustments requests instantly via WhatsApp, making our online boutique store launch completely stress-free."</p>
+        <div class="review-author">
+          <div class="review-avatar" style="background:#f59e0b">SR</div>
+          <div><h4 class="review-name">Sarah Jenkins</h4><span class="review-role">Founder, ChicVibe Attires (UK)</span></div>
+          <span class="rating-num">5.0</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="why" class="section">
+  <div class="container">
+    <div class="why-inner">
+      <div class="why-left">
+        <span class="eyebrow" style="color:var(--gold); font-weight:700;">Why Choose Us</span>
+        <h2 class="section-title">We Deliver Value That Actually Multiplies Your Sales</h2>
+        <p class="section-sub">Unlike massive agencies charging thousands for generic pre-made template installations, we ground up configure every single pixel to align with structural business metrics.</p>
+        <div class="why-grid">
+          <div class="why-item">
+            <div class="why-icon">⚡</div><h4 class="why-title">Instant Response Iterations</h4><p class="why-desc">No formal delayed ticketing systems. We communicate directly step-by-step via WhatsApp for zero friction project mapping cycles.</p>
+          </div>
+          <div class="why-item">
+            <div class="why-icon">🎯</div><h4 class="why-title">Conversion Oriented Copy</h4><p class="why-desc">We structure exact benefit-driven sections elements maps explicitly aimed at urging viewers to call, message, or purchase.</p>
+          </div>
+          <div class="why-item">
+            <div class="why-icon">🔒</div><h4 class="why-title">Clean Standard Protocols</h4><p class="why-desc">Handwritten HTML/CSS and lightweight framework integrations ensure zero security vulnerabilities and fast performance files load.</p>
+          </div>
+          <div class="why-item">
+            <div class="why-icon">🛠️</div><h4 class="why-title">Free Setup Consultation</h4><p class="why-desc">We map out your hosting DNS direction entries domains linkages and basic SEO keywords tracking maps absolutely free.</p>
+          </div>
+        </div>
+      </div>
+      <div class="why-right" style="position:relative;">
+        <div class="hero-card" style="background:#111640; border-color:rgba(255,255,255,0.1); padding:40px; color:#fff;">
+          <h3 style="font-family:'Bricolage Grotesque'; font-size:26px; margin-bottom:16px; color:var(--gold-light);">Let's Build Something Extraordinary Together</h3>
+          <p style="font-size:14px; color:rgba(255,255,255,0.7); line-height:1.7; margin-bottom:28px;">Whether you need a brand-new corporate website or want to revamp an old slow layout, we have the precise technical skillset ready to deploy.</p>
+          <ul style="display:flex; flex-direction:column; gap:14px; margin-bottom:32px;">
+            <li style="display:flex; align-items:center; gap:10px; font-size:14px;"><span style="color:var(--green)">✔</span> Delivery within 48-72 Hours Max</li>
+            <li style="display:flex; align-items:center; gap:10px; font-size:14px;"><span style="color:var(--green)">✔</span> 100% Mobile & Tablet Responsive Guarantee</li>
+            <li style="display:flex; align-items:center; gap:10px; font-size:14px;"><span style="color:var(--green)">✔</span> Zero Monthly Hidden Charges Obligations</li>
+          </ul>
+          <button class="btn btn-wa btn-lg" style="width:100%; justify-content:center;" onclick="openWa('Hi, I read the Why Us section and want a free consult on my web project.')">Start Your Free Consult</button>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== CONTACT SECTION ===== -->
-<section id="contact" class="section">
-  <div class="container contact-inner">
-    <div>
-      <span class="eyebrow">Get in Touch</span>
-      <h2 class="section-title">Let's Launch Your Digital System</h2>
-      <p class="section-sub" style="margin-bottom: 32px;">Reach out using our quick routing portal. Our engineering unit will verify details and reach back within 12 standard operating hours.</p>
-      
-      <div class="contact-quick">
-        <div class="contact-info-item">
-          <div class="contact-icon-wrap">📧</div>
-          <div>
-            <div class="contact-label">Direct Mailbox</div>
-            <div class="contact-value">info@wikgrow.com</div>
-          </div>
-        </div>
-        <div class="contact-info-item">
-          <div class="contact-icon-wrap">💬</div>
-          <div>
-            <div class="contact-label">WhatsApp Helpline</div>
-            <div class="contact-value">+971 54 751 3482</div>
-          </div>
-        </div>
-      </div>
+<section id="trust" class="section-sm">
+  <div class="container">
+    <div class="trust-grid">
+      <div class="trust-card"><div class="trust-card-icon">🌍</div><div class="trust-card-num">15+</div><div class="trust-card-label">Countries Handled</div></div>
+      <div class="trust-card"><div class="trust-card-icon">📈</div><div class="trust-card-num">$50k+</div><div class="trust-card-label">Client Revenue Tracked</div></div>
+      <div class="trust-card"><div class="trust-card-icon">💎</div><div class="trust-card-num">4.8</div><div class="trust-card-label">Average Five Star Rating</div></div>
+      <div class="trust-card"><div class="trust-card-icon">🔄</div><div class="trust-card-num">82%</div><div class="trust-card-label">Repeat Client Business</div></div>
     </div>
-
-    <form class="contact-form">
-      <div class="form-row">
-        <div class="form-group">
-          <label>Your Full Name</label>
-          <input type="text" placeholder="John Doe" required>
-        </div>
-        <div class="form-group">
-          <label>Business Email Address</label>
-          <input type="email" placeholder="john@company.com" required>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Selected Primary Service Focus</label>
-        <select required>
-          <option value="" disabled selected>Choose a package focus...</option>
-          <option value="web">$50 Premium Web Development Bundle</option>
-          <option value="seo">Advanced Search Engine Optimization (SEO)</option>
-          <option value="automation">AI Workflow Automation & Integration</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Project Operational Details</label>
-        <textarea placeholder="Describe your web functional goal, layout expectations, or structural needs..." required></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary form-submit">Send Framework Inquiry</button>
-    </form>
   </div>
 </section>
 
-<!-- ===== PRIVACY POLICY MODAL SYSTEM ===== -->
-<div class="privacy-modal" id="privacyModal">
-  <div class="modal-box">
-    <div class="modal-header">
-      <h2 class="modal-title">Privacy Policy</h2>
-      <span class="modal-close" id="closeModal">&times;</span>
-    </div>
-    <div class="modal-content">
-      <p>At Wikgrow, accessible from our digital platforms, one of our main priorities is the absolute privacy of our visitors. This Privacy Policy document details types of analytical records and metrics collected by Wikgrow and how we manage it.</p>
-      <p>If you have additional questions or require more explicit details regarding our data compliance architectures, reach out via <strong>info@wikgrow.com</strong>.</p>
-      
-      <h3>1. Operational Information Collection</h3>
-      <p>The operational metrics or form fields you are requested to submit are handled transparently. If you engage with our agency directly via project submission systems, we process identifying info such as name, email handle, primary contact numbers, and the attached requirements content to create proper quotes.</p>
-      
-      <h3>2. How Data is Processed</h3>
-      <p>We process information to securely establish, build, and optimize your business platform. This includes deployment tasks, framework optimization, security diagnostics, and direct configuration messaging regarding adjustments or package enhancements.</p>
-      
-      <h3>3. Google Ads Compliance & Log Schematics</h3>
-      <p>Wikgrow implements standard logging systems. These log configurations monitor visitors tracking entry pathways. Collected metrics span internet protocol (IP) maps, active engine systems, ISP stamps, tracking markers, and targeted exit pathways. These items connect to no personal identity logs and exist purely to verify performance stability for Google Ads pipelines.</p>
-      
-      <h3>4. Cookie Integration & Web Beacons</h3>
-      <p>Wikgrow utilizes cookies to remember user workspace choices, preferred form tracking fields, and target asset layouts to increase user framework speed upon subsequent system visits.</p>
-      
-      <h3>5. Third-Party Ads Network Controls</h3>
-      <p>Third-party automated ad services utilize cookie configurations, automated script assets, or custom diagnostics within active tracking fields routed straight to user access screens. These layers dynamically process incoming server IPs to calculate marketing efficiency matrices. Wikgrow maintains no programmatic control over metrics run by external ad frameworks.</p>
-      
-      <h3>6. Data Protection Rights</h3>
-      <p>You retain absolute authority to request comprehensive data logs mapping any personal contact parameters our agency manages, demand structural layout corrections, or request complete structural purging of records from our operational caches.</p>
+<section id="cta">
+  <div class="container">
+    <div class="cta-inner">
+      <h2 class="cta-title">Ready to Dominate Your Competitors Online?</h2>
+      <p class="cta-sub">Stop losing valuable premium potential organic internet customers to outdated laggy layouts. Grab your premium professional high-speed web package starting at just $50 today.</p>
+      <div class="cta-actions">
+        <button class="btn btn-lg btn-wa" onclick="openWa('Hi, I am ready to dominate online. Let\'s launch my $50 website package.')">🚀 Get Started Now via WhatsApp</button>
+        <button class="btn btn-lg btn-white" onclick="openWa('Hi, I want a custom pricing quotation for a larger project.')">Request Custom Pricing Quotation</button>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ===== FOOTER ===== -->
 <footer>
   <div class="container">
     <div class="footer-inner">
-      <div class="footer-brand">
-        <span class="logo-name">Wik<em>grow</em></span>
-        <p>Premium professional websites and custom automation solutions built for scalable brand growth.</p>
+      <div class="footer-left">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-light)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px;"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+        &copy; 2026 Wikgrow Digital Solutions. All rights reserved.
       </div>
-      <div class="footer-col">
-        <h4 class="footer-col-title">Agency</h4>
-        <div class="footer-links">
-          <a href="#services">Services</a>
-          <a href="#contact">Contact</a>
-        </div>
+      <div class="footer-links">
+        <button class="footer-privacy-btn" onclick="togglePrivacyModal(true)">Privacy Policy</button>
       </div>
-      <div class="footer-col">
-        <h4 class="footer-col-title">Legal Support</h4>
-        <div class="footer-links">
-          <!-- Interactive compliance button linking directly to the structured safety overlay -->
-          <button id="openModalBtn">Privacy Policy</button>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h4 class="footer-col-title">Connect</h4>
-        <div class="footer-links">
-          <a href="https://wa.me/971547513482" target="_blank" rel="noopener">WhatsApp Helpline</a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p class="footer-copy">&copy; 2026 Wikgrow. All rights reserved. Programmed for global performance scaling.</p>
     </div>
   </div>
 </footer>
 
-<!-- ===== MOBILE NAVIGATION & MODAL SCRIPTS ===== -->
+<div class="pp-modal-overlay" id="privacyModal">
+  <div class="pp-modal-window">
+    <div class="pp-modal-header">
+      <h2 class="pp-modal-title">Privacy Policy</h2>
+      <button class="pp-modal-close" onclick="togglePrivacyModal(false)">&times;</button>
+    </div>
+    <div class="pp-modal-body">
+      <h3>1. Introduction</h3>
+      <p>Welcome to Wikgrow ("we", "our", "us"). We are committed to protecting your personal privacy. This Privacy Policy describes how your information is gathered, managed, and safeguarded when you visit our website (https://wikgrow.com) or interact with our freelance digital agency solutions.</p>
+      
+      <h3>2. Information We Collect</h3>
+      <p>Because we prioritize your privacy, we collect minimal personal data. This may include:</p>
+      <ul>
+        <li><strong>Voluntary Contact Information:</strong> Your name, phone number, or email message contents when you explicitly tap our direct links to connect with us via WhatsApp or request project quotes.</li>
+        <li><strong>Automated Usage Data:</strong> Basic structural analytic matrices such as anonymous IP addresses, browser types, page viewing frequencies, and duration metrics collected via standard tracking parameters or Google Ads tag parameters.</li>
+      </ul>
+
+      <h3>3. How We Use Your Data</h3>
+      <p>The information we collect is strictly used to:</p>
+      <ul>
+        <li>Deliver high-quality web development, branding, and digital marketing services.</li>
+        <li>Communicate project updates and respond efficiently to active business inquiries.</li>
+        <li>Optimize our website, trace conversion performance, and fulfill required platform guidelines mandated by advertising partners like Google Ads.</li>
+      </ul>
+
+      <h3>4. Data Protection & Sharing</h3>
+      <p>Wikgrow does not sell, rent, lease, or trade user database elements to any third-party marketing networks. Data is only accessible to core operators managing service delivery and is strictly protected via standard secure online protocols.</p>
+
+      <h3>5. Cookies & Tracking Technologies</h3>
+      <p>We may use minimal operational cookies or tracking pixels to analyze site flow patterns and serve targeted direct response advertising. You hold complete liberty to manually configure your desktop or mobile browser configurations to deny cookies usage if preferred.</p>
+
+      <h3>6. Third-Party Links</h3>
+      <p>Our online experience contains direct links leading towards WhatsApp messaging interfaces. We do not exercise authority over external interactive portals and recommend reading individual privacy guidelines upon clicking through.</p>
+
+      <h3>7. Consent & Updates</h3>
+      <p>By browsing our website, you gracefully accord consent towards our official policy layout. We reserve the full right to introduce periodic improvements here. Continuous browsing implies automatic agreement toward active terms.</p>
+      
+      <p style="margin-top:20px; font-size:13px; color:var(--text-soft);"><em>Last Updated: June 2026</em></p>
+    </div>
+  </div>
+</div>
+
 <script>
-// Mobile Navigation System
-const hamburger = document.getElementById('hamburger');
-const mobileNav = document.getElementById('mobileNav');
-
-if (hamburger && mobileNav) {
-  hamburger.addEventListener('click', () => {
-    mobileNav.classList.toggle('open');
-    const spans = hamburger.querySelectorAll('span');
-    spans.forEach(span => span.classList.toggle('active'));
-  });
-
-  // Close mobile nav when clicking links
-  const mobileLinks = mobileNav.querySelectorAll('a');
-  mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      mobileNav.classList.remove('open');
-    });
-  });
-}
-
-// Nav scroll indicator tracking
+// Handle fixed transparent navigation transition patterns
 window.addEventListener('scroll', () => {
-  const navElement = document.getElementById('nav');
-  if (window.scrollY > 20) {
-    navElement.classList.add('scrolled');
+  const nav = document.getElementById('navbar');
+  if (window.scrollY > 40) {
+    nav.classList.add('scrolled');
   } else {
-    navElement.classList.remove('scrolled');
+    nav.classList.remove('scrolled');
   }
 });
 
-// Privacy Modal Interactive Engine
-const privacyModal = document.getElementById('privacyModal');
-const openModalBtn = document.getElementById('openModalBtn');
-const closeModal = document.getElementById('closeModal');
+// Toggle responsive mobile drawer interface actions
+function toggleMobile() {
+  const burger = document.getElementById('hamburger');
+  const nav = document.getElementById('mobileNav');
+  burger.classList.toggle('active');
+  nav.classList.toggle('open');
+}
+function closeMobile() {
+  const burger = document.getElementById('hamburger');
+  const nav = document.getElementById('mobileNav');
+  if(burger) burger.classList.remove('active');
+  if(nav) nav.classList.remove('open');
+}
 
-if (privacyModal && openModalBtn && closeModal) {
-  openModalBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    privacyModal.classList.add('active');
-    document.body.classList.add('modal-open');
-  });
+// Portfolio filter dynamic systems tabs visibility logic scripts
+function filterPort(cat, el) {
+  // Toggle active styling attributes inside targets elements lists buttons
+  document.querySelectorAll('.portfolio-tabs .tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
 
-  closeModal.addEventListener('click', () => {
-    privacyModal.classList.remove('active');
-    document.body.classList.remove('modal-open');
-  });
-
-  // Close modal if user clicks gray backdrop zone
-  privacyModal.addEventListener('click', (e) => {
-    if (e.target === privacyModal) {
-      privacyModal.classList.remove('active');
-      document.body.classList.remove('modal-open');
+  // Trigger grid filtration transitions sequences cards mappings
+  document.querySelectorAll('.portfolio-grid .port-card').forEach(card => {
+    if (cat === 'all') {
+      card.style.display = 'block';
+    } else {
+      if (card.getAttribute('data-cat') === cat) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
     }
   });
 }
+
+// Direct routing parameters generator toward active external WhatsApp communications channel
+function openWa(msgText) {
+  const btn = event.currentTarget;
+  btn.disabled = true;
+  const originalHtml = btn.innerHTML;
+  btn.innerHTML = '✨ Routing...';
+  
+  setTimeout(() => {
+    const encoded = encodeURIComponent(msgText);
+    window.open(`https://wa.me/923253335548?text=${encoded}`, '_blank');
+    btn.innerHTML = originalHtml;
+    btn.disabled = false;
+  }, 600);
+}
+
+// Smooth anchor close on desktop nav click
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', () => { closeMobile(); });
+});
+
+// Stat counter animation
+function animateCounters() {
+  document.querySelectorAll('.stat-num em').forEach(el => {
+    const target = parseFloat(el.textContent);
+    if (isNaN(target)) return;
+    let start = 0;
+    const duration = 1800;
+    const startTime = performance.now();
+    const isDecimal = el.textContent.includes('.');
+    function update(now) {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const val = progress * target;
+      el.textContent = isDecimal ? val.toFixed(1) : Math.floor(val);
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      } else {
+        el.textContent = target;
+      }
+    }
+    requestAnimationFrame(update);
+  });
+}
+
+// ===== ADDED EXCLUSIVELY FOR PRIVACY POLICY MODAL SYSTEM TOGGLE =====
+function togglePrivacyModal(show) {
+  const modal = document.getElementById('privacyModal');
+  if (show) {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevents background body scrolling
+  } else {
+    modal.classList.remove('active');
+    document.body.style.overflow = ''; // Restores background scrolling
+  }
+}
+
+// Close privacy modal if user clicks outside the inner active window container box
+document.getElementById('privacyModal').addEventListener('click', function(e) {
+  if (e.target === this) {
+    togglePrivacyModal(false);
+  }
+});
 </script>
 
 </body>
