@@ -14,7 +14,8 @@
 <meta name="twitter:title" content="Wikgrow – Professional Websites For Modern Businesses">
 <meta name="twitter:description" content="Premium websites starting at $50. 138+ delivered. 4.8/5 rating. WhatsApp us today.">
 <link rel="canonical" href="https://wikgrow.com">
-  <!-- Google tag (gtag.js) -->
+
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18227764199"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -22,7 +23,8 @@
   gtag('js', new Date());
   gtag('config', 'AW-18227764199');
 </script>
-  <script>
+<script>
+// Conversion tracking function
 function gtag_report_conversion(url) {
   var callback = function () {
     if (typeof(url) != 'undefined') {
@@ -30,18 +32,22 @@ function gtag_report_conversion(url) {
     }
   };
   gtag('event', 'conversion', {
-      'send_to': 'AW-18227764199/-IKECLTe-8AcEOe31vND',
-      'event_callback': callback
+    'send_to': 'AW-18227764199/-IKECLTe-8AcEOe31vND',
+    'event_callback': callback
   });
   return false;
 }
-    // Auto-track all WhatsApp clicks
-document.querySelectorAll('a[href*="wa.me"]').forEach(function(link) {
-  link.addEventListener('click', function() {
-    gtag_report_conversion('https://wa.me/971547513482');
+
+// Auto-track all WhatsApp button clicks
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('a[href*="wa.me"]').forEach(function(link) {
+    link.addEventListener('click', function() {
+      gtag_report_conversion();
+    });
   });
 });
 </script>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -1099,7 +1105,7 @@ footer { background: var(--navy); padding: 64px 0 0; }
         </div>
       </div>
 
-      <!-- Team Member 2 - UI/UX Designer SVG Avatar -->
+      <!-- Team Member 2 -->
       <div class="team-card fade-up fade-up-d1">
         <div class="team-img-wrap">
           <img src="team-member-1.jpg" alt="Sophia Martinez - UI/UX Designer at Wikgrow" loading="lazy">
@@ -1119,7 +1125,7 @@ footer { background: var(--navy); padding: 64px 0 0; }
         </div>
       </div>
 
-      <!-- Team Member 3 - SEO Specialist -->
+      <!-- Team Member 3 -->
       <div class="team-card fade-up fade-up-d2">
         <div class="team-img-wrap">
           <img src="team-member-2.jpg" alt="Ethan Brooks - SEO Specialist at Wikgrow" loading="lazy">
@@ -1139,7 +1145,7 @@ footer { background: var(--navy); padding: 64px 0 0; }
         </div>
       </div>
 
-      <!-- Team Member 4 - Digital Marketing Expert -->
+      <!-- Team Member 4 -->
       <div class="team-card fade-up fade-up-d3">
         <div class="team-img-wrap">
           <img src="team-member-3.jpg" alt="Liam Anderson - Digital Marketing Expert at Wikgrow" loading="lazy">
@@ -1552,7 +1558,7 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.12 });
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-// Form submit - builds a WhatsApp message from form data
+// Form submit
 const WHATSAPP_NUMBER = '971547513482';
 const SERVICE_LABELS = {
   website: 'Website Development ($50)',
@@ -1599,9 +1605,11 @@ function handleSubmit(e) {
 
   btn.textContent = 'Opening WhatsApp...';
   btn.disabled = true;
-  
-  // Track form submission as conversion
-  gtag_report_conversion();
+
+  // Fire Google Ads Contact conversion
+  gtag('event', 'conversion', {
+    'send_to': 'AW-18227764199/-IKECLTe-8AcEOe31vND'
+  });
 
   document.getElementById('formSuccess').style.display = 'block';
 
