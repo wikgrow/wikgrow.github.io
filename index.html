@@ -1599,6 +1599,9 @@ function handleSubmit(e) {
 
   btn.textContent = 'Opening WhatsApp...';
   btn.disabled = true;
+  
+  // Track form submission as conversion
+  gtag_report_conversion();
 
   document.getElementById('formSuccess').style.display = 'block';
 
