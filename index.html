@@ -22,6 +22,27 @@
   gtag('js', new Date());
   gtag('config', 'AW-18227764199');
 </script>
+  <script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-18227764199/-IKECLTe-8AcEOe31vND',
+      'event_callback': callback
+  });
+  return false;
+}
+    // Auto-track all WhatsApp clicks
+document.querySelectorAll('a[href*="wa.me"]').forEach(function(link) {
+  link.addEventListener('click', function() {
+    gtag_report_conversion('https://wa.me/971547513482');
+  });
+});
+</script>
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
